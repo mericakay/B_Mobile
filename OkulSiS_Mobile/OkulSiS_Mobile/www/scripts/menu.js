@@ -83,7 +83,9 @@ function user() {
                     })
 
                     alert(data);
-                    console.log(data);
+                    
+                    var myJSON = JSON.stringify(data);
+                    console.log(myJSON);
 
                 });
 
