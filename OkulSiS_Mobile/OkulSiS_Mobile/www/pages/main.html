@@ -9,10 +9,7 @@
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
     <link href="../css/menu.css" rel="stylesheet" />
     <link href="../css/bootstrap4_datatable.css" rel="stylesheet" />
-
-
 </head>
-
 <body onload="user()">
     <!-- menu vertical -->
     <nav id="menu" class="left">
@@ -21,28 +18,34 @@
         </ul>
         <a href="#" id="showmenu"> <i class="fa fa-align-justify"></i> </a>
     </nav>
+    <header>
+        <div class="logo">
+            <div id="mail_menu"><img src="../images/msg1.png" /> <a style="color:white" href="#"><br />&nbsp;mesajlarınız<br /> 10</a></div>
+            <div ><img src="../images/time.png" /> <a style="color:white" href="#">&nbsp;randevularınız <br /> 12</a></div>
+          
+        </div> <br />
+        
+    </header>
+   
     <!-- /menu vertical -->
     <!-- contenido de pagina, realmente no importa -->
     <div id="container">
-        <h5 id="username_mrc"> </h5>
-        <p>Günlük Ders Programı</p>
+        
         <table id="example" class="display" cellspacing="0" width="100%">
             <thead>
                 <tr>
                     <th>Ders Saati </th>
                     <th>Sınıf Adı</th>
                     <th>Öğretmen</th>
-
                 </tr>
             </thead>
-
         </table>
-        <div >         
+        <div>
         </div>
     </div>
+    <footer>Copyright &copy; OkulSIS </footer>
     <!-- /contenido de pagina, realmente no importa -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script type="text/javascript" src="../scripts/menu.js"></script>
-
 </body>
 </html>

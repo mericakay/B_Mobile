@@ -30,10 +30,10 @@ body {
 .app {
     background: url(../images/okulsis-logo-transparent.png) no-repeat center top;
     position: absolute;
-    left: 50%;
-    top: 40%;
+    left: 45%;
+    top: 45%;
     height: 50px;
-    width: 225px;
+    width: 250px;
     text-align: center;
     padding: 80px 0px 0px 0px;
     margin: -115px 0px 0px -112px;

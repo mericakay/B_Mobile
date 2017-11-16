@@ -21,7 +21,7 @@ function user() {
     var rolid = localStorage.getItem("RolID");
     var ip = localStorage.getItem("proxy");
     var kisiadi = localStorage.getItem("KullaniciAdi");
-    document.getElementById("username_mrc").innerHTML = kisiadi;
+    
 
 
     $.ajax({
@@ -64,7 +64,7 @@ function user() {
 
                     $('#example').append('<tbody><tr><td>' + derssaati + '</td><td>' + sinifadi + '</td><td>' + ogretmen + '</td></tr></tbody>');
                 }
-                $("#example").on('click', 'td', function () {
+               /* $("#example").on('click', 'td', function () {
                     var header = Array();
 
                     $("table tr th").each(function (i, v) {
@@ -87,7 +87,7 @@ function user() {
                     var myJSON = JSON.stringify(data);
                     console.log(myJSON);
 
-                });
+                });*/
 
 
             }
@@ -99,8 +99,5 @@ function user() {
     else {
         alert("Ekran Henüz Yapım Aşamasında...");
     }
-
-
-
 };
 

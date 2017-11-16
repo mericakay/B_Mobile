@@ -24,6 +24,7 @@ $(document).ready(function () {
                     localStorage.setItem("KullaniciAdi", gelen);
                     localStorage.setItem("gelenid", kisiid, "OkulID", okulid);
                     var add = localStorage.getItem("KullaniciAdi");
+
                     window.location.href = "okulsec.html";
                 }
                 else {

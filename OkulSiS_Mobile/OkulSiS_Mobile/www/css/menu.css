@@ -20,11 +20,27 @@
     font-family: 'RobotoRegular', 'Droid Sans', 'Segoe UI', Segoe, 'San Francisco', 'Helvetica Neue', Helvetica, Arial, Geneva, sans-serif;
     font-size: 12px;
 }
-#username_mrc {
-    -webkit-text-stroke: 1px white;
-    padding-top: 30%;
-    font-family: Courier;
-    color: aliceblue;
+.logo {
+   // background: url(../../images/okulsis-logo-transparent.png) no-repeat center top;
+    position: absolute;
+    left: 20%;
+    top: 2%;
+    height: 50px;
+    width: 225px;
+    text-align: center;
+   
+}
+header, footer {
+    padding: 1em;
+    color: white;
+    clear: left;
+    text-align: center;
+}
+#mail_menu{
+    color:white;
+    float:left;
+    padding-right:20px;
+   
 }
 #menu {
     position: fixed;
@@ -138,5 +154,6 @@
 }
 
 #container {
-    padding: 50px;
+    padding-top:20%;
+   text-align:center;
 }
