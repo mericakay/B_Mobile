@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-    <link href="../css/menu.css" rel="stylesheet" />
-    <link href="../css/bootstrap4_datatable.css" rel="stylesheet" />
+    <link href="../../css/menu.css" rel="stylesheet" />
+    <link href="../../css/bootstrap4_datatable.css" rel="stylesheet" />
 </head>
 <body onload="user()">
     <!-- menu vertical -->
@@ -20,19 +20,28 @@
     </nav>
     <header>
         <div class="logo">
-            <div  class="dashboard">
-
-            </div>                      
+            <p class="box-title">Tarih Seçiniz</p>
+            <input type="date" id="myDate" value="Tarih Seçiniz !" /><br />
+            <p>Şube Seçiniz</p>
+            <select class="content-header" id="selectNumber"> </select><br />
+            <p>Ders Saati Seçiniz</p>
+            <select class="content-header" id="sube"></select><br />
         </div> <br />
-        
+
     </header>
-   
+
     <!-- /menu vertical -->
     <!-- contenido de pagina, realmente no importa -->
     <div id="container">
-        
+
         <table id="example" class="display" cellspacing="0" width="100%">
-            
+            <thead>
+                <tr>
+                    <th>Ders Saati </th>
+                    <th>Sınıf Adı</th>
+                    <th>Öğretmen</th>
+                </tr>
+            </thead>
         </table>
         <div>
         </div>
@@ -40,6 +49,6 @@
     <footer>Copyright &copy; OkulSIS </footer>
     <!-- /contenido de pagina, realmente no importa -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script type="text/javascript" src="../scripts/menu.js"></script>
+    <script type="text/javascript" src="../../scripts/devamsizlik/ogretmen.js"></script>
 </body>
 </html>

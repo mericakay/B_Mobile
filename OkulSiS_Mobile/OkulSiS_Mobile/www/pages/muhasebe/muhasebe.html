@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-    <link href="../css/menu.css" rel="stylesheet" />
-    <link href="../css/bootstrap4_datatable.css" rel="stylesheet" />
+    <link href="../../css/menu.css" rel="stylesheet" />
+    <link href="../../css/bootstrap4_datatable.css" rel="stylesheet" />
 </head>
 <body onload="user()">
     <!-- menu vertical -->
@@ -19,20 +19,25 @@
         <a href="#" id="showmenu"> <i class="fa fa-align-justify"></i> </a>
     </nav>
     <header>
-        <div class="logo">
-            <div  class="dashboard">
-
-            </div>                      
-        </div> <br />
-        
+        <h5>Şube</h5>
+        <select class="content-header" id="selectNumber"> </select><br />
+        <h5>Öğrenci  Seçiniz</h5>
+        <select class="content-header" id="sube"></select>
     </header>
-   
+
     <!-- /menu vertical -->
     <!-- contenido de pagina, realmente no importa -->
     <div id="container">
-        
+
         <table id="example" class="display" cellspacing="0" width="100%">
-            
+            <thead>
+                <tr>
+                    <th>Tahhüt No</th>
+                    <th>Toplam Tutar</th>
+                    <th>Toplam Ödenen</th>
+                    <th>Kalan Tutar</th>
+                </tr>
+            </thead>
         </table>
         <div>
         </div>
@@ -40,6 +45,6 @@
     <footer>Copyright &copy; OkulSIS </footer>
     <!-- /contenido de pagina, realmente no importa -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script type="text/javascript" src="../scripts/menu.js"></script>
+    <script type="text/javascript" src="../../scripts/muhasebe/muhasebe.js"></script>
 </body>
 </html>

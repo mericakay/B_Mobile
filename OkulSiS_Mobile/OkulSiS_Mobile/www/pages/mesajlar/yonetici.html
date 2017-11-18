@@ -1,0 +1,87 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <link href="../../css/menu.css" rel="stylesheet" />
+    <link href="../../css/bootstrap4_datatable.css" rel="stylesheet" />
+</head>
+<body onload="user()">
+    <!-- menu vertical -->
+    <nav id="menu" class="left">
+        <ul>
+            <li><a href="#" class="active"><i class="fa fa-home"></i>Home</a></li>
+        </ul>
+        <a href="#" id="showmenu"> <i class="fa fa-align-justify"></i> </a>
+    </nav>
+    <header>
+       
+
+    </header>
+
+    <!-- /menu vertical -->
+    <!-- contenido de pagina, realmente no importa -->
+    <div id="container">
+        <!--Pestaña 1 activa por defecto-->
+        <input id="tab-1" type="radio" name="tab-group" checked="checked" />
+        <label for="tab-1">Yeni</label>
+        <!--Pestaña 2 inactiva por defecto-->
+        <input id="tab-2" type="radio" name="tab-group" />
+        <label for="tab-2">Gelen</label>
+        <!--Pestaña 3 inactiva por defecto-->
+        <input id="tab-3" type="radio" name="tab-group" />
+        <label for="tab-3">Giden</label>
+        <!--Contenido a mostrar/ocultar-->
+        <div id="content">
+            <!--Contenido de la Pestaña 1-->
+            <div id="content-1">
+                <p>Yeni Mesaj GÖnder</p>
+                <br />
+                <input type="text" name="fname" placeholder="Alıcı"><br />
+                <input type="text" name="lname" placeholder="Konu"><br />
+                <textarea name="fmesaj" placeholder="Mesaj"></textarea><br />
+                <input type="submit" value="Gönder">
+            </div>
+            <!--Contenido de la Pestaña 2-->
+            <div id="content-2">
+                <p>Gelen Mesajlar</p>
+                <table id="example" class="display" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Gonderen </th>
+                            <th>Konu</th>
+                            <th>Tarih</th>
+
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <!--Contenido de la Pestaña 3-->
+            <div id="content-3">
+                <p>Gönderilen Mesajlar</p>
+                <table id="giden" class="display" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Alıcı </th>
+                            <th>Konu</th>
+                            <th>Tarih</th>
+
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        
+        <div>
+        </div>
+    </div>
+    <footer>Copyright &copy; OkulSIS </footer>
+    <!-- /contenido de pagina, realmente no importa -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../scripts/mesajlar/mesajlar.js"></script>
+</body>
+</html>
