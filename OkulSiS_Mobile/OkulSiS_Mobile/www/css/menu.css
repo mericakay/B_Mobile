@@ -200,6 +200,7 @@ header, footer {
 
 #container {
     margin: 0 auto;
+    min-height:600px;
     width: 87%; /* Ancho del contenedor */
 }
 

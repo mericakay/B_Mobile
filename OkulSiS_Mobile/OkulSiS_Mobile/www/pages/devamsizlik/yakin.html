@@ -1,9 +1,45 @@
-﻿<!DOCTYPE html>
+﻿<!doctype html>
 <html>
 <head>
-    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <link href="../../css/menu.css" rel="stylesheet" />
+    <link href="../../css/bootstrap4_datatable.css" rel="stylesheet" />
 </head>
-<body>
-    <div>Content goes here.</div>
+<body onload="user()">
+    <!-- menu vertical -->
+    <nav id="menu" class="left">
+        <ul>
+            <li><a href="#" class="active"><i class="fa fa-home"></i>Home</a></li>
+        </ul>
+        <a href="#" id="showmenu"> <i class="fa fa-align-justify"></i> </a>
+    </nav>
+    <header></header>
+
+    <!-- /menu vertical -->
+    <!-- contenido de pagina, realmente no importa -->
+    <div id="container">
+        <br /><br />
+        
+        <select id="selectNumber"> </select><br /><br />
+        <table id="example" class="display" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th>Tarih</th>
+                    <th>Gün </th>
+                    <th>Devamsızlık Durumu</th>
+                </tr>
+            </thead>
+        </table>
+
+    </div>
+    <footer>Copyright &copy; OkulSIS </footer>
+    <!-- /contenido de pagina, realmente no importa -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../scripts/devamsizlik/yakin.js"></script>
 </body>
 </html>
