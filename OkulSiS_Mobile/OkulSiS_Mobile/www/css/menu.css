@@ -66,11 +66,9 @@ input[type="date"], focus {
 }
 
 .logo {
-   margin-left:10%;
+    padding-left: 20%;
     height: 20px;
     width: 200px;
-    padding-bottom:20%;
-   
 }
 
 header, footer {
@@ -80,6 +78,12 @@ header, footer {
     text-align: center;
 }
 
+#mail_menu {
+    text-align: left;
+    color: white;
+    font-size: 12px;
+    background-repeat: no-repeat;
+}
 
 #menu {
     position: fixed;

@@ -41,22 +41,13 @@ function user() {
                 url = data[j].URL;
                 value = data[j].value;
                 iconclass = data[j].iconclass;
-                collapse = data[j].collapse;
-                // alert(collapse);
-                if (collapse == 0) {
-
-                    $('.left').append('<ul><li><a href="' + url + ' "><i class="fa ' + iconclass + '"></i>' + text + '</a></li></ul>');
-                }
-                else {
-                    alert("geldi");
-                    $('.left').append('<ul><li><a href="' + url + ' "><i class="fa ' + iconclass + '"></i>' + text + '</a><i class="fa-arrow-down"></i></li></ul>');
-                }
-
+                collapse = data[j].collapse;             
+                    $('.left').append('<ul><li><a href="' + url + ' "><i class="fa ' + iconclass + '"></i>' + text + '</a></li></ul>');               
             }
         }
     });
     //menu Son
-
+    alert(kisiid);
     //dashboard başlangıç
     $.ajax({
         url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=DashboardIconCounts_mbllogin&rolId=9&kisiId=' + kisiid + '&cid=' + cid + '',
@@ -82,56 +73,71 @@ function user() {
     // Dashboard son
 
     //contenier başlangıç
-
     $.ajax({
 
-        url: 'http://'+ip+':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=MuhBorcluSozlesmeleri_mbllogin&dersYiliID=9D7A115C-5E96-4F6E-B31D-E5710BDA1C97&ogrenciID=5A4BEF62-184D-4884-8BE0-B939E2DFBAE6&dbn=Bilsanet1&cid=3',
+        url: 'http://' + ip +':8080//Slim_Proxy_okulsis/SlimProxyBoot.php?url=KurumPersoneliSinifListesi_mbllogin&dersYiliID=0F17DCF7-EFCF-41D8-82A0-D4CCFF77E487&cid='+cid+'',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
             var j;
             var dataSet = [];
             var properties = [];
-            //$('#location').empty();
+            $('#selectNumber').empty();
             for (var j = 0; j < data.length; j++) {
-                var toplamtutar = data[j].ToplamTutar;
-                var taahutno = data[j].TaahhutnameNo;
-                var toplamodenen = data[j].ToplamOdenen;
-                var kalantutar = data[j].KalanTutar;
-                var borclusozlesmeid = data[j].BorcluSozlesmeID;
-
-                $('#example').append('<tr><td  onclick="myFunction()">' + taahutno + '</td><td>' + toplamtutar + '</td><td>' + toplamodenen + '</td><td>' + kalantutar + '</td><td>' + borclusozlesmeid + '</td></tr>');
+                var text = data[j].SinifAdi;
+                var sinifid = data[j].SinifID;
+                // alert(sinifid);
+                $('#selectNumber').append("<option value=" + sinifid + ">" + text + "</option>");
             }
+            $("#selectNumber").on('change', function () {
 
+
+                $.ajax({
+                    url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Kysubeogrencilistesi_mbllogin&sinifID=F4201B97-B073-4DD7-8891-8091C3DC82CF&cid=' + cid +'',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        var j;
+                        var dataSet = [];
+                        var properties = [];
+                        $('#sube').empty();
+                        for (var j = 0; j < data.length; j++) {
+                            var text = data[j].Aciklama;
+                            var derssirasi = data[j].DersSirasi;
+                            var dersid = data[j].DersID;
+
+                            $('#sube').append("<option >" + text + "</option>");
+                        }
+                        $("#sube").on('change', function () {
+                            $.ajax({
+
+                                url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=MuhBorcluSozlesmeleri_mbllogin&dersYiliID=9D7A115C-5E96-4F6E-B31D-E5710BDA1C97&ogrenciID=5A4BEF62-184D-4884-8BE0-B939E2DFBAE6&dbn=Bilsanet1&cid=' + cid +'',
+                                type: 'GET',
+                                dataType: 'json',
+                                success: function (data) {
+                                    var j;
+                                    var dataSet = [];
+                                    var properties = [];
+                                    //$('#location').empty();
+                                    for (var j = 0; j < data.length; j++) {
+                                        var toplamtutar = data[j].ToplamTutar;
+                                        var taahutno = data[j].TaahhutnameNo;
+                                        var toplamodenen = data[j].ToplamOdenen;
+                                        var kalantutar = data[j].KalanTutar;
+                                        var borclusozlesmeid = data[j].BorcluSozlesmeID;
+
+                                        $('#example').append('<tr><td  onclick="myFunction()">' + taahutno + '</td><td>' + toplamtutar + '</td><td>' + toplamodenen + '</td><td>' + kalantutar + '</td></tr>');
+                                    }
+
+                                }
+                            });
+                        });
+                    }
+                });
+
+            });
         }
     });
-
-    function myFunction() {
-        //   document.getElementById("demo").innerHTML = "Hello World";
-        var table = document.getElementById("location");
-        var rows = table.getElementsByTagName("tr");
-        for (i = 0; i < rows.length; i++) {
-            var currentRow = table.rows[i];
-            var createClickHandler =
-                function (row) {
-                    return function () {
-                        var rows = $("#location>tr");
-                        // alert(JSON.stringify(rows, null, 4));
-                        console.log(JSON.stringify(rows, null, 4));
-                        var cell = row.getElementsByTagName("td")[3];
-                        var devamsız = row.getElementsByTagName("td")[1];
-                        var id = cell.innerHTML;
-                        var gelen = devamsız.innerHTML;
-                        alert(id);
-                        // alert("<OgrenciID>" + id + "</OgrenciID>" + "<DevamsizlikKodID>" + gelen + "</DevamsizlikKodID>");
-                    };
-                };
-
-            currentRow.onclick = createClickHandler(currentRow);
-        }
-
-
-    }
     //Contenier Son
 };
 

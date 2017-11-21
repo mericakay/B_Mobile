@@ -108,7 +108,14 @@ h1 {
     -webkit-animation: fade 3000ms infinite;
 }
 
+    content: '';
+    display: block;
+    position: absolute;
+    pointer-events: none;
 
+    height: 0;
+    right: 16px;
+}
 
  top arrow &::before {
     bottom: 55%;
