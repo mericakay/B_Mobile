@@ -42,16 +42,8 @@ function user() {
                 value = data[j].value;
                 iconclass = data[j].iconclass;
                 collapse = data[j].collapse;
-               // alert(collapse);
-                if (collapse == 0) {
-                   
-                    $('.left').append('<ul><li><a href="' + url + ' "><i class="fa ' + iconclass + '"></i>' + text + '</a></li></ul>');
-                }
-                else {
-                    alert("geldi");
-                    $('.left').append('<ul><li><a href="' + url + ' "><i class="fa ' + iconclass + '"></i>' + text + '</a><i class="fa-arrow-down"></i></li></ul>');
-                }
-               
+              $('.left').append('<ul><li><a href="' + url + ' "><i class="fa ' + iconclass + '"></i>' + text + '</a></li></ul>');
+   
             }
         }
     });
@@ -75,7 +67,7 @@ function user() {
                 value = data[j].adet;
                 iconclass = data[j].iconclass;
                 
-                $('.dashboard').append('<img src="' + url + '" align="left"/><a style="color:white" href="#" id="mail_menu">' + text + '<br />' + value +'</a><br /><br />');
+                $('.dashboard').append('<img src="' + url + '"/><a style="color:white" " align="left" href="#" id="mail_menu">' + text + '<br />' + value +'</a>');
             }
         }
     });
