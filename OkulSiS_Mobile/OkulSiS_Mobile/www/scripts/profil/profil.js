@@ -76,7 +76,9 @@ function user() {
                 var adi = data[j].Adi;
                 var soyadi = data[j].Soyadi;
                 var eposta = data[j].ePosta;
-                $('#example').append('<tr><td>' + tc + '</td><td>' + adi + '</td><td>' + soyadi + '</td><td>' + eposta + '</td></tr>');
+                $('.profile-usertitle-name').append('<p>' + adi + '&nbsp' + soyadi + '</p>');
+                $('#tc').append('<a href="#"><i class="glyphicon glyphicon-home"></i>' + tc + '</a>');
+                $('#email').append('<a href="#"><i class="glyphicon glyphicon-user"></i>' + eposta + '</a>');
             }
         }
 
