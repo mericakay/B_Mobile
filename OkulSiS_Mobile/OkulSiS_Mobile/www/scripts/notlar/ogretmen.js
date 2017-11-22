@@ -53,31 +53,7 @@ function user() {
     });
     //menu Son
 
-    //dashboard başlangıç
-    $.ajax({
-        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=DashboardIconCounts_mbllogin&rolId=9&kisiId=' + kisiid + '&cid=' + cid + '',
-        type: 'GET',
-        dataType: 'json',
-        success: function (data) {
-            var j;
-            var dataSet = [];
-            var properties = [];
-            var url = "";
-            var value = "";
-            var iconclass = "";
-            for (var j = 0; j < data.length; j++) {
-                text = data[j].aciklama;
-                url = data[j].url;
-                value = data[j].adet;
-                iconclass = data[j].iconclass;
 
-                $('.dashboard').append('<img src="' + url + '" align="left"/><a style="color:white" href="#" id="mail_menu">' + text + '<br />' + value + '</a><br /><br />');
-            }
-        }
-    });
-
-
-    // Dashboard son
 
     //contenier başlangıç
     $.ajax({
