@@ -21,7 +21,7 @@ function user() {
     var rolid = localStorage.getItem("RolID");
     var ip = localStorage.getItem("proxy");
     var kisiadi = localStorage.getItem("KullaniciAdi");
-
+    alert(did);
 
 
     //menu başlangıç
@@ -57,30 +57,52 @@ function user() {
         }
     });
     //menu Son
+
+
     //contenier başlangıç
 
-
     $.ajax({
-        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=GnlProfil_mbllogin&kisiID=' + kisiid + '&cid=' + cid + '&dbn=' + dbn + '',
+        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=VeliOgrencileri_mbllogin&dersYiliID=9D7A115C-5E96-4F6E-B31D-E5710BDA1C97&kisiId=' + kisiid + '&cid=' + cid + '',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
-
-
-
             var j;
             var dataSet = [];
             var properties = [];
+            $('#selectNumber').empty();
             for (var j = 0; j < data.length; j++) {
-                var tc = data[j].TCKimlikNo;
-                var adi = data[j].Adi;
-                var soyadi = data[j].Soyadi;
-                var eposta = data[j].ePosta;
-                $('.profile-usertitle-name').append('<p>' + adi + '&nbsp' + soyadi + '</p>');
-                $('#tc').append('<a href="#"><i class="glyphicon glyphicon-home"></i>' + tc + '</a>');
-                $('#email').append('<a href="#"><i class="glyphicon glyphicon-user"></i>' + eposta + '</a>');
+                var text = data[j].AdiSoyadi;
+                var value = data[j].OgrenciID;
+                var ogrenciseviyeid = data[j].OgrenciSeviyeID;
+                var sinifid = data[j].SinifID;
 
+                $('#selectNumber').append("<option value=" + sinifid + ">" + text + "</option>");
             }
+            $("#selectNumber").on('change', function () {
+                var ogrenciidselected = this.value;
+                alert(ogrenciidselected);
+                $.ajax({
+                    url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciVeYakiniDersProgramiListesi_mbllogin&sinifID=F4201B97-B073-4DD7-8891-8091C3DC82CF&ogrenciID=AEEFE2B7-6653-4776-9343-031155AF6181&donemID=1&cid=1',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        var j;
+                        var dataSet = [];
+                        var properties = [];
+                        for (var j = 0; j < data.length; j++) {
+                            var derssaati = data[j].DersSaati;
+                            var bsaati = data[j].BaslangicSaati;
+                            var bitissaati = data[j].BitisSaati;
+                            var Tc = data[j].TCKimlikNo;
+                            var selected = data[j].selected;
+
+                            $('#example').append('<tr><td>' + derssaati + '</td><td>' + bsaati + '</td><td>' + bitissaati + '</td></tr>');
+
+                        }
+                    }
+
+                });
+            });
         }
 
     });

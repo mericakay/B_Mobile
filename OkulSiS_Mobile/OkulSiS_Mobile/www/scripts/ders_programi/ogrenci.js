@@ -57,32 +57,34 @@ function user() {
         }
     });
     //menu Son
+
+
     //contenier başlangıç
 
 
     $.ajax({
-        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=GnlProfil_mbllogin&kisiID=' + kisiid + '&cid=' + cid + '&dbn=' + dbn + '',
+        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciKarnesi_mbllogin&donemID=1&ogrenciID=AEEFE2B7-6653-4776-9343-031155AF6181&cid=1',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
-
-
-
             var j;
             var dataSet = [];
             var properties = [];
+            //$('#location').empty();
             for (var j = 0; j < data.length; j++) {
-                var tc = data[j].TCKimlikNo;
-                var adi = data[j].Adi;
-                var soyadi = data[j].Soyadi;
-                var eposta = data[j].ePosta;
-                $('.profile-usertitle-name').append('<p>' + adi + '&nbsp' + soyadi + '</p>');
-                $('#tc').append('<a href="#"><i class="glyphicon glyphicon-home"></i>' + tc + '</a>');
-                $('#email').append('<a href="#"><i class="glyphicon glyphicon-user"></i>' + eposta + '</a>');
+                var dersadi = data[j].DersAdi;
+                var hs = data[j].HaftalikDersSaati;
+                var ysp = data[j].YilSonuPuani;
+                var y1 = data[j].Yazili1;
+                var y2 = data[j].Yazili2;
+                var y3 = data[j].Yazili3;
+                var y4 = data[j].Yazili4;
+                var y5 = data[j].Yazili5;
 
+                $('#example').append('<tr><td>' + dersadi + '</td><td>' + hs + '</td><td>' + ysp + '</td><td>' + ysp + '</td><td>' + y1 + '</td><td>' + y2 + '</td><td>' + y3 + '</td><td>' + y5 + '</td></tr>');
             }
-        }
 
+        }
     });
     //Contenier Son
 };
