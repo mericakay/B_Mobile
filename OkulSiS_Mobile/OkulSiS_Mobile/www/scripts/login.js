@@ -7,9 +7,9 @@ $(document).ready(function () {
         sifre = $("#password").val();
         var ip = localStorage.getItem("proxy");
         $.ajax({
-            url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?tc=' + username + '&sifre=' + sifre + '&url=gnlKullaniciFindForLoginByTcKimlikNo_mbllogin',
+            url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?&url=gnlKullaniciFindForLoginByTcKimlikNo_mbllogin',
             data: {
-                username: $("#name").val(),
+                tc: $("#name").val(),
                 sifre: $("#password").val(),
             },
             type: 'Get',
@@ -31,6 +31,10 @@ $(document).ready(function () {
                     alert("Hatalı kullanıcı adı ya da şifre")
                 }
 
+            },
+            error: function (textStatus, errorThrown) {
+                Success = false;//doesnt goes here
+                alert("Beklenmedik bir hata oluştu lütfen daha sonra deneyiniz")
             }
         });
 

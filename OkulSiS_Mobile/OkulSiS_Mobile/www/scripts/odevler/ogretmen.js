@@ -50,9 +50,8 @@ function user() {
 
 
     //contenier başlangıç
-  
     $.ajax({
-        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=ogretmenDersProgramiDersSaatleri_mbllogin&kisiId=17A68CAA-1A13-460A-BEAA-FB483AC82F7B&sinifID=F4201B97-B073-4DD7-8891-8091C3DC82CF&tarih=2017-10-16&dbn=Bilsanet1&cid=1',
+        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Ogretmensubelistesi_mbllogin&ogretmenID='+kisiid+'&cid='+cid+'',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -61,42 +60,56 @@ function user() {
             var properties = [];
             $('#sinifsec').empty();
             for (var j = 0; j < data.length; j++) {
-                var text = data[j].Aciklama;
+                var text = data[j].aciklama;
                 var sinifid = data[j].SinifID;
                 // alert(sinifid);
                 $('#sinifsec').append("<option value=" + sinifid + ">" + text + "</option>");
             }
             $("#sinifsec").on('change', function () {
-                alert("asdqad");
+                $.ajax({
+                    url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=ogretmenDersPrgDersSaatleriOgrencileri_mbllogin&sinifID=F4201B97-B073-4DD7-8891-8091C3DC82CF&tarih=2016-09-19+00%3A00%3A00&dersSirasi=1&dersYiliID=9D7A115C-5E96-4F6E-B31D-E5710BDA1C97&kisiId=1250E188-B635-4418-ABB4-98E8886C707D&dbn=Bilsanet1&cid=1',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        var j;
+                        var dataSet = [];
+                        var properties = [];
+                        $('#multi-select-demo').empty();
+                        for (var j = 0; j < data.length; j++) {
+                            var text = data[j].Adsoyad;
+                            var ogrenciid = data[j].OgrenciID;
+                            // alert(sinifid);
+                            $('#multi-select-demo').append("<option value=" + ogrenciid + ">" + text + "</option>");
+                        }
+                      
+                    }
+
+                });
 
             });
         }
 
-});
-    $.ajax({
+    });
 
-        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OdevListesiOgretmen_mbllogin&ogretmenID=5F7F8763-F9BD-40E8-8F0E-532E136EB483&dersYiliID=9D7A115C-5E96-4F6E-B31D-E5710BDA1C97&cid=' + cid + '',
+    $.ajax({
+        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OdevTipleri_mbllogin&cid='+cid+'',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
-
             var j;
             var dataSet = [];
             var properties = [];
-            //$('#location').empty();
+            $('#odevtipi').empty();
             for (var j = 0; j < data.length; j++) {
-                var dersbilgisi = data[j].DersBilgisi;
-                var tanim = data[j].Tanim;
-                var tarih = data[j].Tarih;
-                var kod = data[j].SinifKodu;
-             
-
-                $('#liste').append('<tr><td>' + dersbilgisi + '</td><td>' + tanim + '</td><td>' + kod + '</td><td>' + tarih + '</td></tr>');
+                var text = data[j].OdevTipi;
+                var odevtipid = data[j].OdevTipID;
+                // alert(sinifid);
+                $('#odevtipi').append("<option value=" + odevtipid + ">" + text + "</option>");
             }
 
         }
-    });
 
+    });
 
     //Contenier Son
 };
