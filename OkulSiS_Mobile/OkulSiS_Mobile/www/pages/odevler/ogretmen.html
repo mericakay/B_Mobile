@@ -18,10 +18,7 @@
         </ul>
         <a href="#" id="showmenu"> <i class="fa fa-align-justify"></i> </a>
     </nav>
-    <header>
-       
-
-    </header>
+    <header></header>
 
     <!-- /menu vertical -->
     <!-- contenido de pagina, realmente no importa -->
@@ -31,63 +28,50 @@
         <label for="tab-1">Yeni</label>
         <!--Pestaña 2 inactiva por defecto-->
         <input id="tab-2" type="radio" name="tab-group" />
-        <label for="tab-2">Gelen</label>
+        <label for="tab-2">Liste</label>
         <!--Pestaña 3 inactiva por defecto-->
-        <input id="tab-3" type="radio" name="tab-group" />
-        <label for="tab-3">Giden</label>
+        
         <!--Contenido a mostrar/ocultar-->
         <div id="content">
             <!--Contenido de la Pestaña 1-->
             <div id="content-1">
-                <p>Yeni Mesaj GÖnder</p>
+                <p>Yeni Ödev Atama</p>
                 <br />
-                <select id="cmb1"> </select><br /><br />
-                <select id="cmb2"> </select><br /><br />
-                <select id="cmb3"> </select><br /><br />
-                <select id="cmb4"> </select><br /><br />
-                <select id="cmb5"> </select><br /><br />
-                <form action="./" method="post">
-                    <input type="text" id="lname" name="lname" placeholder="Konu"><br />
-                    <textarea name="fmesaj" id="fmesaj" placeholder="Mesaj"></textarea><br />
-                    <input type="button" id="button1" value="Gönder">
-                    </form>
-</div>
+                <input type="date" id="myDate" value="Teslim Tarihi Seçiniz !" /><br /><br />
+                <select id="sinifsec"> </select><br /><br />
+                <select id="ogrenci"> </select><br /><br />
+                <select id="odevtipi"> </select><br /><br />
+                <input type="text" name="ltanim" placeholder="Ödev Tanımı"><br />
+                <textarea name="fmesaj" placeholder="Açıklama"></textarea><br />
+                <input type="submit" value="Gönder">
+
+               
+               
+            </div>
             <!--Contenido de la Pestaña 2-->
             <div id="content-2">
-                <p>Gelen Mesajlar</p>
-                <table id="example" class="display" cellspacing="0" width="100%">
+                <p>Atanmış Ödevler</p>
+                <table id="liste" class="display" cellspacing="0" width="100%">
                     <thead>
                         <tr>
-                            <th>Gonderen </th>
-                            <th>Konu</th>
+                            <th>Ders Bilgisi </th>
+                            <th>Tanım</th>
+                            <th>Kod</th>
                             <th>Tarih</th>
 
                         </tr>
                     </thead>
                 </table>
             </div>
-            <!--Contenido de la Pestaña 3-->
-            <div id="content-3">
-                <p>Gönderilen Mesajlar</p>
-                <table id="giden" class="display" cellspacing="0" width="100%">
-                    <thead>
-                        <tr>
-                            <th>Alıcı </th>
-                            <th>Konu</th>
-                            <th>Tarih</th>
-
-                        </tr>
-                    </thead>
-                </table>
-            </div>
+           
         </div>
-        
+
         <div>
         </div>
     </div>
     <footer>Copyright &copy; OkulSIS </footer>
     <!-- /contenido de pagina, realmente no importa -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script type="text/javascript" src="../../scripts/mesajlar/mesajlar.js"></script>
+    <script type="text/javascript" src="../../scripts/odevler/ogretmen.js"></script>
 </body>
 </html>

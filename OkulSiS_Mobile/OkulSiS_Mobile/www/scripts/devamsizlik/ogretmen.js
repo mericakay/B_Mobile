@@ -45,15 +45,10 @@ function user() {
                 value = data[j].value;
                 iconclass = data[j].iconclass;
                 collapse = data[j].collapse;
-                // alert(collapse);
-                if (collapse == 0) {
-
-                    $('.left').append('<ul><li><a href="' + url + ' "><i class="fa ' + iconclass + '"></i>' + text + '</a></li></ul>');
-                }
-                else {
+              
 
                     $('.left').append('<ul><li><a href="' + url + ' "><i class="fa ' + iconclass + '"></i>' + text + '</a><i class="fa-arrow-down"></i></li></ul>');
-                }
+               
 
             }
         }

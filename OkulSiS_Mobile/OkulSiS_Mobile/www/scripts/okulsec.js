@@ -18,19 +18,21 @@
                 var text = data[j].OkulAdi;
                 var okulid = data[j].OkulID;
                 var dersyiliid = data[j].DersYiliID;
-                var dbn = data[j].dbn;
+                var kurumID = data[j].KurumID;
+               // alert(kurumID);
                
                 rolid = data[j].RolID;
 
-                $('#selectNumber').append("<option class=" + dbn + "  value=" + rolid + ">" + text + "</option>");
+                $('#selectNumber').append("<option  class=" + kurumID + "  value=" + rolid + ">" + text + "</option>");
 
             }
             $("#selectNumber").on('change', function () {
+               // alert($(this).find('option:selected').attr('class'));
                 localStorage.setItem("RolID", $(this).find('option:selected').attr('value'));
-                localStorage.setItem("dbn", $(this).find('option:selected').attr('class'));
+                localStorage.setItem("kurumid", $(this).find('option:selected').attr('class'));
                 localStorage.setItem("OkulID", okulid);
                 localStorage.setItem("dyiliid", dersyiliid);
-                window.location.href = "pages/main.html";
+               window.location.href = "pages/main.html";
             });
         }
 

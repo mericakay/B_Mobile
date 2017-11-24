@@ -67,7 +67,7 @@ function user() {
                 value = data[j].adet;
                 iconclass = data[j].iconclass;
                 
-                $('.dashboard').append('<img src="' + url + '"/><a style="color:white" " align="left" href="#" id="mail_menu">' + text + '<br />' + value +'</a>');
+                $('.dashboard').append('<img src="' + url + '"/><a style="color:white" align="left" href="#" >&nbsp;' + text + '&nbsp;<span style="color:yellow; font-weight: bold;" >' + value +'<span></a> &nbsp;');
             }
         }
     });
@@ -76,16 +76,17 @@ function user() {
     //contenier başlangıç
  
 
-        $.ajax({
-            url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=DashboarddataDersProgrami_mbllogin&rolId=' + rolid + '&kisiId=' + kisiid + '&dbn=Bilsanet1&cid=' + cid + '',
+    $.ajax({
+        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=DashboarddataDersProgrami_mbllogin&kisiId=' + kisiid + '&rolId=' + rolid + '&cid=' + cid + '',
             type: 'GET',
             dataType: 'json',
             success: function (data) {
-                localStorage.setItem("gelendata", data);
+               // localStorage.setItem("gelendata", data);
                 var j;
                 var dataSet = [];
                 var properties = [];
                 for (var j = 0; j < data.length; j++) {
+                   
                     var derssaati = data[j].DersSaati;
                     var sinifadi = data[j].SinifAdi;
                     var ogretmen = data[j].ogretmen;

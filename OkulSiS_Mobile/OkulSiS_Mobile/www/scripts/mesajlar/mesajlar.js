@@ -16,7 +16,7 @@ function user() {
     var kisiid = localStorage.getItem("gelenid");
     var dersyiliid = localStorage.getItem("dyiliid");
     var cid = localStorage.getItem("cid");
-    var dbn = localStorage.getItem("dbn");
+    var kurumid = localStorage.getItem("kurumid");
     var did = localStorage.getItem("dyiliid");
     var rolid = localStorage.getItem("RolID");
     var ip = localStorage.getItem("proxy");
@@ -41,101 +41,138 @@ function user() {
                 url = data[j].URL;
                 value = data[j].value;
                 iconclass = data[j].iconclass;
-                collapse = data[j].collapse;
-                // alert(collapse);
-                if (collapse == 0) {
-
                     $('.left').append('<ul><li><a href="' + url + ' "><i class="fa ' + iconclass + '"></i>' + text + '</a></li></ul>');
-                }
-                else {
-                    
-                    $('.left').append('<ul><li><a href="' + url + ' "><i class="fa ' + iconclass + '"></i>' + text + '</a><i class="fa-arrow-down"></i></li></ul>');
-                }
-
+               
             }
         }
     });
     //menu Son
+    //control alanı 1 ise 
 
-    //dashboard başlangıç
-    $.ajax({
-        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=DashboardIconCounts_mbllogin&rolId=9&kisiId=' + kisiid + '&cid=' + cid + '',
-        type: 'GET',
-        dataType: 'json',
-        success: function (data) {
-            var j;
-            var dataSet = [];
-            var properties = [];
-            var url = "";
-            var value = "";
-            var iconclass = "";
-            for (var j = 0; j < data.length; j++) {
-                text = data[j].aciklama;
-                url = data[j].url;
-                value = data[j].adet;
-                iconclass = data[j].iconclass;
-
-                $('.dashboard').append('<img src="' + url + '" align="left"/><a style="color:white" href="#" id="mail_menu">' + text + '<br />' + value + '</a><br /><br />');
-            }
-        }
-    });
-
-
-    // Dashboard son
 
     //contenier başlangıç
 
-  
-    $.ajax({
 
-        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=GelenMesajListesi_mbllogin&kisiID=' + kisiid + '&dbn=Bilsanet1&cid=1',
+
+    $.ajax({
+        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Msjcombo1_mbllogin&kisiId=' + kisiid + '&kurumID=' + kurumid + '&rolID=' + rolid + '&cid=' + cid + '',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
-           
             var j;
             var dataSet = [];
             var properties = [];
-            //$('#location').empty();
+            $('#cmb1').empty();
             for (var j = 0; j < data.length; j++) {
-                var tarih = data[j].Tarih;
-                var Adi = data[j].SenderAdiSoyadi;
-                var konu = data[j].Konu;
-                var mesaj = data[j].Mesaj;
-                var selected = data[j].selected;
-                var mesajid = data[j].MesajID;
-                alert(mesajid);
-                $('#example').append('<tr><td data-id="' + mesajid + '" >' + Adi + '</td><td>' + konu + '</td><td>' + tarih + '</td></tr>');
+                var text = data[j].RolAdi;
+                var cmbid = data[j].ID;
+             
+                $('#cmb1').append("<option>" + text + "</option>");
             }
-            $("#example tr td").click(function () {
-                
-                var id = $(this).attr('data-id');
-                alert(id);
+            $("#cmb1").on('change', function () {
+                alert("aa");
                 $.ajax({
-
-                    url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=GelenMesajDetay_mbllogin&mesajID='+id+'&kisiID=1250E188-B635-4418-ABB4-98E8886C707D&cid=1',
+                    url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Msjcombo2_mbllogin&kisiId=' + kisiid + '&rolID=7&sendrolID=7&cid=' + cid + '',
                     type: 'GET',
                     dataType: 'json',
                     success: function (data) {
-
                         var j;
                         var dataSet = [];
                         var properties = [];
-                        //$('#location').empty();
-                        for (var j = 0; j < 1; j++) {
-                            var mesaj = data[j].Mesaj;
-                            
-                            alert(mesaj);
-                        }
+                        $('#cmb2').empty();
+                        for (var j = 0; j < data.length; j++) {
+                            var aciklama = data[j].aciklama;
+                            var cmbid = data[j].ID;
+                         
 
+                            $('#cmb2').append("<option >" + aciklama + "</option>");
+                        }
+                        $("#cmb2").on('change', function () {
+
+                            $.ajax({
+                                url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Msjcombo3_mbllogin&kisiId=85C6D8E3-C853-4FBA-B700-C2C36B9CBA1A&okulID=7E755C68-ABC1-492B-9D82-3B39B831A962&rolID=4&sendrolID=5&cid=1',
+                                type: 'GET',
+                                dataType: 'json',
+                                success: function (data) {
+                                    var j;
+                                    var dataSet = [];
+                                    var properties = [];
+                                    var msglist = "msglist";
+                                    $('#cmb3').empty();
+                                    for (var j = 0; j < data.length; j++) {
+                                     
+                                        var aciklama = data[j].aciklama;
+                                        var kontrol = data[j].kontrol;
+                                        var cmbid = data[j].ID;
+
+                                        $('#cmb3').append("<option  value=" + kontrol + "  data-user=" + cmbid + " id=" + msglist+"  >" + aciklama + "</option>");
+                                    }
+
+                                }
+                            });
+                            $("#cmb3").on('change', function () {
+                                var msglist = document.getElementById("msglist");
+                               var show = msglist.getAttribute("data-user");
+                               localStorage.setItem("show", show);
+                                if (this.value == 1) {
+                                    $.ajax({
+                                        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Msjcombo4_mbllogin&kisiId=85C6D8E3-C853-4FBA-B700-C2C36B9CBA1A&sinifID=E49609C9-F09B-444B-9F76-3DC99E91929D&rolID=4&sendrolID=9&cid=1',
+                                        type: 'GET',
+                                        dataType: 'json',
+                                        success: function (data) {
+                                            var j;
+                                            var dataSet = [];
+                                            var properties = [];
+                                            $('#cmb4').empty();
+                                            for (var j = 0; j < data.length; j++) {
+                                                var aciklama = data[j].aciklama;
+                                                var cmbid = data[j].ID;
+
+                                                $('#cmb4').append("<option >" + aciklama + "</option>");
+                                            }
+
+                                        }
+                                    });
+                                } else {
+                                    document.getElementById("cmb4").style.display = "block";
+                                }
+                              
+                               
+                              
+                            });
+                        });
                     }
                 });
+
             });
+        }
+    });
+    // Mesaj Tipleri
+    $.ajax({
+        url: 'http://' + ip + ':8080//Slim_Proxy_okulsis/SlimProxyBoot.php?url=MesajTipleri_mbllogin&cid=1&rolID=8',
+        type: 'GET',
+        dataType: 'json',
+        success: function (data) {
+            var j;
+            var dataSet = [];
+            var properties = [];
+            $('#cmb5').empty();
+            for (var j = 0; j < data.length; j++) {
+                var aciklama = data[j].Aciklama;
+                var MesajTipID = data[j].MesajTipID;
+
+                $('#cmb5').append("<option value=" + MesajTipID+"  >" + aciklama + "</option>");
+            }
+            $("#cmb5").on('change', function () {
+               var mesajtipid =  $(this).find('option:selected').attr('value');
+               localStorage.setItem("mesajtipid", mesajtipid);
+
+            });
+
 
         }
     });
-
-
+    //giden mesajlar
     $.ajax({
 
         url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=GidenMesajListesi_mbllogin&kisiID=' + kisiid + '&cid='+cid+'',
@@ -154,13 +191,62 @@ function user() {
                 var mesaj = data[j].Mesaj;
                 var selected = data[j].selected;
                 
-                $('#giden').append('<tr><td  onclick="gidendetay()">' + Adi + '</td><td>' + konu + '</td><td>' + tarih + '</td></tr>');
+                $('#giden').append('<tr><td>' + Adi + '</td><td>' + konu + '</td><td>' + tarih + '</td></tr>');
             }
 
         }
     });
 
-   
+    //gelen mesajlar
+    $.ajax({
+        
+        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=GelenMesajListesi_mbllogin&kisiID=' + kisiid + '&cid=' + cid + '',
+        type: 'GET',
+        dataType: 'json',
+        success: function (data) {
+            
+            var j;
+            var dataSet = [];
+            var properties = [];
+            //$('#location').empty();
+            for (var j = 0; j < data.length; j++) {
+                var tarih = data[j].Tarih;
+                var Adi = data[j].SenderAdi;
+                var konu = data[j].Konu;
+                var mesaj = data[j].Mesaj;
+                var selected = data[j].selected;
+
+                $('#example').append('<tr><td>' + Adi + '</td><td>' + konu + '</td><td>' + tarih + '</td></tr>');
+            }
+
+        }
+    });
+    $('input[id^="button"]').click(function () {
+       
+        konu = $("#lname").val();
+        mesaj = $("#fmesaj").val();
+        var kime = localStorage.getItem("show");
+        var msgtip = localStorage.getItem("mesajtipid");
+        $.ajax({
+            url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=SendMesajDefault_mbllogin&konu=' + konu + '&mesaj=' + mesaj + '&kisiId=' + kisiid + '&receiveKisiID=' + kime + '&mesajTipID=' + msgtip + '&cid=' + cid + '',
+            data: {
+                konu: $("#lname").val(),
+                mesaj: $("#fmesaj").val(),
+            },
+            type: 'Get',
+            dataType: 'json',
+            success: function (data) {
+                if (data.lenght !== 0) {
+                    alert("Mesajınız Başarıyla iletilmiştir");
+                }
+                else {
+                    alert("Beklenmeyen Hata Oluştu Lütfen daha sonra tekrar deneyiniz")
+                }
+
+            }
+        });
+
+    })
     //Contenier Son
 };
 
