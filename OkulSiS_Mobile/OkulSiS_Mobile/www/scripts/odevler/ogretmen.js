@@ -66,6 +66,8 @@ function user() {
                 $('#sinifsec').append("<option value=" + sinifid + ">" + text + "</option>");
             }
             $("#sinifsec").on('change', function () {
+                var sinifid = $(this).find('option:selected').attr('value');
+                localStorage.setItem("sinifid", sinifid);
                 $.ajax({
                     url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=ogretmenDersPrgDersSaatleriOgrencileri_mbllogin&sinifID=F4201B97-B073-4DD7-8891-8091C3DC82CF&tarih=2016-09-19+00%3A00%3A00&dersSirasi=1&dersYiliID=9D7A115C-5E96-4F6E-B31D-E5710BDA1C97&kisiId=1250E188-B635-4418-ABB4-98E8886C707D&dbn=Bilsanet1&cid=1',
                     type: 'GET',
@@ -81,10 +83,19 @@ function user() {
                             // alert(sinifid);
                             $('#multi-select-demo').append("<option value=" + ogrenciid + ">" + text + "</option>");
                         }
-                      
+                        $('#multi-select-demo').on('change', function (){
+                            var arr = $(this).val();
+                            var myJSON = JSON.stringify(arr);
+                            console.log(myJSON);
+                            localStorage.setItem("myJSON", myJSON);
+                            
+                        });
+
                     }
+                   
 
                 });
+                 
 
             });
         }
@@ -106,10 +117,49 @@ function user() {
                 // alert(sinifid);
                 $('#odevtipi').append("<option value=" + odevtipid + ">" + text + "</option>");
             }
+            $("#odevtipi").on('change', function () {
+                var odevtipid = $(this).find('option:selected').attr('value');
+                localStorage.setItem("odevtip", odevtipid);
+            });
 
         }
 
     });
+
+
+    //atama 
+    $('input[id^="button"]').click(function () {
+        alert("gg");
+        var odevtip = localStorage.getItem("odevtip");
+        var sinifid = localStorage.getItem("sinifid");
+        var myJSON = localStorage.getItem("myJSON");
+        alert(odevtip);
+        alert(sinifid);
+        alert(myJSON);
+        konu = $("#ltanim").val();
+        mesaj = $("#fmesaj").val();
+       
+        $.ajax({
+            url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OdevAtama_mbllogin&sinifDersID=' + sinifid + '&ogretmenID=' + kisiid + '&teslimTarihi=2017-11-18+00:00:00&tanim=' + konu + '&aciklama=' + mesaj + '&odevTipID=' + odevtip + '&notIleDegerlendirilsin=0&donemNotunaEtkiEtsin=0&cid='+cid+'&XmlData=' + myJSON+'',
+            data: {
+
+                konu: $("#ltanim").val(),
+                mesaj: $("#fmesaj").val(),
+            },
+            type: 'Get',
+            dataType: 'json',
+            success: function (data) {
+                if (data.lenght !== 0) {
+                    alert("Mesajınız Başarıyla iletilmiştir");
+                }
+                else {
+                    alert("Beklenmeyen Hata Oluştu Lütfen daha sonra tekrar deneyiniz")
+                }
+
+            }
+        });
+
+    })
 
     //Contenier Son
 };

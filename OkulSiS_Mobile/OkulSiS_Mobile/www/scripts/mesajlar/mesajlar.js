@@ -64,7 +64,7 @@ function user() {
                 $('#cmb1').append("<option>" + text + "</option>");
             }
             $("#cmb1").on('change', function () {
-                alert("aa");
+              
                 $.ajax({
                     url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Msjcombo2_mbllogin&kisiId=' + kisiid + '&rolID=7&sendrolID=7&cid=' + cid + '',
                     type: 'GET',

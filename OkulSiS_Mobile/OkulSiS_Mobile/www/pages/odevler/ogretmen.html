@@ -38,7 +38,6 @@
         <input id="tab-2" type="radio" name="tab-group" />
         <label for="tab-2">Liste</label>
         <!--Pestaña 3 inactiva por defecto-->
-        
         <!--Contenido a mostrar/ocultar-->
         <div id="content">
             <!--Contenido de la Pestaña 1-->
@@ -49,12 +48,13 @@
                 <select id="sinifsec"> </select><br /><br />
                 <select id="multi-select-demo" multiple="multiple"> </select><br /><br />
                 <select id="odevtipi"> </select><br /><br />
-                <input type="text" name="ltanim" placeholder="Ödev Tanımı"><br />
-                <textarea name="fmesaj" placeholder="Açıklama"></textarea><br />
-                <input type="submit" value="Gönder">
+                <form action="./" method="post">
+                    <input type="text" name="ltanim" placeholder="Ödev Tanımı"><br />
+                    <textarea name="fmesaj" placeholder="Açıklama"></textarea><br />
+                    <input type="button" id="button1" value="Gönder">
+                </form>
 
-               
-               
+
             </div>
             <!--Contenido de la Pestaña 2-->
             <div id="content-2">
@@ -71,7 +71,7 @@
                     </thead>
                 </table>
             </div>
-           
+
         </div>
 
         <div>
