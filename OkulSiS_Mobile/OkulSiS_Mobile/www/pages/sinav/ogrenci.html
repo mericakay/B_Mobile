@@ -23,19 +23,49 @@
     <!-- /menu vertical -->
     <!-- contenido de pagina, realmente no importa -->
     <div id="container">
-        <br /><br />
+        <!--Pestaña 1 activa por defecto-->
+        <input id="tab-1" type="radio" name="tab-group" checked="checked" />
+        <label for="tab-1">Sınavlar</label>
+        <!--Pestaña 2 inactiva por defecto-->
+        <input id="tab-2" type="radio" name="tab-group" />
+        <label for="tab-2">Sonuç</label>
+      
+       
+        <!--Contenido a mostrar/ocultar-->
+        <div id="content">
+            <!--Contenido de la Pestaña 1-->
+            <div id="content-1">
+                <p>Sınavlar</p>
+                <br />
+                <table id="sinav" class="display" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Tarih</th>
+                            <th>Açıklama</th>
+                            <th> Tur Adı</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <!--Contenido de la Pestaña 2-->
+            <div id="content-2">
+                <p>Sınav Sonuçları</p>
+                <table id="sonuc" class="display" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Tarih</th>
+                            <th>Açıklama</th>
+                            <th> Tur Adı</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <!--Contenido de la Pestaña 3-->
+           
+        </div>
 
-        <table id="example" class="display" cellspacing="0" width="100%">
-            <thead>
-                <tr>
-              
-                    <th>Tarih</th>
-                    <th>Açıklama</th>
-                    <th> Tur Adı</th>
-                </tr>
-            </thead>
-        </table>
-
+        <div>
+        </div>
     </div>
     <footer>Copyright &copy; OkulSIS </footer>
     <!-- /contenido de pagina, realmente no importa -->

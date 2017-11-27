@@ -142,7 +142,7 @@ function user() {
                                             var Tc = data[j].TCKimlikNo;
                                             var selected = data[j].selected;
                                             var oid = data[j].OgrenciID;
-                                            $('#example').append('<tr><td  onclick="myFunction()">' + Numarasi + '</td><td>' + Adi + '</td><td><input type="checkbox"  id="option1" name="check" value="0" / ></td><td><input type="checkbox"  id="option2" name="check"/ ></td></tr>');
+                                            $('#example').append('<tr><td multiple="multiple" onclick="myFunction()">' + Numarasi + '</td><td>' + Adi + '</td><td><input type="checkbox"  id="option1" name="check" value="0" / ></td><td><input type="checkbox"  id="option2" name="check"/ ></td></tr>');
                                         }
                                         $("#example").on('click', 'td', function () {
                                             var header = Array();

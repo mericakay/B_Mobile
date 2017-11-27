@@ -76,7 +76,7 @@ function user() {
                 var sinavturadi = data[j].SinavTurAdi;
              
 
-                $('#example').append('<tr><td>' + sinavtarih + '</td><td>' + aciklama + '</td><td>' + sinavturadi + '</td></tr>');
+                $('#sinav').append('<tr><td>' + sinavtarih + '</td><td>' + aciklama + '</td><td>' + sinavturadi + '</td></tr>');
             }
 
         }

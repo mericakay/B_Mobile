@@ -1,7 +1,7 @@
 ﻿function load() {
 
     $.ajax({
-        url: 'http://192.168.1.3:8080/Slim_Proxy_okulsis/SlimProxyBoot.php?&url=mobilUrlData_mobilsettings',
+        url: 'http://192.168.1.117:8080/Slim_Proxy_okulsis/SlimProxyBoot.php?&url=mobilUrlData_mobilsettings',
         type: 'GET',
         dataType: 'json',
         success: function (data) {

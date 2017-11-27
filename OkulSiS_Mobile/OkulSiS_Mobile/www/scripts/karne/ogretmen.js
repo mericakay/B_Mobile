@@ -21,6 +21,9 @@ function user() {
     var rolid = localStorage.getItem("RolID");
     var ip = localStorage.getItem("proxy");
     var kisiadi = localStorage.getItem("KullaniciAdi");
+
+
+
     //menu başlangıç
 
 
@@ -43,6 +46,8 @@ function user() {
                 value = data[j].value;
                 iconclass = data[j].iconclass;
                 collapse = data[j].collapse;
+                // alert(collapse);
+
 
                 $('.left').append('<ul><li><a href="' + url + ' "><i class="fa ' + iconclass + '"></i>' + text + '</a></li></ul>');
 
@@ -55,8 +60,12 @@ function user() {
 
 
     //contenier başlangıç
+
+
+
+
     $.ajax({
-        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Ogretmensinavlistesi_mbllogin&ogretmenID=5F7F8763-F9BD-40E8-8F0E-532E136EB483&egitimYilID=2016&okulID=7E755C68-ABC1-492B-9D82-3B39B831A962&kisiID=5F7F8763-F9BD-40E8-8F0E-532E136EB483&cid=1',
+        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=ogretmenDersProgrami_mbllogin&kisiId=17A68CAA-1A13-460A-BEAA-FB483AC82F7B&OkulID=7E755C68-ABC1-492B-9D82-3B39B831A962&dersYiliID=9D7A115C-5E96-4F6E-B31D-E5710BDA1C97&dbn=Bilsanet1&cid=1',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -65,14 +74,14 @@ function user() {
             var properties = [];
             $('#selectNumber').empty();
             for (var j = 0; j < data.length; j++) {
-                var text = data[j].SinavAciklamasi;
-                var sinavid = data[j].SinavID;
+                var text = data[j].Aciklama;
+                var sinifid = data[j].SinifID;
                 // alert(sinifid);
-                $('#selectNumber').append("<option value=" + sinavid + ">" + text + "</option>");
+                $('#selectNumber').append("<option value=" + sinifid + ">" + text + "</option>");
             }
             $("#selectNumber").on('change', function () {
                 $.ajax({
-                    url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgretmenSinavaGirenSubeler_mbllogin&sinavID=C6C84DB4-BA8C-40EB-AD36-9CFBF6DEF89B&okulID=C79927D0-B3AD-40CD-80CF-DCA7D841FDBD&ogretmenID=CF822218-8FD1-4B95-A4C0-9A3113332B4F&cid=1',
+                    url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=ogretmenDersPrgDersSaatleriOgrencileri_mbllogin&sinifID=F4201B97-B073-4DD7-8891-8091C3DC82CF&tarih=2016-09-19+00%3A00%3A00&dersSirasi=1&dersYiliID=9D7A115C-5E96-4F6E-B31D-E5710BDA1C97&kisiId=1250E188-B635-4418-ABB4-98E8886C707D&dbn=Bilsanet1&cid=1',
                     type: 'GET',
                     dataType: 'json',
                     success: function (data) {
@@ -81,48 +90,46 @@ function user() {
                         var properties = [];
                         $('#sube').empty();
                         for (var j = 0; j < data.length; j++) {
-                            var text = data[j].SinifKodu;
-                            var sinavokulid = data[j].SinavOkulID;
-                            // alert(sinifid);
-                            $('#sube').append("<option value=" + sinavokulid + ">" + text + "</option>");
+                            var text = data[j].Adsoyad;
+                            var seviyeid = data[j].SeviyeID;
+                            var dersid = data[j].DersID;
+
+                            $('#sube').append("<option value=" + seviyeid + " >" + text + "</option>");
                         }
                         $("#sube").on('change', function () {
-                            alert("asdqad");
 
+                            $.ajax({
+                                url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciKarnesi_mbllogin&donemID=1&ogrenciID=AEEFE2B7-6653-4776-9343-031155AF6181&cid=1',
+                                type: 'GET',
+                                dataType: 'json',
+                                success: function (data) {
+                                    var j;
+                                    var dataSet = [];
+                                    var properties = [];
+                                    //$('#location').empty();
+                                    for (var j = 0; j < data.length; j++) {
+                                        var dersadi = data[j].DersAdi;
+                                        var hs = data[j].HaftalikDersSaati;
+                                        var ysp = data[j].YilSonuPuani;
+                                        var y1 = data[j].Yazili1;
+                                        var y2 = data[j].Yazili2;
+                                        var y3 = data[j].Yazili3;
+                                        var y4 = data[j].Yazili4;
+                                        var y5 = data[j].Yazili5;
+
+                                        $('#example').append('<tr><td>' + dersadi + '</td><td>' + y1 + '</td><td>' + y2 + '</td><td>' + y3 + '</td><td>' + ysp + '</td></tr>');
+                                    }
+
+                                }
+                            });
                         });
                     }
-
                 });
 
             });
         }
-
     });
-
-
-
-
-    $.ajax({
-
-        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Ogretmensinavlistesi_mbllogin&ogretmenID='+kisiid+'&egitimYilID=2016&okulID=' + okulid + '&kisiID=' + kisiid + '&cid=' + cid + '',
-        type: 'GET',
-        dataType: 'json',
-        success: function (data) {
-            var j;
-            var dataSet = [];   
-            var properties = [];
-            //$('#location').empty();
-            for (var j = 0; j < data.length; j++) {
-                var sinavtarih = data[j].SinavTarihi;
-                var aciklama = data[j].SinavAciklamasi;
-                var sinavturadi = data[j].SinavTurAdi;
-
-
-                $('#sinav').append('<tr><td>' + sinavtarih + '</td><td>' + aciklama + '</td><td>' + sinavturadi + '</td></tr>');
-            }
-
-        }
-    })
+  
     //Contenier Son
 };
 
