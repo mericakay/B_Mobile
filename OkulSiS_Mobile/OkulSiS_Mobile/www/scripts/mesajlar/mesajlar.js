@@ -108,6 +108,7 @@ function user() {
                                 var msglist = document.getElementById("msglist");
                                 var show = msglist.getAttribute("data-user");
                                 localStorage.setItem("show", show);
+                             //   alert(this.value);
                                 if (this.value == 1) {
                                     $.ajax({
                                         url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Msjcombo4_mbllogin&kisiId=85C6D8E3-C853-4FBA-B700-C2C36B9CBA1A&sinifID=E49609C9-F09B-444B-9F76-3DC99E91929D&rolID=4&sendrolID=9&cid=1',
@@ -128,7 +129,7 @@ function user() {
                                         }
                                     });
                                 } else {
-                                    document.getElementById("cmb4").style.display = "block";
+                                    document.getElementById("cmb4").style.visibility = "hidden";
                                 }
 
                             });
