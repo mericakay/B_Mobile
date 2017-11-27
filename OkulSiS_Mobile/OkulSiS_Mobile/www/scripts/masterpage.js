@@ -7,11 +7,11 @@
     var ip = localStorage.getItem("proxy");
     var kisiadi = localStorage.getItem("KullaniciAdi");
     var cid = localStorage.getItem("cid");
-    var dbn = localStorage.getItem("dbn");
+    var lid = localStorage.getItem("lid");
     alert("aa");
 
     $.ajax({
-        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciDevamsizlikListesi_mbllogin&dersYiliID=' + dersyiliid + '&kisiId=' + kisiid + '&cid=' + cid + '&dbn=' + dbn + '',
+        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciDevamsizlikListesi_mbllogin&dersYiliID=' + dersyiliid + '&kisiId=' + kisiid + 'languageID='+lid+'&cid='+cid+'',
         type: 'GET',
         dataType: 'json',
         success: function (data) {

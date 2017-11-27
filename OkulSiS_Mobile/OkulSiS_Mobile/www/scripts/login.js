@@ -1,5 +1,7 @@
 ﻿
 $(document).ready(function () {
+
+ 
     
     $('input[id^="button"]').click(function () {
       
@@ -39,6 +41,41 @@ $(document).ready(function () {
         });
 
     })
+
 })
 
+function load() {
+    var lid = 647; 
+   
+ 
+    $.ajax({
+        url: 'http://192.168.1.117:8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=fillComboBoxTsql_syslanguage',
+        type: 'GET',
+        dataType: 'json',
+        success: function (data) {
+            var j;
+            var dataSet = [];
+            var properties = [];
+            //$('#location').empty();
+            for (var j = 0; j < data.length; j++) {
+                var dil = data[j].language;
+                var id = data[j].id;
+                var url = data[j].url;
+                var background = "background- image:url("+url+")"
 
+                $('#selectLanguage').append("<option style="+url+"  value=" + id + ">" + dil + "</option>");
+            }
+            $("#selectLanguage").on('change', function () {
+                
+                lid = this.value;
+               
+                localStorage.setItem("lid", lid);
+
+            });
+
+
+        }
+    });
+
+   
+}

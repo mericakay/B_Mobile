@@ -24,13 +24,22 @@
                 'Device UUID: ' + device.uuid + '<br />' +
                 'Device Version: ' + device.version + '<br />';
         }*/
+        var elem = document.createElement("img");
+        elem.setAttribute("src", "images/msg.png");
+        elem.setAttribute("height", "15");
+        elem.setAttribute("width", "25");
+        elem.setAttribute("alt", "Flower");
+        document.getElementById("bilsalogo").appendChild("elem");
 
     </script>
 
 </head>
-<body>
+<body onload="load()">
+    <select id="selectLanguage"> </select>
     <div class="app">
+        
         <form action="./" method="post">
+           
             <input class="formcontrol" id="name" name="name" type="text" placeholder="TC Kimlik No">
             <input class="formcontrol" id="password" name="password" type="password" placeholder="Şifre">
             <input class="testbutton" type="button" id="button1" value="LOGİN" />
@@ -38,5 +47,6 @@
             <script type="text/javascript" src="scripts/login.js"></script>
         </form>
     </div>
+    <div class="bilsalogo"><img src="http://185.86.4.73/sorubankasi1/public/onyuz/assets/base/img/content/apps/atak/okulsis/logo.png"/></div>
 </body>
 </html>

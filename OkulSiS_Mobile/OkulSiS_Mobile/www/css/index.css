@@ -22,11 +22,17 @@ body {
     text-transform: uppercase;
     width: 100%;
     font-family: 'RobotoRegular', 'Droid Sans', 'Segoe UI', Segoe, 'San Francisco', 'Helvetica Neue', Helvetica, Arial, Geneva, sans-serif;
-    font-size: 12px;
+    font-size: 15px;
 }
 
+div.bilsalogo {
+    position: absolute;
+    top: 90%;
+    right: 5%;
+   
+}
 
-
+   
 .app {
     background: url(../images/okulsis-logo-transparent.png) no-repeat center top;
     position: absolute;
@@ -38,7 +44,16 @@ body {
     padding: 80px 0px 0px 0px;
     margin: -115px 0px 0px -112px;
 }
-
+#selectLanguage {
+    color: azure;
+    background-color: darkslateblue;
+    font-size: 15px;
+    max-width: 60px;
+    max-height:20px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
 @media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
     .app {
         background-position: left center;
@@ -108,14 +123,8 @@ h1 {
     -webkit-animation: fade 3000ms infinite;
 }
 
-    content: '';
-    display: block;
-    position: absolute;
-    pointer-events: none;
 
-    height: 0;
-    right: 16px;
-}
+
 
  top arrow &::before {
     bottom: 55%;
@@ -141,7 +150,7 @@ body {
     align-items: center;
     padding: 10px;
     border: 1em solid $demo-blue;
-    div
+ 
 
 {
     max-width: 16em;
