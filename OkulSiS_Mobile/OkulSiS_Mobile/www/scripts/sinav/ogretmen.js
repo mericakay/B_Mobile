@@ -44,7 +44,7 @@ function user() {
                 iconclass = data[j].iconclass;
                 collapse = data[j].collapse;
 
-                $('.left').append('<ul><li><a href="' + url + ' "><i class="fa ' + iconclass + '"></i>' + text + '</a></li></ul>');
+                $('.left').append('<ul><li><a href="../' + url + ' "><i class="fa ' + iconclass + '"></i>' + text + '</a></li></ul>');
 
 
 

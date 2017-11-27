@@ -41,7 +41,7 @@ function user() {
                 url = data[j].URL;
                 value = data[j].value;
                 iconclass = data[j].iconclass;
-                $('.left').append('<ul><li><a href="' + url + ' "><i class="fa ' + iconclass + '"></i>' + text + '</a></li></ul>');
+                $('.left').append('<ul><li><a href="../' + url + ' "><i class="fa ' + iconclass + '"></i>' + text + '</a></li></ul>');
 
             }
         }
