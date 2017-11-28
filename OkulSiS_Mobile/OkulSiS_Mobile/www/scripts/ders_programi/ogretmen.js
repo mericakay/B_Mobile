@@ -21,14 +21,14 @@ function user() {
     var rolid = localStorage.getItem("RolID");
     var ip = localStorage.getItem("proxy");
     var kisiadi = localStorage.getItem("KullaniciAdi");
-
+    var lid = localStorage.getItem("lid");
     var dvmGec = 0;
     var dvmYok = 0;
 
     //menu başlangıç
 
     $.ajax({
-        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&cid=' + cid + '',
+        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&cid=' + cid + '&languageID=' + lid +'',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -55,7 +55,7 @@ function user() {
 
     //dashboard başlangıç
     $.ajax({
-        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=DashboardIconCounts_mbllogin&rolId=9&kisiId=' + kisiid + '&cid=' + cid + '',
+        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=DashboardIconCounts_mbllogin&rolId=9&kisiId=' + kisiid + '&cid=' + cid + '&languageID=' + lid +'',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -82,7 +82,7 @@ function user() {
     //contenier başlangıç
     $.ajax({
 
-        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgretmenDersProgramiListesi_mbllogin&ogretmenID=17A68CAA-1A13-460A-BEAA-FB483AC82F7B&dersYiliID=9D7A115C-5E96-4F6E-B31D-E5710BDA1C97&donemID=1&cid=1',
+        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgretmenDersProgramiListesi_mbllogin&ogretmenID=17A68CAA-1A13-460A-BEAA-FB483AC82F7B&dersYiliID=9D7A115C-5E96-4F6E-B31D-E5710BDA1C97&donemID=1&cid=1&languageID=' + lid +'',
         type: 'GET',
         dataType: 'json',
         success: function (data) {

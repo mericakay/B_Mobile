@@ -3,7 +3,7 @@
 }
 
 body {
-    background-image: url(http://185.86.4.73/sorubankasi1/public/onyuz/assets/base/img/content/apps/atak/okulsis/mobile_bg_menu.jpg);
+    background-image: url(http://185.86.4.73/sorubankasi1/public/onyuz/assets/base/img/content/apps/atak/okulsis/mobile_bg.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
@@ -24,12 +24,17 @@ body {
     font-family: 'RobotoRegular', 'Droid Sans', 'Segoe UI', Segoe, 'San Francisco', 'Helvetica Neue', Helvetica, Arial, Geneva, sans-serif;
     font-size: 15px;
 }
-
+#radioo {
+    font-size: 1em;
+    text-transform: uppercase;
+    color: white;
+    cursor: pointer;
+    margin: auto 15px auto auto;
+}
 div.bilsalogo {
     position: absolute;
     top: 90%;
     right: 5%;
-   
 }
 
    

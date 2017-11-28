@@ -21,11 +21,11 @@ function user() {
     var rolid = localStorage.getItem("RolID");
     var ip = localStorage.getItem("proxy");
     var kisiadi = localStorage.getItem("KullaniciAdi");
-
+    var lid = localStorage.getItem("lid");
     //menu başlangıç
 
     $.ajax({
-        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&cid=' + cid + '',
+        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&cid=' + cid + '&languageID=' + lid +'',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -50,7 +50,7 @@ function user() {
 
     //contenier başlangıç
     $.ajax({
-        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=MuhYapilacakTahsilatlarA_mbllogin&kurumID=A4EFFBCB-0291-4D2B-BCAC-E4BD8BFD6BE4&cid='+cid+'',
+        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=MuhYapilacakTahsilatlarA_mbllogin&kurumID=A4EFFBCB-0291-4D2B-BCAC-E4BD8BFD6BE4&cid=' + cid + '&languageID=' + lid +'',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -72,7 +72,7 @@ function user() {
     });
 
     $.ajax({
-        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=MuhYapilacakTahsilatlarB_mbllogin&kurumID=A4EFFBCB-0291-4D2B-BCAC-E4BD8BFD6BE4&cid='+cid+'',
+        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=MuhYapilacakTahsilatlarB_mbllogin&kurumID=A4EFFBCB-0291-4D2B-BCAC-E4BD8BFD6BE4&cid=' + cid + '&languageID=' + lid +'',
         type: 'GET',
         dataType: 'json',
         success: function (data) {           
@@ -93,7 +93,7 @@ function user() {
 
     $.ajax({
 
-        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=MuhYapilacakTahsilatlarC_mbllogin&kurumID=A4EFFBCB-0291-4D2B-BCAC-E4BD8BFD6BE4&cid=1',
+        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=MuhYapilacakTahsilatlarC_mbllogin&kurumID=A4EFFBCB-0291-4D2B-BCAC-E4BD8BFD6BE4&cid=1&languageID=' + lid +'',
         type: 'GET',
         dataType: 'json',
         success: function (data) {         
