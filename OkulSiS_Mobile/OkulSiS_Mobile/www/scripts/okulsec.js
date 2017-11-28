@@ -3,6 +3,7 @@
     var ip = localStorage.getItem("proxy");
     var tc = localStorage.getItem("tc");
     var cid = localStorage.getItem("cid");
+    var lid = localStorage.getItem("lid");
 
     $.ajax({
         url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?tc=' + tc + '&url=mobilfirstdata_mbllogin&cid=' + cid + '&languageID=' + lid +'',
