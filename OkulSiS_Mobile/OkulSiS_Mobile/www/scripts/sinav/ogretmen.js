@@ -57,7 +57,7 @@ function user() {
 
     //contenier başlangıç
     $.ajax({
-        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Ogretmensinavlistesi_mbllogin&ogretmenID=5F7F8763-F9BD-40E8-8F0E-532E136EB483&egitimYilID=2016&okulID=7E755C68-ABC1-492B-9D82-3B39B831A962&kisiID=5F7F8763-F9BD-40E8-8F0E-532E136EB483&cid=1&languageID=' + lid +'',
+        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Ogretmensinavlistesi_mbllogin&ogretmenID=5F7F8763-F9BD-40E8-8F0E-532E136EB483&egitimYilID=2016&okulID=7E755C68-ABC1-492B-9D82-3B39B831A962&kisiID=5F7F8763-F9BD-40E8-8F0E-532E136EB483languageID=' + lid + '',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -73,7 +73,7 @@ function user() {
             }
             $("#selectNumber").on('change', function () {
                 $.ajax({
-                    url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgretmenSinavaGirenSubeler_mbllogin&sinavID=C6C84DB4-BA8C-40EB-AD36-9CFBF6DEF89B&okulID=C79927D0-B3AD-40CD-80CF-DCA7D841FDBD&ogretmenID=CF822218-8FD1-4B95-A4C0-9A3113332B4F&cid=1&languageID=' + lid +'',
+                    url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgretmenSinavaGirenSubeler_mbllogin&sinavID=C6C84DB4-BA8C-40EB-AD36-9CFBF6DEF89B&okulID=C79927D0-B3AD-40CD-80CF-DCA7D841FDBD&ogretmenID=CF822218-8FD1-4B95-A4C0-9A3113332B4F&cid=1&languageID=' + lid + '',
                     type: 'GET',
                     dataType: 'json',
                     success: function (data) {
@@ -83,21 +83,43 @@ function user() {
                         $('#sube').empty();
                         for (var j = 0; j < data.length; j++) {
                             var text = data[j].SinifKodu;
-                            var sinavokulid = data[j].SinavOkulID;
-                            // alert(sinifid);
-                            $('#sube').append("<option value=" + sinavokulid + ">" + text + "</option>");
+                            var sinifid = data[j].SinifID;
+                            
+
+                            $('#sube').append("<option value=" + sinifid + " >" + text + "</option>");
                         }
                         $("#sube").on('change', function () {
-                            alert("asdqad");
 
+                            $.ajax({
+                                url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciKarnesi_mbllogin&donemID=1&ogrenciID=AEEFE2B7-6653-4776-9343-031155AF6181&cid=1&languageID=' + lid + '',
+                                type: 'GET',
+                                dataType: 'json',
+                                success: function (data) {
+                                    var j;
+                                    var dataSet = [];
+                                    var properties = [];
+                                    //$('#location').empty();
+                                    for (var j = 0; j < data.length; j++) {
+                                        var dersadi = data[j].DersAdi;
+                                        var hs = data[j].HaftalikDersSaati;
+                                        var ysp = data[j].YilSonuPuani;
+                                        var y1 = data[j].Yazili1;
+                                        var y2 = data[j].Yazili2;
+                                        var y3 = data[j].Yazili3;
+                                        var y4 = data[j].Yazili4;
+                                        var y5 = data[j].Yazili5;
+
+                                        $('#example').append('<tr><td>' + dersadi + '</td><td>' + y1 + '</td><td>' + y2 + '</td><td>' + y3 + '</td><td>' + ysp + '</td></tr>');
+                                    }
+
+                                }
+                            });
                         });
                     }
-
                 });
 
             });
         }
-
     });
 
 
@@ -105,7 +127,7 @@ function user() {
 
     $.ajax({
 
-        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Ogretmensinavlistesi_mbllogin&ogretmenID=' + kisiid + '&egitimYilID=2016&okulID=' + okulid + '&kisiID=' + kisiid + '&cid=' + cid + '&languageID=' + lid +'',
+        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Ogretmensinavlistesi_mbllogin&ogretmenID=5F7F8763-F9BD-40E8-8F0E-532E136EB483&egitimYilID=2016&okulID=7E755C68-ABC1-492B-9D82-3B39B831A962&kisiID=5F7F8763-F9BD-40E8-8F0E-532E136EB483',
         type: 'GET',
         dataType: 'json',
         success: function (data) {

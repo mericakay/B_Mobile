@@ -72,12 +72,16 @@ function user() {
             var properties = [];
             for (var j = 0; j < data.length; j++) {
                 var derssaati = data[j].DersSaati;
-                var bsaati = data[j].BaslangicSaati;
-                var bitissaati = data[j].BitisSaati;
-                var Tc = data[j].TCKimlikNo;
-                var selected = data[j].selected;
+               
+               
+                var gun1 = data[j].Gun1_ders;
+                var gun2 = data[j].Gun2_ders;
+                var gun3 = data[j].Gun3_ders;
+                var gun4= data[j].Gun4_ders;            
+                var gun5 = data[j].Gun5_ders;
+               
 
-                $('#example').append('<tr><td>' + derssaati + '</td><td>' + bsaati + '</td><td>' + bitissaati + '</td></tr>');
+                $('#example').append('<tr><td>' + derssaati + '</td><td>' + gun1 + '</td><td>' + gun2 + '</td><td>' + gun3 + '</td><td>' + gun4 + '</td><td>' + gun5 + '</td></tr>');
 
             }
         }

@@ -81,6 +81,29 @@ function user() {
 
         }
     });
+
+    $.ajax({
+        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrencininAldigiNotlar_mbllogin&kisiId=AEEFE2B7-6653-4776-9343-031155AF6181&donemID=1&cid=1&languageID=' + lid + '',
+        type: 'GET',
+        dataType: 'json',
+        success: function (data) {
+            var j;
+            var dataSet = [];
+            var properties = [];
+            //$('#location').empty();
+            for (var j = 0; j < data.length; j++) {
+                var aciklamasi = data[j].Aciklamasi;
+                var puan = data[j].Puan;
+               
+
+
+                $('#sonuc').append('<tr><td>' + aciklamasi + '</td><td>' + puan + '</td></tr>');
+            }
+
+        }
+    });
+
+
     //Contenier Son
 };
 
