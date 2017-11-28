@@ -80,7 +80,7 @@ function user() {
             }
             $("#selectNumber").on('change', function () {
                 var ogrenciidselected = this.value;
-                alert(ogrenciidselected);
+               // alert(ogrenciidselected);
                 $.ajax({
                     url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciVeYakiniDersProgramiListesi_mbllogin&sinifID=F4201B97-B073-4DD7-8891-8091C3DC82CF&ogrenciID=AEEFE2B7-6653-4776-9343-031155AF6181&donemID=1&cid=1&languageID=' + lid +'',
                     type: 'GET',

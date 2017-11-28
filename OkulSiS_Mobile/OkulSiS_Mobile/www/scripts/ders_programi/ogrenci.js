@@ -63,28 +63,25 @@ function user() {
 
 
     $.ajax({
-        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciKarnesi_mbllogin&donemID=1&ogrenciID=AEEFE2B7-6653-4776-9343-031155AF6181&cid=1&languageID=' + lid +'',
+        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciVeYakiniDersProgramiListesi_mbllogin&sinifID=F4201B97-B073-4DD7-8891-8091C3DC82CF&ogrenciID=AEEFE2B7-6653-4776-9343-031155AF6181&donemID=1&cid=1&languageID=' + lid + '',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
             var j;
             var dataSet = [];
             var properties = [];
-            //$('#location').empty();
             for (var j = 0; j < data.length; j++) {
-                var dersadi = data[j].DersAdi;
-                var hs = data[j].HaftalikDersSaati;
-                var ysp = data[j].YilSonuPuani;
-                var y1 = data[j].Yazili1;
-                var y2 = data[j].Yazili2;
-                var y3 = data[j].Yazili3;
-                var y4 = data[j].Yazili4;
-                var y5 = data[j].Yazili5;
+                var derssaati = data[j].DersSaati;
+                var bsaati = data[j].BaslangicSaati;
+                var bitissaati = data[j].BitisSaati;
+                var Tc = data[j].TCKimlikNo;
+                var selected = data[j].selected;
 
-                $('#example').append('<tr><td>' + dersadi + '</td><td>' + hs + '</td><td>' + ysp + '</td><td>' + ysp + '</td><td>' + y1 + '</td><td>' + y2 + '</td><td>' + y3 + '</td><td>' + y5 + '</td></tr>');
+                $('#example').append('<tr><td>' + derssaati + '</td><td>' + bsaati + '</td><td>' + bitissaati + '</td></tr>');
+
             }
-
         }
+
     });
     //Contenier Son
 };
