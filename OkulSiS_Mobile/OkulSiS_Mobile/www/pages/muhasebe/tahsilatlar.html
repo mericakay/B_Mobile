@@ -25,19 +25,20 @@
     <div id="container">
         <!--Pestaña 1 activa por defecto-->
         <input id="tab-1" type="radio" name="tab-group" checked="checked" />
-        <label for="tab-1">Yeni</label>
+        <label for="tab-1">Özet</label>
         <!--Pestaña 2 inactiva por defecto-->
         <input id="tab-2" type="radio" name="tab-group" />
         <label for="tab-2">Gelen</label>
         <!--Pestaña 3 inactiva por defecto-->
         <input id="tab-3" type="radio" name="tab-group" />
-        <label for="tab-3">Giden</label>
+        <label for="tab-3">Alacaklar</label>
         <!--Contenido a mostrar/ocultar-->
         <div id="content">
             <!--Contenido de la Pestaña 1-->
             <div id="content-1">
-                <p>Yeni Mesaj GÖnder</p>
+                <p>Tahsilatlar Özet</p>
                 <br />
+                <select id="tahsilat"></select><br /><br />
                 <table id="tahsilatlar" class="display" cellspacing="0" width="100%">
                     <thead>
                         <tr>
@@ -51,7 +52,8 @@
             </div>
             <!--Contenido de la Pestaña 2-->
             <div id="content-2">
-                <p>Gelen Mesajlar</p>
+                <p>Günün Tahsilatları</p>
+                <select id="ozet"></select><br /><br />
                 <table id="ozet" class="display" cellspacing="0" width="100%">
                     <thead>
                         <tr>
@@ -65,7 +67,8 @@
             </div>
             <!--Contenido de la Pestaña 3-->
             <div id="content-3">
-                <p>Gönderilen Mesajlar</p>
+                <p>Kalan Alacaklar</p>
+                <select id="alacak"></select><br /><br />
                 <table id="giden" class="display" cellspacing="0" width="100%">
                     <thead>
                         <tr>
