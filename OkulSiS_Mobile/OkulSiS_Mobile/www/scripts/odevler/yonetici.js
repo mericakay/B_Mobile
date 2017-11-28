@@ -21,19 +21,19 @@ function user() {
     var rolid = localStorage.getItem("RolID");
     var ip = localStorage.getItem("proxy");
     var kisiadi = localStorage.getItem("KullaniciAdi");
-    document.getElementById('myDate').valueAsDate = new Date();
+
     var lid = localStorage.getItem("lid");
-    var dvmGec = 0;
-    var dvmYok = 0;
 
     //menu başlangıç
+
 
     $.ajax({
         url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&cid=' + cid + '&languageID=' + lid + '',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
-            var j =0;
+
+            var j;
             var len = data.length;
             var dataSet = [];
             var properties = [];
@@ -46,9 +46,11 @@ function user() {
                 value = data[j].value;
                 iconclass = data[j].iconclass;
                 collapse = data[j].collapse;
+                // alert(collapse);
 
 
-                $('.left').append('<ul><li><a href="../' + url + ' "><i class="fa ' + iconclass + '"></i>' + text + '</a><i class="fa-arrow-down"></i></li></ul>');
+                $('.left').append('<ul><li><a href="../' + url + ' "><i class="fa ' + iconclass + '"></i>' + text + '</a></li></ul>');
+
 
 
             }
@@ -57,106 +59,52 @@ function user() {
     //menu Son
 
 
-
     //contenier başlangıç
-
-
     $.ajax({
-        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=MsjIcinOkulListesi_mbllogin&sendrolID=4&cid=1',
+        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=MsjIcinOkulListesi_mbllogin&sendrolID=4&cid=' + cid + '&languageID=' + lid + '',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
             var j;
             var dataSet = [];
             var properties = [];
-            var rolid;
-            $('#selectNumber').empty();
+            $('#sube').empty();
             for (var j = 0; j < data.length; j++) {
                 var text = data[j].aciklama;
                 var id = data[j].ID;
-             
 
-                $('#selectNumber').append("<option value=" + id + ">" + text + "</option>");
-
+                $('#sube').append("<option value=" + id + ">" + text + "</option>");
             }
-            $("#selectNumber").on('change', function () {
-               
-                    $.ajax({
-                        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=MsjIcinOkuldakiSinifListesi_mbllogin&okulID=7E755C68-ABC1-492B-9D82-3B39B831A962&sendrolID=4&cid=1',
-                        type: 'GET',
-                        dataType: 'json',
-                        success: function (data) {
-                            var j;
-                            var dataSet = [];
-                            var properties = [];
-                            $('#sube').empty();
-                            for (var j = 0; j < data.length; j++) {
-                                var text = data[j].aciklama;
-                               
+            $("#sube").on('change', function () {
+                $.ajax({
+                    url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=KyOgretmenOdevListeleri_mbllogin&okulID=C79927D0-B3AD-40CD-80CF-DCA7D841FDBD&cid='+cid+'&languageID=' + lid + '',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        var j;
+                        var dataSet = [];
+                        var properties = [];
+                        //$('#location').empty();
+                        for (var j = 0; j < data.length; j++) {
+                            var adsoyad = data[j].AdiSoyadi;
+                            var brans = data[j].Brans;
+                            var ogrencisayisi = data[j].OgrenciSayisi;
+                            var odevsayisi = data[j].OdevSayisi;
+                            var yapansayisi = data[j].YapanSayisi;
+                            var onaysayisi = data[j].OnaySayisi;
+                          
 
-                                $('#sube').append("<option >" + text + "</option>");
-                            }
-                            $("#sube").on('change', function () {
-                                $.ajax({
-
-                                    url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=KyOgretmenOdevListeleri_mbllogin&okulID=C79927D0-B3AD-40CD-80CF-DCA7D841FDBD',
-                                    type: 'GET',
-                                    dataType: 'json',
-                                    success: function (data) {
-                                        var j;
-                                        var dataSet = [];
-                                        var properties = [];
-                                        //$('#location').empty();
-                                        for (var j = 0; j < data.length; j++) {
-                                            var Numarasi = data[j].Numarasi;
-                                            var Adi = data[j].Adsoyad;
-                                            var SoyAdi = data[j].Soyadi;
-                                            var Tc = data[j].TCKimlikNo;
-                                            var selected = data[j].selected;
-                                            var oid = data[j].OgrenciID;
-                                            $('#example').append('<tr><td multiple="multiple" onclick="myFunction()">' + Numarasi + '</td><td>' + Adi + '</td></tr>');
-                                        }
-                                        $("#example").on('click', 'td', function () {
-
-                                            var header = Array();
-
-
-
-                                            $("table tr th").each(function (i, v) {
-                                                header[i] = $(this).text();
-
-                                            })
-
-                                            alert(header);
-
-                                            var data = Array();
-
-                                            $("table tr").each(function (i, v) {
-                                                data[i] = Array();
-                                                $(this).children('td').each(function (ii, vv) {
-                                                    data[i][ii] = $(this).text();
-
-
-                                                });
-                                            })
-
-                                            alert(data);
-
-                                            var myJSON = JSON.stringify(data);
-                                            console.log(myJSON);
-
-                                        });
-
-
-                                    }
-                                });
-                            });
+                            $('#example').append('<tr><td>' + adsoyad + '</td><td>' + brans + '</td><td>' + ogrencisayisi + '</td><td>' + odevsayisi + '</td><td>' + yapansayisi + '</td><td>' + onaysayisi + '</td></tr>');
                         }
-                    });
-                
+
+                    }
+                });
+
             });
         }
     });
+
+
     //Contenier Son
 };
 
