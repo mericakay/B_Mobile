@@ -49,7 +49,7 @@ function load() {
    
  
     $.ajax({
-        url: 'http://192.168.1.117:8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=fillComboBoxTsql_syslanguage',
+        url: 'http://192.168.1.102:8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=fillComboBoxTsql_syslanguage',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
