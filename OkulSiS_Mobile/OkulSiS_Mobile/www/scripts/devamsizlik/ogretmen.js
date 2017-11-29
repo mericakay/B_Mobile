@@ -143,7 +143,7 @@ function user() {
                                             var Tc = data[j].TCKimlikNo;
                                             var selected = data[j].selected;
                                             var oid = data[j].OgrenciID;
-                                            $('#example').append('<tr><td multiple="multiple" onclick="myFunction()">' + Numarasi + '</td><td>' + Adi + '</td><td><input type="checkbox" name="gec" value="gec"></td><td><input type="checkbox" name="yok" value="yok">  </td></tr>');
+                                            $('#example').append('<tr><td multiple="multiple" onclick="myFunction()">' + Numarasi + '</td><td>' + Adi + '</td><td><input type="checkbox" name="gec" value="gec"></td><td><input type="checkbox" name="yok" value="yok">  </td><td style="display:none;">' + oid+'</td></tr>');
                                         }
                                         $("#example").on('click', 'td', function () {
                                             
@@ -156,6 +156,7 @@ function user() {
                                                         name: $row.find('td:eq(1)').text(),
                                                         yok: $row.find('td:eq(2) input[type=checkbox]').prop('checked'),
                                                         gec: $row.find('td:eq(3) input[type=checkbox]').prop('checked'),
+                                                        id: $row.find('td:eq(4)').text(),
                                                         
                                                     });
                                                 });
