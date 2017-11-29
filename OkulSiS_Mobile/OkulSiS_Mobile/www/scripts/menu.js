@@ -63,7 +63,7 @@ function user() {
             var value = "";
             var iconclass = "";
             for (var j = 0; j < data.length; j++) {
-                text = data[j].aciklama;
+                text = data[j].aciklama;            
                 url = data[j].url;
                 value = data[j].adet;
                 iconclass = data[j].iconclass;
@@ -83,6 +83,12 @@ function user() {
             dataType: 'json',
             success: function (data) {
                // localStorage.setItem("gelendata", data);
+               // alert(data);
+                if (data == "") {
+                    document.getElementById("example").style.display = "none";
+                }
+               
+               
                 var j;
                 var dataSet = [];
                 var properties = [];
@@ -92,7 +98,9 @@ function user() {
                     var sinifadi = data[j].SinifAdi;
                     var ogretmen = data[j].ogretmen;
                     var ogrenci = data[j].ogrenci;
-                    if (j == 1) {
+                   // alert(derssaati);
+                    
+                    if (j === 1) {
                         var alan1 = data[j].Alan1;
                         var alan2 = data[j].Alan2;
                         var alan3 = data[j].Alan3;

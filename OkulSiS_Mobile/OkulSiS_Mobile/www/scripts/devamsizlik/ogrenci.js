@@ -89,7 +89,7 @@ function user() {
 
 
     $.ajax({
-        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciDevamsizlikListesi_mbllogin&dersYiliID=9D7A115C-5E96-4F6E-B31D-E5710BDA1C97&kisiId=' + kisiid + '&cid=' + cid + '&languageID=' + lid +'',
+        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciDevamsizlikListesi_mbllogin&dersYiliID=9D7A115C-5E96-4F6E-B31D-E5710BDA1C97&kisiId=D74EAF39-2225-4F1C-AC9E-22F73BA8D4C8&cid=1',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -101,6 +101,14 @@ function user() {
                 var text = data[j].Tarih;
                 var kod = data[j].DevamsizlikAdi;
                 var value = data[j].GunKarsiligi;
+                if (j == 1) {
+                    var alan1 = data[j].OzurluDevamsiz1;
+                    var alan2 = data[j].OzursuzDevamsiz1;
+                    var alan3 = data[j].OzurluDevamsiz2;
+                    var alan4 = data[j].OzursuzDevamsiz2;
+                    $('#toplam').append('<tr><td>' + alan1 + '</td><td>' + alan2 + '</td><td>' + alan3 + '</td><td>' + alan4 + '</td></tr>');
+                }
+
 
                 $('#example').append('<tr><td>' + text + '</td><td>' + value + '</td><td>' + kod + '</td></tr>');
             }
