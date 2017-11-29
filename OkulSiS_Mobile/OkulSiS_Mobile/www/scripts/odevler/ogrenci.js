@@ -76,8 +76,41 @@ function user() {
                 var dersadi = data[j].DersAdi;
                 var tanim = data[j].Tanim;
                 var teslimtarihi = data[j].TeslimTarihi;
-                $('#example').append('<tr><td>' + ogretmenadi + '</td><td>' + dersadi + '</td><td>' + tanim + '</td><td>' + teslimtarihi + '</td></tr>');
+                var aciklama = data[j].Aciklama;
+                $('#example').append('<tr><td>' + ogretmenadi + '</td><td>' + dersadi + '</td><td>' + tanim + '</td><td>' + teslimtarihi + '</td><td style="display:none;">' + aciklama + '</td></tr>');
             }
+            $("#example").on('click', function () {
+                var table = document.getElementById("example");
+                var rows = table.getElementsByTagName("tr");
+                for (i = 0; i < rows.length; i++) {
+                    var currentRow = table.rows[i];
+                    var createClickHandler =
+                        function (row) {
+                            return function () {
+                                var rows = $("#location>tr");
+                                // alert(JSON.stringify(rows, null, 4));
+                                console.log(JSON.stringify(rows, null, 4));
+                                var cell = row.getElementsByTagName("td")[4];
+
+                                var id = cell.innerHTML;
+
+                                alert(id);
+                                // alert("<OgrenciID>" + id + "</OgrenciID>" + "<DevamsizlikKodID>" + gelen + "</DevamsizlikKodID>");
+                            };
+                        };
+
+                    currentRow.onclick = createClickHandler(currentRow);
+                }
+                $.ajax({
+                    url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciOdeviGordu_mbllogin&ogrenciOdevID=9ADC8A51-36C3-4924-8090-F1B081EC3824&cid=1',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+
+                        console.log("okundu");
+                    }
+                });
+            });
         }
 
     });
