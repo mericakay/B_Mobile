@@ -33,7 +33,7 @@ function user() {
         type: 'GET',
         dataType: 'json',
         success: function (data) {
-            var j;
+            var j = 0;
             var len = data.length;
             var dataSet = [];
             var properties = [];
@@ -90,7 +90,7 @@ function user() {
         type: 'GET',
         dataType: 'json',
         success: function (data) {
-            var j;
+            var j=0;
             var dataSet = [];
             var properties = [];
             $('#selectNumber').empty();
@@ -114,7 +114,7 @@ function user() {
                         type: 'GET',
                         dataType: 'json',
                         success: function (data) {
-                            var j;
+                            var j = 0;
                             var dataSet = [];
                             var properties = [];
                             $('#sube').empty();
@@ -132,7 +132,7 @@ function user() {
                                     type: 'GET',
                                     dataType: 'json',
                                     success: function (data) {
-                                        var j;
+                                        var j = 0;
                                         var dataSet = [];
                                         var properties = [];
                                         //$('#location').empty();
@@ -143,36 +143,27 @@ function user() {
                                             var Tc = data[j].TCKimlikNo;
                                             var selected = data[j].selected;
                                             var oid = data[j].OgrenciID;
-                                            $('#example').append('<tr><td multiple="multiple" onclick="myFunction()">' + Numarasi + '</td><td>' + Adi + '</td><td><select> <option value="yok">Yok</option><option value="gec">Geç</option> </select>  </td></tr>');
+                                            $('#example').append('<tr><td multiple="multiple" onclick="myFunction()">' + Numarasi + '</td><td>' + Adi + '</td><td><input type="checkbox" name="gec" value="gec"></td><td><input type="checkbox" name="yok" value="yok">  </td></tr>');
                                         }
                                         $("#example").on('click', 'td', function () {
                                             
-                                            var header = Array();
-                                            
-                                            
-
-                                            $("table tr th").each(function (i, v) {
-                                                header[i] = $(this).text();
-                                               
-                                            })
-
-                                            alert(header);
-
-                                            var data = Array();
-
-                                            $("table tr").each(function (i, v) {
-                                                data[i] = Array();
-                                                $(this).children('td').each(function (ii, vv) {
-                                                    data[i][ii] = $(this).text();
-                                                   
-                                                    
+                                            var getJsonFromTable = function () {
+                                                var rows = [];
+                                                $('#example tbody tr').each(function (i, n) {
+                                                    var $row = $(n);
+                                                    rows.push({
+                                                        no: $row.find('td:eq(0)').text(),
+                                                        name: $row.find('td:eq(1)').text(),
+                                                        yok: $row.find('td:eq(2) input[type=checkbox]').prop('checked'),
+                                                        gec: $row.find('td:eq(3) input[type=checkbox]').prop('checked'),
+                                                        
+                                                    });
                                                 });
-                                            })
-
-                                            alert(data);
-
-                                            var myJSON = JSON.stringify(data);
-                                            console.log(myJSON);
+                                                return JSON.stringify(rows);
+                                            };
+                                            $(function () {
+                                                console.log(getJsonFromTable());
+                                            });;
 
                                         });
 
