@@ -47,7 +47,7 @@ function user() {
         }
     });
     //menu Son
-    alert(kisiid);
+   // alert(kisiid);
     //dashboard başlangıç
     $.ajax({
         url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=DashboardIconCounts_mbllogin&rolId=9&kisiId=' + kisiid + '&cid=' + cid + '&languageID=' + lid +'',

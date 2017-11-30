@@ -49,7 +49,7 @@ function load() {
    
  
     $.ajax({
-        url: 'http://192.168.1.111:8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=fillComboBoxTsql_syslanguage',
+        url: 'http://192.168.10.123:8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=fillComboBoxTsql_syslanguage',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -77,7 +77,7 @@ function load() {
         }
     });
     $.ajax({
-        url: 'http://192.168.1.111:8080/Slim_Proxy_okulsis/SlimProxyBoot.php?&url=mobilUrlData_mobilsettings',
+        url: 'http://192.168.10.123:8080/Slim_Proxy_okulsis/SlimProxyBoot.php?&url=mobilUrlData_mobilsettings',
         type: 'GET',
         dataType: 'json',
         success: function (data) {

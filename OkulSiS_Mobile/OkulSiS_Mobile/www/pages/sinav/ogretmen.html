@@ -51,16 +51,33 @@
             <!--Contenido de la Pestaña 2-->
             <div id="content-2">
                 <p>Klasik Sınav Girişi</p>
-                <table id="ozet" class="display" cellspacing="0" width="100%">
+                <select id="sinavsec"> </select><br /><br />
+                <select id="ogrencisec"> </select><br /><br />
+                <select id="kitapciksec"> </select><br /><br />
+                <input type="submit" value="Kaydet">
+               
+                <table id="derslistesi" class="display" cellspacing="0" width="100%">
                     <thead>
                         <tr>
-                            <th>Tahsilat </th>
-                            <th>Acıklama</th>
-                            <th>Ozet</th>
+                            <th>Kategrori </th>
+                            <th>Soru Sayısı</th>
+                            
+
+                        </tr>
+                    </thead>
+                </table><br />
+                <table id="cevaplar" class="display" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Sıra No </th>
+                            <th>Puan</th>
+                            <th>Soru Puanı</th>
 
                         </tr>
                     </thead>
                 </table>
+                <input type="submit" id="kaydet" value="Kaydet">
+                <input type="submit" id="onay" value="Onay">
             </div>
             <!--Contenido de la Pestaña 3-->
             <div id="content-3">
