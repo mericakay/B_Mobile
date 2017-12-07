@@ -1,6 +1,6 @@
 ﻿
 $(document).ready(function () {
-
+    localStorage.clear();
  
     $('input[id^="button"]').click(function () {
       

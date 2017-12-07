@@ -25,32 +25,34 @@
                 dersyiliid = data[j].DersYiliID;
                 var kurumID = data[j].KurumID;
                 cid = data[j].cid;
-                var proxy = data[j].proxy;
-             
+                var proxy = data[j].proxy;     
+                var egitimyiliid = data[j].EgitimYilID;  
                 rolid = data[j].RolID;
-                alert(cid);
-                
 
-                $('#selectNumber').append("<option data-dersyiliid=" + dersyiliid + " data-cid=" + cid + " data-proxy=" + proxy + " id=" + proxylist + " class=" + kurumID + "  value=" + rolid + ">" + text + "</option>");
-              //  alert(rolid);
+                $('#selectNumber').append("<option data-egitimyiliid=" + egitimyiliid + " data-okulid=" + okulid + " data-dersyiliid=" + dersyiliid + " data-cid=" + cid + " data-proxy=" + proxy + " id=" + proxylist + " class=" + kurumID + "  value=" + rolid + ">" + text + "</option>");
+          
             }
             $("#selectNumber").on('change', function () {
                 
                 var proxylist = document.getElementById("proxylist");
                 var cidlist = document.getElementById("proxylist");
                 var dersyiliidlist = document.getElementById("proxylist");
+                var okulidlist = document.getElementById("proxylist");
+                var egitimyiliidlist = document.getElementById("proxylist");
                 ip = proxylist.getAttribute("data-proxy");
                 cid = cidlist.getAttribute("data-cid");
                 dersyiliid = dersyiliidlist.getAttribute("data-dersyiliid");
-                alert(dersyiliid);
-               
-                alert(ip);
-         
+                okulid = dersyiliidlist.getAttribute("data-okulid");
+                egitimyiliid = egitimyiliidlist.getAttribute("data-egitimyiliid");
+                //-----------------------------------------------------------
                 localStorage.setItem("RolID", $(this).find('option:selected').attr('value'));
                 localStorage.setItem("kurumid", $(this).find('option:selected').attr('class'));
-                localStorage.setItem("OkulID", okulid);
-                localStorage.setItem("dyiliid", dersyiliid);
+                localStorage.setItem("cid", cid);
                 localStorage.setItem("ip", ip);
+                localStorage.setItem("dersyiliid", dersyiliid);
+                localStorage.setItem("okulid", okulid);
+                localStorage.setItem("egitimyiliid", egitimyiliid);
+               
                window.location.href = "pages/main.html";
             });
         }

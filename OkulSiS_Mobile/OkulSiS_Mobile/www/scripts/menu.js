@@ -24,11 +24,11 @@ function user() {
     //menu başlangıç
 
     $.ajax({
-        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=7&parentID=0&languageID=748&cid=1',
+        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&languageID='+lid+'',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
-            alert("geldi");
+           // alert("geldi");
             var j;
             var len = data.length;   
             var dataSet = [];
