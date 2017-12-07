@@ -12,84 +12,97 @@ function user() {
         }
     });
 
+   
+
     var okulid = localStorage.getItem("OkulID");
     var kisiid = localStorage.getItem("gelenid");
-    var dersyiliid = localStorage.getItem("dyiliid");
-    var cid = localStorage.getItem("cid");
-    var dbn = localStorage.getItem("dbn");
-    var did = localStorage.getItem("dyiliid");
+    var dersyiliid = localStorage.getItem("dersyiliid");
+  ;
     var rolid = localStorage.getItem("RolID");
-    var ip = localStorage.getItem("proxy");
+    var ip = localStorage.getItem("ip");
     var kisiadi = localStorage.getItem("KullaniciAdi");
     var lid = localStorage.getItem("lid");
+    var cid = localStorage.getItem("cid");
+    alert(dersyiliid);
     //menu başlangıç
-    $.ajax({
-        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&cid=' + cid + '&languageID=' + lid +'',
-        type: 'GET',
-        dataType: 'json',
-        success: function (data) {
-
-            var j;
-            var len = data.length;
-            var dataSet = [];
-            var properties = [];
-            var url = "";
-            var value = "";
-            var iconclass = "";
-            for (var j = 0; j < data.length; j++) {
-                text = data[j].MenuAdi;
-                url = data[j].URL;
-                value = data[j].value;
-                iconclass = data[j].iconclass;
-                collapse = data[j].collapse;
-                // alert(collapse);
-
-
-                $('.left').append('<ul><li><a href="../' + url + ' "><i class="fa ' + iconclass + '"></i>' + text + '</a></li></ul>');
-
+   
+    try {
+        $.ajax({
+            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&cid=' + cid + '&languageID=' + lid + '',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                
+                var j;
+                var len = data.length;
+                var dataSet = [];
+                var properties = [];
+                var url = "";
+                var value = "";
+                var iconclass = "";
+                for (var j = 0; j < data.length; j++) {
+                    text = data[j].MenuAdi;
+                    url = data[j].URL;
+                    value = data[j].value;
+                    iconclass = data[j].iconclass;
+                    collapse = data[j].collapse;
+                    // alert(collapse);
 
 
+                    $('.left').append('<ul><li><a href="../' + url + ' "><i class="fa ' + iconclass + '"></i>' + text + '</a></li></ul>');
+
+
+
+                }
             }
-        }
-    });
+        });
+    } catch (e) {
+        alert(e);
+    }
+   
     //menu Son
     //contenier başlangıç
-    $.ajax({
-        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=KurumPersoneliSinifListesi_mbllogin&dersYiliID=0F17DCF7-EFCF-41D8-82A0-D4CCFF77E487&cid=1&languageID=' + lid +'',
-        type: 'GET',
-        dataType: 'json',
-        success: function (data) {
-            var j;
-            var dataSet = [];
-            var properties = [];
-            $('#sube').empty();
-            for (var j = 0; j < data.length; j++) {
-                var text = data[j].SinifAdi;
-                var value = data[j].OgrenciID;
-                $('#sube').append("<option value=" + value + ">" + text + "</option>");
-            }
-            $("#sube").on('change', function () {
-                $.ajax({
-                    url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Kysubeogrencilistesi_mbllogin&sinifID=F4201B97-B073-4DD7-8891-8091C3DC82CF&cid=1&languageID=' + lid +'',
-                    type: 'GET',
-                    dataType: 'json',
-                    success: function (data) {
-                        var j;
-                        var dataSet = [];
-                        var properties = [];
-                        for (var j = 0; j < data.length; j++) {
-                            var text = data[j].Aciklama;
-                            var tc = data[j].TCKimlikNo;
-                            var no = data[j].Numarasi;
-                            $('#example').append('<tr><td>' + text + '</td><td>' + tc + '</td><td>' + no + '</td></tr>');
+    try {
+        $.ajax({
+            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=KurumPersoneliSinifListesi_mbllogin&dersYiliID=' + dersyiliid + '&cid=' + cid + '&languageID=' + lid + '',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                var j;
+                var dataSet = [];
+                var properties = [];
+                $('#sube').empty();
+                for (var j = 0; j < data.length; j++) {
+                    var text = data[j].SinifAdi;
+                    var value = data[j].SinifID;
+                    $('#sube').append("<option value=" + value + ">" + text + "</option>");
+                }
+                $("#sube").on('change', function () {
+                    $.ajax({
+                        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Kysubeogrencilistesi_mbllogin&sinifID=' + this.value + '&cid=' + cid + '&languageID=' + lid + '',
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function (data) {
+                            var j;
+                            var dataSet = [];
+                            var properties = [];
+                            for (var j = 0; j < data.length; j++) {
+                                var text = data[j].Aciklama;
+                                var tc = data[j].TCKimlikNo;
+                                var no = data[j].Numarasi;
+                                $('#example').append('<tr><td>' + text + '</td><td>' + tc + '</td><td>' + no + '</td></tr>');
+                            }
                         }
-                    }
 
+                    });
                 });
-            });
-        }
+            }
 
-    });
+        });
+    } catch (e) {
+        alert(e);
+    }
+    
     //Contenier Son
 };
 

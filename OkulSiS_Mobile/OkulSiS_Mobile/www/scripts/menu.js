@@ -20,38 +20,45 @@ function user() {
     var ip = localStorage.getItem("ip");
     var kisiadi = localStorage.getItem("KullaniciAdi");
     var lid = localStorage.getItem("lid");
-    alert(ip);
+    
+    var cid = localStorage.getItem("cid");
+  //  alert(ip);
     //menu başlangıç
+    try {
+        $.ajax({
+            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&languageID=' + lid + '&cid=' + cid +'',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                // alert("geldi");
+                var j;
+                var len = data.length;
+                var dataSet = [];
+                var properties = [];
+                var url = "";
+                var value = "";
+                var iconclass = "";
+                for (var j = 0; j < data.length; j++) {
+                    console.log(url);
+                    text = data[j].MenuAdi;
+                    url = data[j].URL;
+                    value = data[j].value;
+                    iconclass = data[j].iconclass;
+                    collapse = data[j].collapse;
+                    $('.left').append('<ul><li><a href="' + url + ' "><i class="fa ' + iconclass + '"></i>' + text + '</a></li></ul>');
 
-    $.ajax({
-        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&languageID='+lid+'',
-        type: 'GET',
-        dataType: 'json',
-        success: function (data) {
-           // alert("geldi");
-            var j;
-            var len = data.length;   
-            var dataSet = [];
-            var properties = [];
-            var url = "";
-            var value = "";
-            var iconclass = "";
-            for (var j = 0; j < data.length; j++) {
-                text = data[j].MenuAdi;
-                url = data[j].URL;
-                value = data[j].value;
-                iconclass = data[j].iconclass;
-                collapse = data[j].collapse;
-              $('.left').append('<ul><li><a href="' + url + ' "><i class="fa ' + iconclass + '"></i>' + text + '</a></li></ul>');
-   
+                }
             }
-        }
-    });
+        });
+    } catch (e) {
+        alert(e);
+    }
+   
     //menu Son
 
     //dashboard başlangıç
     $.ajax({
-        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=DashboardIconCounts_mbllogin&rolId=9&kisiId='+kisiid+'',
+        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=DashboardIconCounts_mbllogin&rolId=' + rolid + '&kisiId=' + kisiid + '&languageID=' + lid + '&cid='+cid+'',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -77,7 +84,7 @@ function user() {
  
 
     $.ajax({
-        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=DashboarddataDersProgrami_mbllogin&kisiId=' + kisiid + '&rolId=' + rolid + '',
+        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=DashboarddataDersProgrami_mbllogin&kisiId=' + kisiid + '&rolId=' + rolid + '&languageID=' + lid + '&cid=' + cid +'',
             type: 'GET',
             dataType: 'json',
             success: function (data) {
