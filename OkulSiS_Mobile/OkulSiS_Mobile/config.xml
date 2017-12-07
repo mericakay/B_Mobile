@@ -9,12 +9,14 @@
   <engine name="ios" spec="4.2.0" />
   <engine name="windows" spec="4.4.2" />
   <content src="login.html" />
-  <access origin="https://query.yahooapis.com" />
   <preference name="SplashScreen" value="screen" />
   <preference name="windows-target-version" value="10.0" />
   <!-- Support for Cordova 5.0.0 plugin system -->
-  <plugin name="cordova-plugin-whitelist" spec="1.2.2" />
+  <access origin="http://okulsis.net/*" subdomains="true" />
   <allow-navigation href="*" />
+  <allow-navigation href="data:*" />
+  <allow-navigation href="http://*/*" />
+  <allow-navigation href="https://*/*" />
   <allow-intent href="*" />
   <access origin="*" />
   <allow-intent href="http://*/*" />
@@ -107,4 +109,5 @@
     <splash src="res/screens/windows/SplashScreenPhone.scale-240.png" width="1152" height="1920" />
   </platform>
   <preference name="Fullscreen" value="False" />
+  <plugin name="cordova-plugin-whitelist" spec="~1.3.3" />
 </widget>

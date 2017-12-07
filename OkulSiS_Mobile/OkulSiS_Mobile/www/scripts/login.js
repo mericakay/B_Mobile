@@ -2,14 +2,13 @@
 $(document).ready(function () {
 
  
-    
     $('input[id^="button"]').click(function () {
       
         username = $("#name").val();
         sifre = $("#password").val();
         var ip = localStorage.getItem("proxy");
         $.ajax({
-            url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?&url=gnlKullaniciFindForLoginByTcKimlikNo_mbllogin',
+            url: 'http://mobile.okulsis.net:8280/Slim_Proxy_okulsis/SlimProxyBoot.php?&url=gnlKullaniciFindForLoginByTcKimlikNo_mbllogin',
             data: {
                 tc: $("#name").val(),
                 sifre: $("#password").val(),
@@ -46,38 +45,50 @@ $(document).ready(function () {
 
 function load() {
     var lid = 647; 
-   
- 
-    $.ajax({
-        url: 'http://192.168.1.6:8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=fillComboBoxTsql_syslanguage',
-        type: 'GET',
-        dataType: 'json',
-        success: function (data) {
-            var j;
-            var dataSet = [];
-            var properties = [];
-            //$('#location').empty();
-            for (var j = 0; j < data.length; j++) {
-                var dil = data[j].language;
-                var id = data[j].id;
-                var url = data[j].url;
-                var background = "background- image:url("+url+")"
+    alert("deneme");
+    try {
+        $.ajax({
 
-                $('#selectLanguage').append("<option style="+url+"  value=" + id + ">" + dil + "</option>");
+            url: 'http://mobile.okulsis.net:8280/Slim_Proxy_okulsis/SlimProxyBoot.php?url=fillComboBoxTsql_syslanguage',
+            type: 'GET',
+            dataType: 'json',
+            crossDomain: true,
+            success: function (data) {
+
+                var j;
+                var dataSet = [];
+                var properties = [];
+                //$('#location').empty();
+                for (var j = 0; j < data.length; j++) {
+                    var dil = data[j].language;
+                    var id = data[j].id;
+                    var url = data[j].url;
+                    var background = "background- image:url(" + url + ")"
+
+                    $('#selectLanguage').append("<option style=" + url + "  value=" + id + ">" + dil + "</option>");
+                }
+                $("#selectLanguage").on('change', function () {
+
+                    lid = this.value;
+
+                    localStorage.setItem("lid", lid);
+
+                });
+
+
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log("request failed" + errorThrown);
             }
-            $("#selectLanguage").on('change', function () {
-                
-                lid = this.value;
-               
-                localStorage.setItem("lid", lid);
+        });
 
-            });
-
-
-        }
-    });
+    } catch (e) {
+        alert(e);
+    }
+   
+    alert("deneme2");
     $.ajax({
-        url: 'http://192.168.1.6:8080/Slim_Proxy_okulsis/SlimProxyBoot.php?&url=mobilUrlData_mobilsettings',
+        url: 'http://mobile.okulsis.net:8280/Slim_Proxy_okulsis/SlimProxyBoot.php?&url=mobilUrlData_mobilsettings',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
