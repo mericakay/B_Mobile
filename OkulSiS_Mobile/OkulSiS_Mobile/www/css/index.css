@@ -3,7 +3,7 @@
 }
 
 body {
-    background-image: url(http://185.86.4.73/sorubankasi1/public/onyuz/assets/base/img/content/apps/atak/okulsis/mobile_bg_menu.jpg);
+    
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
@@ -51,10 +51,10 @@ div.bilsalogo {
 }
 #selectLanguage {
     color: azure;
-    background-color: darkslateblue;
+    background-color: #14396A;
     font-size: 15px;
     max-width: 60px;
-    max-height:20px;
+    max-height: 20px;
     position: absolute;
     top: 10px;
     right: 10px;
@@ -131,18 +131,6 @@ h1 {
 
 
 
- top arrow &::before {
-    bottom: 55%;
-    border-width: 0 6.5px 8px 6.5px;
-    border-bottom-color: $demo-gray;
-}
-
- bottom arrow &::after {
-    border-width: 8px 6.5px 0 6.5px;
-    border-top-color: $demo-gray;
-    top: 55%;
-}
-
 
 
 
@@ -155,21 +143,10 @@ body {
     align-items: center;
     padding: 10px;
     border: 1em solid $demo-blue;
- 
-
-{
-    max-width: 16em;
-}
 
 }
 
-// begin spec stuff up html {
-    box-sizing: border-box;
-}
 
-*, *:before, *:after {
-    box-sizing: inherit;
-}
 
 select {
     -webkit-appearance: none;
@@ -186,7 +163,7 @@ select {
 .select {
     position: relative;
     display: block;
-    width: 20em;
+    width: 18em;
     height: 3em;
     line-height: 3;
     background: #2c3e50;

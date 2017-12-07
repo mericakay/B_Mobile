@@ -11,7 +11,7 @@ function user() {
             $(this).children('i:last-child').toggleClass('fa-caret-down fa-caret-left');
         }
     });
-
+   // $("#cevaplar").paging({ limit: 10 });
     var okulid = localStorage.getItem("OkulID");
     var kisiid = localStorage.getItem("gelenid");
     var dersyiliid = localStorage.getItem("dyiliid");

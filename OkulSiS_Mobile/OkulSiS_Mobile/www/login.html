@@ -3,35 +3,12 @@
 <head>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <script type="text/javascript" charset="utf-8" src="cordova-2.5.0.js"></script>
+  
+    <script src="scripts/cordova-2.5.0.js"></script>
 
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
     <link rel="stylesheet" type="text/css" href="css/index.css">
-    <script type="text/javascript" charset="utf-8">
 
-        /*/ Wait for Cordova to load
-        //
-        document.addEventListener("deviceready", onDeviceReady, false);
-
-        // Cordova is ready
-        //
-        function onDeviceReady() {
-            var element = document.getElementById('deviceProperties');
-
-            element.innerHTML = 'Device Name: ' + device.name + '<br />' +
-                'Device Cordova: ' + device.cordova + '<br />' +
-                'Device Platform: ' + device.platform + '<br />' +
-                'Device UUID: ' + device.uuid + '<br />' +
-                'Device Version: ' + device.version + '<br />';
-        }*/
-        var elem = document.createElement("img");
-        elem.setAttribute("src", "images/msg.png");
-        elem.setAttribute("height", "15");
-        elem.setAttribute("width", "25");
-        elem.setAttribute("alt", "Flower");
-        document.getElementById("bilsalogo").appendChild("elem");
-
-    </script>
 
 </head>
 <body onload="load()">

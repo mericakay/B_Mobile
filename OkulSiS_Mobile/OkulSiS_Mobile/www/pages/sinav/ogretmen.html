@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
     <link href="../../css/menu.css" rel="stylesheet" />
     <link href="../../css/bootstrap4_datatable.css" rel="stylesheet" />
+    <script>
+        
+    </script>
+   
 </head>
 <body onload="user()">
     <!-- menu vertical -->
@@ -18,12 +22,11 @@
         </ul>
         <a href="#" id="showmenu"> <i class="fa fa-align-justify"></i> </a>
     </nav>
-  
-
     <!-- /menu vertical -->
     <!-- contenido de pagina, realmente no importa -->
     <div id="container">
         <!--Pestaña 1 activa por defecto-->
+        <br /><br />
         <input id="tab-1" type="radio" name="tab-group" checked="checked" />
         <label for="tab-1">Sınavlar</label>
         <!--Pestaña 2 inactiva por defecto-->
@@ -55,18 +58,18 @@
                 <select id="subesec"> </select><br /><br />
                 <select id="ogrencisec"> </select><br /><br />
                 <select id="kitapciksec"> </select><br /><br />
-                <input type="submit" id="sinavkitabi"  value="Kaydet"><br /><br />
-               
-                <table id="derslistesi" class="display" cellspacing="0" width="100%">
+
+
+               <!--  <table id="derslistesi" class="display" cellspacing="0" width="100%">
                     <thead>
                         <tr>
                             <th>Kategrori </th>
                             <th>Soru Sayısı</th>
-                            
+
 
                         </tr>
                     </thead>
-                </table><br />
+                </table><br />-->
                 <table id="cevaplar" class="display" cellspacing="0" width="100%">
                     <thead>
                         <tr>
@@ -84,10 +87,7 @@
             <!--Contenido de la Pestaña 3-->
             <div id="content-3">
                 <p>Sınav Sonuçları</p>
-
                 <select id="selectNumber"> </select><br /><br />
-               
-               
                 <table id="giden" class="display" cellspacing="0" width="100%">
                     <thead>
                         <tr>
@@ -99,7 +99,6 @@
                 </table>
             </div>
         </div>
-
         <div>
         </div>
     </div>
@@ -107,5 +106,6 @@
     <!-- /contenido de pagina, realmente no importa -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script type="text/javascript" src="../../scripts/sinav/ogretmen.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
 </body>
 </html>
