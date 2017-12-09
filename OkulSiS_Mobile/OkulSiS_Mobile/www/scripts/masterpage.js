@@ -1,7 +1,7 @@
 ﻿function user() {
     var did = localStorage.getItem("dyiliid");
     var rolid = localStorage.getItem("RolID");
-    var okulid = localStorage.getItem("OkulID");
+    var okulid = localStorage.getItem("okulid");
     var kisiid = localStorage.getItem("gelenid");
     var dersyiliid = localStorage.getItem("dyiliid");
     var ip = localStorage.getItem("proxy");

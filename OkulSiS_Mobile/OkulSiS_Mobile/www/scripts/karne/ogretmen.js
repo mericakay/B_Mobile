@@ -12,7 +12,7 @@ function user() {
         }
     });
 
-    var okulid = localStorage.getItem("OkulID");
+    var okulid = localStorage.getItem("okulid");
     var kisiid = localStorage.getItem("gelenid");
     var dersyiliid = localStorage.getItem("dersyiliid");
     var rolid = localStorage.getItem("RolID");
@@ -23,36 +23,40 @@ function user() {
 
     //menu başlangıç
 
+    try {
+        $.ajax({
+            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&cid=' + cid + '&languageID=' + lid + '',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
 
-    $.ajax({
-        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&cid=' + cid + '&languageID=' + lid +'',
-        type: 'GET',
-        dataType: 'json',
-        success: function (data) {
-
-            var j;
-            var len = data.length;
-            var dataSet = [];
-            var properties = [];
-            var url = "";
-            var value = "";
-            var iconclass = "";
-            for (var j = 0; j < data.length; j++) {
-                text = data[j].MenuAdi;
-                url = data[j].URL;
-                value = data[j].value;
-                iconclass = data[j].iconclass;
-                collapse = data[j].collapse;
-                // alert(collapse);
-
-
-                $('.left').append('<ul><li><a href="../' + url + ' "><i class="fa ' + iconclass + '"></i>' + text + '</a></li></ul>');
+                var j;
+                var len = data.length;
+                var dataSet = [];
+                var properties = [];
+                var url = "";
+                var value = "";
+                var iconclass = "";
+                for (var j = 0; j < data.length; j++) {
+                    text = data[j].MenuAdi;
+                    url = data[j].URL;
+                    value = data[j].value;
+                    iconclass = data[j].iconclass;
+                    collapse = data[j].collapse;
+                    // alert(collapse);
 
 
+                    $('.left').append('<ul><li><a href="../' + url + ' "><i class="fa ' + iconclass + '"></i>' + text + '</a></li></ul>');
 
+
+
+                }
             }
-        }
-    });
+        });
+    } catch (e) {
+        alert(e);
+    }
+   
     //menu Son
 
 

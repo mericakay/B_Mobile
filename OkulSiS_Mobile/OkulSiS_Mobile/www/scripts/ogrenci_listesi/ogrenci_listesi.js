@@ -14,7 +14,7 @@ function user() {
 
    
 
-    var okulid = localStorage.getItem("OkulID");
+    var okulid = localStorage.getItem("okulid");
     var kisiid = localStorage.getItem("gelenid");
     var dersyiliid = localStorage.getItem("dersyiliid");
     var rolid = localStorage.getItem("RolID");

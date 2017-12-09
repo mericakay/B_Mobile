@@ -12,15 +12,16 @@ function user() {
         }
     });
 
-    var okulid = localStorage.getItem("OkulID");
+    var okulid = localStorage.getItem("okulid");
     var kisiid = localStorage.getItem("gelenid");
     var dersyiliid = localStorage.getItem("dyiliid");
-    var did = localStorage.getItem("dyiliid");
+    var did = localStorage.getItem("did");
     var rolid = localStorage.getItem("RolID");
     var ip = localStorage.getItem("ip");
     var kisiadi = localStorage.getItem("KullaniciAdi");
     var lid = localStorage.getItem("lid");
-    
+    alert(did);
+    alert(okulid);
     var cid = localStorage.getItem("cid");
   //  alert(ip);
     //menu başlangıç

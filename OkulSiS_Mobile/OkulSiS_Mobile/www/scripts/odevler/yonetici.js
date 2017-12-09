@@ -11,7 +11,7 @@ function user() {
             $(this).children('i:last-child').toggleClass('fa-caret-down fa-caret-left');
         }
     });
-    var okulid = localStorage.getItem("OkulID");
+    var okulid = localStorage.getItem("okulid");
     var kisiid = localStorage.getItem("gelenid");
     var dersyiliid = localStorage.getItem("dersyiliid");
     var rolid = localStorage.getItem("RolID");
@@ -74,7 +74,7 @@ function user() {
                 }
                 $("#sube").on('change', function () {
                     $.ajax({
-                        url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=KyOgretmenOdevListeleri_mbllogin&okulID='+this.value+'&cid=' + cid + '&languageID=' + lid + '',
+                        url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=KyOgretmenOdevListeleri_mbllogin&okulid='+this.value+'&cid=' + cid + '&languageID=' + lid + '',
                         type: 'GET',
                         dataType: 'json',
                         success: function (data) {

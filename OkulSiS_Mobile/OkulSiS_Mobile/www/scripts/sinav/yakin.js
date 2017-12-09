@@ -12,7 +12,7 @@ function user() {
         }
     });
 
-    var okulid = localStorage.getItem("OkulID");
+    var okulid = localStorage.getItem("okulid");
     var kisiid = localStorage.getItem("gelenid");
     var dersyiliid = localStorage.getItem("dersyiliid");
     var rolid = localStorage.getItem("RolID");
@@ -78,7 +78,7 @@ function user() {
                     var ogrenciidselected = this.value;
                     // alert(ogrenciidselected);
                     $.ajax({
-                        url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=Yakinisinavlistesi_mbllogin&ogretmenID=5F7F8763-F9BD-40E8-8F0E-532E136EB483&okulID=' + okulid + '&kisiID=' + kisiid + '&cid=' + cid + '&languageID=' + lid + '',
+                        url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=Yakinisinavlistesi_mbllogin&ogretmenID=5F7F8763-F9BD-40E8-8F0E-532E136EB483&okulid=' + okulid + '&kisiID=' + kisiid + '&cid=' + cid + '&languageID=' + lid + '',
                         type: 'GET',
                         dataType: 'json',
                         success: function (data) {

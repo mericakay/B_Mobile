@@ -18,11 +18,11 @@ $(document).ready(function () {
                 if (data.lenght !== 0) {
                     var gelen = data[0].adsoyad;
                     var kisiid = data[0].KisiID;
-                    var okulid = data[0].OkulID;
+                    var okulid = data[0].okulid;
                     document.getElementsByTagName("P")[0].innerHTML = gelen;
                     localStorage.setItem("tc", username);
                     localStorage.setItem("KullaniciAdi", gelen);
-                    localStorage.setItem("gelenid", kisiid, "OkulID", okulid);
+                    localStorage.setItem("gelenid", kisiid, "okulid", okulid);
                     var add = localStorage.getItem("KullaniciAdi");
 
                     window.location.href = "okulsec.html";
