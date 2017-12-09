@@ -28,7 +28,7 @@ function user() {
 
 
     $.ajax({
-        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&cid=' + cid + '&languageID=' + lid +'',
+        url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&cid=' + cid + '&languageID=' + lid +'',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -61,7 +61,7 @@ function user() {
     //Klasik Puan Girişi
 
     $.ajax({
-        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Ogretmensinavlistesi_mbllogin&ogretmenID=5F7F8763-F9BD-40E8-8F0E-532E136EB483&egitimYilID=2016&okulID=7E755C68-ABC1-492B-9D82-3B39B831A962&kisiID=5F7F8763-F9BD-40E8-8F0E-532E136EB483&cid=1',
+        url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=Ogretmensinavlistesi_mbllogin&ogretmenID=5F7F8763-F9BD-40E8-8F0E-532E136EB483&egitimYilID=2016&okulID=7E755C68-ABC1-492B-9D82-3B39B831A962&kisiID=5F7F8763-F9BD-40E8-8F0E-532E136EB483&cid=1',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -79,7 +79,7 @@ function user() {
             }
             $("#sinavsec").on('change', function () {
                 $.ajax({
-                    url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgretmenSinavaGirenSubeler_mbllogin&sinavID=C6C84DB4-BA8C-40EB-AD36-9CFBF6DEF89B&okulID=C79927D0-B3AD-40CD-80CF-DCA7D841FDBD&ogretmenID=CF822218-8FD1-4B95-A4C0-9A3113332B4F&cid=1',
+                    url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgretmenSinavaGirenSubeler_mbllogin&sinavID=C6C84DB4-BA8C-40EB-AD36-9CFBF6DEF89B&okulID=C79927D0-B3AD-40CD-80CF-DCA7D841FDBD&ogretmenID=CF822218-8FD1-4B95-A4C0-9A3113332B4F&cid=1',
                     type: 'GET',
                     dataType: 'json',
                     success: function (data) {
@@ -95,7 +95,7 @@ function user() {
                         }
                         $("#subesec").on('change', function () {
                             $.ajax({
-                                url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=TopluOgrenciCevap_mbllogin&sinavOkulID=F700A96B-4628-41E5-A261-D7834983CF4D&sinifKodu=5KAR1&cid=1',
+                                url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=TopluOgrenciCevap_mbllogin&sinavOkulID=F700A96B-4628-41E5-A261-D7834983CF4D&sinifKodu=5KAR1&cid=1',
                                 type: 'GET',
                                 dataType: 'json',
                                 success: function (data) {
@@ -117,7 +117,7 @@ function user() {
                                         ogrenciid = msglist.getAttribute("data-user");
                                       //  alert(show);
                                         $.ajax({
-                                            url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=TopluOgrenciCevap_mbllogin&sinavOkulID=F700A96B-4628-41E5-A261-D7834983CF4D&sinifKodu=5KAR1&cid=1',
+                                            url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=TopluOgrenciCevap_mbllogin&sinavOkulID=F700A96B-4628-41E5-A261-D7834983CF4D&sinifKodu=5KAR1&cid=1',
                                             type: 'GET',
                                             dataType: 'json',
                                             success: function (data) {
@@ -135,7 +135,7 @@ function user() {
                                                 $("#kitapciksec").on('change', function () {
                                                     
                                                     $.ajax({
-                                                        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgretmenSinavDersleriListesi_mbllogin&sinavID=F50FFA1C-2532-48C6-955C-6604092A8189&cid=1',
+                                                        url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgretmenSinavDersleriListesi_mbllogin&sinavID=F50FFA1C-2532-48C6-955C-6604092A8189&cid=1',
                                                         type: 'GET',
                                                         dataType: 'json',
                                                         success: function (data) {
@@ -155,7 +155,7 @@ function user() {
                                                         }
                                                     });
                                                     $.ajax({
-                                                        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgretmenSinavSorulariKDK_mbllogin&sinavDersID=7F85CF1A-545C-4E6B-A79B-A453490BA865&cid=1',
+                                                        url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgretmenSinavSorulariKDK_mbllogin&sinavDersID=7F85CF1A-545C-4E6B-A79B-A453490BA865&cid=1',
                                                         type: 'GET',
                                                         dataType: 'json',
                                                         success: function (data) {
@@ -217,7 +217,7 @@ function user() {
 
     //Sınav Sonuç
     $.ajax({
-        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Ogretmensinavlistesi_mbllogin&ogretmenID=5F7F8763-F9BD-40E8-8F0E-532E136EB483&egitimYilID=2016&okulID=7E755C68-ABC1-492B-9D82-3B39B831A962&kisiID=5F7F8763-F9BD-40E8-8F0E-532E136EB483languageID=' + lid + '',
+        url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=Ogretmensinavlistesi_mbllogin&ogretmenID=5F7F8763-F9BD-40E8-8F0E-532E136EB483&egitimYilID=2016&okulID=7E755C68-ABC1-492B-9D82-3B39B831A962&kisiID=5F7F8763-F9BD-40E8-8F0E-532E136EB483languageID=' + lid + '',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -234,7 +234,7 @@ function user() {
             $("#selectNumber").on('change', function () {
 
                 $.ajax({
-                    url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrencilerinAldigiNotlarSinavBazli_mbllogin&sinavID=F50FFA1C-2532-48C6-955C-6604092A8189&donemID=1&cid=1&languageID=' + lid + '',
+                    url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrencilerinAldigiNotlarSinavBazli_mbllogin&sinavID=F50FFA1C-2532-48C6-955C-6604092A8189&donemID=1&cid=1&languageID=' + lid + '',
                     type: 'GET',
                     dataType: 'json',
                     success: function (data) {
@@ -264,7 +264,7 @@ function user() {
     // Sınavlar
     $.ajax({
 
-        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Ogretmensinavlistesi_mbllogin&ogretmenID=5F7F8763-F9BD-40E8-8F0E-532E136EB483&egitimYilID=2016&okulID=7E755C68-ABC1-492B-9D82-3B39B831A962&kisiID=5F7F8763-F9BD-40E8-8F0E-532E136EB483',
+        url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=Ogretmensinavlistesi_mbllogin&ogretmenID=5F7F8763-F9BD-40E8-8F0E-532E136EB483&egitimYilID=2016&okulID=7E755C68-ABC1-492B-9D82-3B39B831A962&kisiID=5F7F8763-F9BD-40E8-8F0E-532E136EB483',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -289,7 +289,7 @@ function user() {
         e.preventDefault();
         //alert("a");
         $.ajax({
-            url: 'http://'+ip+':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciSinavitapcikKaydet_mbllogin&sinavOgrenciId=F7557F49-E16C-4E53-9F6D-DBDE6210A9C3&kitapcikTurID=2&cid=1',
+            url: 'http://'+ip+' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciSinavitapcikKaydet_mbllogin&sinavOgrenciId=F7557F49-E16C-4E53-9F6D-DBDE6210A9C3&kitapcikTurID=2&cid=1',
             type: 'GET',
             dataType: 'json',
             success: function (data) {
@@ -302,7 +302,7 @@ function user() {
         e.preventDefault();
         //alert("a");
         $.ajax({
-            url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciSinavitapcikKaydet_mbllogin&sinavOgrenciId=F7557F49-E16C-4E53-9F6D-DBDE6210A9C3&kitapcikTurID=2&cid=1',
+            url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciSinavitapcikKaydet_mbllogin&sinavOgrenciId=F7557F49-E16C-4E53-9F6D-DBDE6210A9C3&kitapcikTurID=2&cid=1',
             type: 'GET',
             dataType: 'json',
             success: function (data) {
@@ -315,7 +315,7 @@ function user() {
         e.preventDefault();
         //alert("a");
         $.ajax({
-            url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciSinavitapcikKaydet_mbllogin&sinavOgrenciId=F7557F49-E16C-4E53-9F6D-DBDE6210A9C3&kitapcikTurID=2&cid=1',
+            url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciSinavitapcikKaydet_mbllogin&sinavOgrenciId=F7557F49-E16C-4E53-9F6D-DBDE6210A9C3&kitapcikTurID=2&cid=1',
             type: 'GET',
             dataType: 'json',
             success: function (data) {

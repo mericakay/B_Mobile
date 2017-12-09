@@ -17,13 +17,13 @@ function user() {
     var okulid = localStorage.getItem("OkulID");
     var kisiid = localStorage.getItem("gelenid");
     var dersyiliid = localStorage.getItem("dersyiliid");
-  ;
     var rolid = localStorage.getItem("RolID");
     var ip = localStorage.getItem("ip");
     var kisiadi = localStorage.getItem("KullaniciAdi");
     var lid = localStorage.getItem("lid");
     var cid = localStorage.getItem("cid");
-    alert(dersyiliid);
+    
+   // alert(dersyiliid);
     //menu başlangıç
    
     try {

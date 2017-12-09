@@ -25,7 +25,7 @@ function user() {
     //menu başlangıç
 
     $.ajax({
-        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&cid=' + cid + '&languageID=' + lid +'',
+        url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&cid=' + cid + '&languageID=' + lid +'',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -47,97 +47,79 @@ function user() {
         }
     });
     //menu Son
-   // alert(kisiid);
-    //dashboard başlangıç
-    $.ajax({
-        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=DashboardIconCounts_mbllogin&rolId=9&kisiId=' + kisiid + '&cid=' + cid + '&languageID=' + lid +'',
-        type: 'GET',
-        dataType: 'json',
-        success: function (data) {
-            var j;
-            var dataSet = [];
-            var properties = [];
-            var url = "";
-            var value = "";
-            var iconclass = "";
-            for (var j = 0; j < data.length; j++) {
-                text = data[j].aciklama;
-                url = data[j].url;
-                value = data[j].adet;
-                iconclass = data[j].iconclass;
-
-                $('.dashboard').append('<img src="' + url + '" align="left"/><a style="color:white" href="#" id="mail_menu">' + text + '<br />' + value + '</a><br /><br />');
-            }
-        }
-    });
-    // Dashboard son
+  
 
     //contenier başlangıç
-    $.ajax({
+    try {
+        $.ajax({
 
-        url: 'http://' + ip + ':8080//Slim_Proxy_okulsis/SlimProxyBoot.php?url=KurumPersoneliSinifListesi_mbllogin&dersYiliID=0F17DCF7-EFCF-41D8-82A0-D4CCFF77E487&cid=' + cid + '&languageID=' + lid +'',
-        type: 'GET',
-        dataType: 'json',
-        success: function (data) {
-            var j;
-            var dataSet = [];
-            var properties = [];
-            $('#selectNumber').empty();
-            for (var j = 0; j < data.length; j++) {
-                var text = data[j].SinifAdi;
-                var sinifid = data[j].SinifID;
-                // alert(sinifid);
-                $('#selectNumber').append("<option value=" + sinifid + ">" + text + "</option>");
-            }
-            $("#selectNumber").on('change', function () {
+            url: 'http://' + ip + ' //Slim_Proxy_okulsis/SlimProxyBoot.php?url=KurumPersoneliSinifListesi_mbllogin&dersYiliID=0F17DCF7-EFCF-41D8-82A0-D4CCFF77E487&cid=' + cid + '&languageID=' + lid + '',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                var j;
+                var dataSet = [];
+                var properties = [];
+                $('#selectNumber').empty();
+                for (var j = 0; j < data.length; j++) {
+                    var text = data[j].SinifAdi;
+                    var sinifid = data[j].SinifID;
+                    // alert(sinifid);
+                    $('#selectNumber').append("<option value=" + sinifid + ">" + text + "</option>");
+                }
+                $("#selectNumber").on('change', function () {
 
 
-                $.ajax({
-                    url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Kysubeogrencilistesi_mbllogin&sinifID=F4201B97-B073-4DD7-8891-8091C3DC82CF&cid=' + cid + '&languageID=' + lid +'',
-                    type: 'GET',
-                    dataType: 'json',
-                    success: function (data) {
-                        var j;
-                        var dataSet = [];
-                        var properties = [];
-                        $('#sube').empty();
-                        for (var j = 0; j < data.length; j++) {
-                            var text = data[j].Aciklama;
-                            var derssirasi = data[j].DersSirasi;
-                            var dersid = data[j].DersID;
+                    $.ajax({
+                        url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=Kysubeogrencilistesi_mbllogin&sinifID=F4201B97-B073-4DD7-8891-8091C3DC82CF&cid=' + cid + '&languageID=' + lid + '',
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function (data) {
+                            var j;
+                            var dataSet = [];
+                            var properties = [];
+                            $('#sube').empty();
+                            for (var j = 0; j < data.length; j++) {
+                                var text = data[j].Aciklama;
+                                var derssirasi = data[j].DersSirasi;
+                                var dersid = data[j].DersID;
 
-                            $('#sube').append("<option >" + text + "</option>");
-                        }
-                        $("#sube").on('change', function () {
-                            $.ajax({
+                                $('#sube').append("<option >" + text + "</option>");
+                            }
+                            $("#sube").on('change', function () {
+                                $.ajax({
 
-                                url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=MuhBorcluSozlesmeleri_mbllogin&dersYiliID=9D7A115C-5E96-4F6E-B31D-E5710BDA1C97&ogrenciID=5A4BEF62-184D-4884-8BE0-B939E2DFBAE6&dbn=Bilsanet1&cid=' + cid + '&languageID=' + lid +'',
-                                type: 'GET',
-                                dataType: 'json',
-                                success: function (data) {
-                                    var j;
-                                    var dataSet = [];
-                                    var properties = [];
-                                    //$('#location').empty();
-                                    for (var j = 0; j < data.length; j++) {
-                                        var toplamtutar = data[j].ToplamTutar;
-                                        var taahutno = data[j].TaahhutnameNo;
-                                        var toplamodenen = data[j].ToplamOdenen;
-                                        var kalantutar = data[j].KalanTutar;
-                                        var borclusozlesmeid = data[j].BorcluSozlesmeID;
+                                    url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=MuhBorcluSozlesmeleri_mbllogin&dersYiliID=9D7A115C-5E96-4F6E-B31D-E5710BDA1C97&ogrenciID=5A4BEF62-184D-4884-8BE0-B939E2DFBAE6&dbn=Bilsanet1&cid=' + cid + '&languageID=' + lid + '',
+                                    type: 'GET',
+                                    dataType: 'json',
+                                    success: function (data) {
+                                        var j;
+                                        var dataSet = [];
+                                        var properties = [];
+                                        //$('#location').empty();
+                                        for (var j = 0; j < data.length; j++) {
+                                            var toplamtutar = data[j].ToplamTutar;
+                                            var taahutno = data[j].TaahhutnameNo;
+                                            var toplamodenen = data[j].ToplamOdenen;
+                                            var kalantutar = data[j].KalanTutar;
+                                            var borclusozlesmeid = data[j].BorcluSozlesmeID;
 
-                                        $('#example').append('<tr><td  onclick="myFunction()">' + taahutno + '</td><td>' + toplamtutar + '</td><td>' + toplamodenen + '</td><td>' + kalantutar + '</td></tr>');
+                                            $('#example').append('<tr><td  onclick="myFunction()">' + taahutno + '</td><td>' + toplamtutar + '</td><td>' + toplamodenen + '</td><td>' + kalantutar + '</td></tr>');
+                                        }
+
                                     }
-
-                                }
+                                });
                             });
-                        });
-                    }
-                });
+                        }
+                    });
 
-            });
-        }
-    });
+                });
+            }
+        });
+    } catch (e) {
+        alert(e);
+    }
+    
     //Contenier Son
 };
 

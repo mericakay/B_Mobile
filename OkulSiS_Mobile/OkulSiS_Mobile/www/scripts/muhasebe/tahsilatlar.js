@@ -25,7 +25,7 @@ function user() {
     //menu başlangıç
 
     $.ajax({
-        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&cid=' + cid + '&languageID=' + lid +'',
+        url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&cid=' + cid + '&languageID=' + lid +'',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -49,133 +49,138 @@ function user() {
     //menu Son
 
     //contenier başlangıç
-    $.ajax({
-        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=MsjIcinOkulListesi_mbllogin&sendrolID=4&cid=' + cid + '&languageID=' + lid + '',
-        type: 'GET',
-        dataType: 'json',
-        success: function (data) {
-            var j;
-            var dataSet = [];
-            var properties = [];
-            $('#tahsilat').empty();
-            for (var j = 0; j < data.length; j++) {
-                var text = data[j].aciklama;
-                var id = data[j].ID;
+    try {
+        $.ajax({
+            url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=MsjIcinOkulListesi_mbllogin&sendrolID=4&cid=' + cid + '&languageID=' + lid + '',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                var j;
+                var dataSet = [];
+                var properties = [];
+                $('#tahsilat').empty();
+                for (var j = 0; j < data.length; j++) {
+                    var text = data[j].aciklama;
+                    var id = data[j].ID;
 
-                $('#tahsilat').append("<option value=" + id + ">" + text + "</option>");
-            }
-            $("#tahsilat").on('change', function () {
-                $.ajax({
-                    url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=MuhYapilacakTahsilatlarA_mbllogin&kurumID=A4EFFBCB-0291-4D2B-BCAC-E4BD8BFD6BE4&cid=' + cid + '&languageID=' + lid + '',
-                    type: 'GET',
-                    dataType: 'json',
-                    success: function (data) {
+                    $('#tahsilat').append("<option value=" + id + ">" + text + "</option>");
+                }
+                $("#tahsilat").on('change', function () {
+                    $.ajax({
+                        url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=MuhYapilacakTahsilatlarA_mbllogin&kurumID=A4EFFBCB-0291-4D2B-BCAC-E4BD8BFD6BE4&cid=' + cid + '&languageID=' + lid + '',
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function (data) {
 
-                        var j;
-                        var dataSet = [];
-                        var properties = [];
-                        //$('#location').empty();
-                        for (var j = 0; j < data.length; j++) {
-                            var tahsilat = data[j].Tahsilat;
-                            var gelecek = data[j].Gelecek;
-                            var tahsilataciklama = data[j].TahsilatAciklama;
-                            var mesaj = data[j].Mesaj;
-                            var selected = data[j].selected;
-                            $('#tahsilatlar').append('<tr><td>' + tahsilat + '</td><td>' + gelecek + '</td><td>' + tahsilataciklama + '</td></tr>');
+                            var j;
+                            var dataSet = [];
+                            var properties = [];
+                            //$('#location').empty();
+                            for (var j = 0; j < data.length; j++) {
+                                var tahsilat = data[j].Tahsilat;
+                                var gelecek = data[j].Gelecek;
+                                var tahsilataciklama = data[j].TahsilatAciklama;
+                                var mesaj = data[j].Mesaj;
+                                var selected = data[j].selected;
+                                $('#tahsilatlar').append('<tr><td>' + tahsilat + '</td><td>' + gelecek + '</td><td>' + tahsilataciklama + '</td></tr>');
+                            }
+
                         }
+                    });
 
-                    }
+
                 });
-
-
-            });
-        }
-    });
-
-    $.ajax({
-        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=MsjIcinOkulListesi_mbllogin&sendrolID=4&cid=' + cid + '&languageID=' + lid + '',
-        type: 'GET',
-        dataType: 'json',
-        success: function (data) {
-            var j;
-            var dataSet = [];
-            var properties = [];
-            $('#ozet').empty();
-            for (var j = 0; j < data.length; j++) {
-                var text = data[j].aciklama;
-                var id = data[j].ID;
-
-                $('#ozet').append("<option value=" + id + ">" + text + "</option>");
             }
-            $("#ozet").on('change', function () {
-                $.ajax({
-                    url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=MuhYapilacakTahsilatlarB_mbllogin&kurumID=A4EFFBCB-0291-4D2B-BCAC-E4BD8BFD6BE4&cid=' + cid + '&languageID=' + lid + '',
-                    type: 'GET',
-                    dataType: 'json',
-                    success: function (data) {
-                        var j;
-                        var dataSet = [];
-                        var properties = [];
-                        //$('#location').empty();
-                        for (var j = 0; j < data.length; j++) {
-                            var tahsilat = data[j].Tahsilat;
-                            var aciklama = data[j].Aciklama;
-                            var toplamtutar = data[j].ToplamTutar;
-                            $('#ozet').append('<tr><td  >' + tahsilat + '</td><td>' + aciklama + '</td><td>' + toplamtutar + '</td></tr>');
+        });
+
+        $.ajax({
+            url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=MsjIcinOkulListesi_mbllogin&sendrolID=4&cid=' + cid + '&languageID=' + lid + '',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                var j;
+                var dataSet = [];
+                var properties = [];
+                $('#ozet').empty();
+                for (var j = 0; j < data.length; j++) {
+                    var text = data[j].aciklama;
+                    var id = data[j].ID;
+
+                    $('#ozet').append("<option value=" + id + ">" + text + "</option>");
+                }
+                $("#ozet").on('change', function () {
+                    $.ajax({
+                        url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=MuhYapilacakTahsilatlarB_mbllogin&kurumID=A4EFFBCB-0291-4D2B-BCAC-E4BD8BFD6BE4&cid=' + cid + '&languageID=' + lid + '',
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function (data) {
+                            var j;
+                            var dataSet = [];
+                            var properties = [];
+                            //$('#location').empty();
+                            for (var j = 0; j < data.length; j++) {
+                                var tahsilat = data[j].Tahsilat;
+                                var aciklama = data[j].Aciklama;
+                                var toplamtutar = data[j].ToplamTutar;
+                                $('#ozet').append('<tr><td  >' + tahsilat + '</td><td>' + aciklama + '</td><td>' + toplamtutar + '</td></tr>');
+                            }
+
                         }
+                    });
 
-                    }
+
+
                 });
+            }
+        });
+
+        $.ajax({
+            url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=MsjIcinOkulListesi_mbllogin&sendrolID=4&cid=' + cid + '&languageID=' + lid + '',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                var j;
+                var dataSet = [];
+                var properties = [];
+                $('#alacak').empty();
+                for (var j = 0; j < data.length; j++) {
+                    var text = data[j].aciklama;
+                    var id = data[j].ID;
+
+                    $('#alacak').append("<option value=" + id + ">" + text + "</option>");
+                }
+                $("#alacak").on('change', function () {
+                    $.ajax({
+
+                        url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=MuhYapilacakTahsilatlarC_mbllogin&kurumID=A4EFFBCB-0291-4D2B-BCAC-E4BD8BFD6BE4&cid=1&languageID=' + lid + '',
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function (data) {
+                            var j;
+                            var dataSet = [];
+                            var properties = [];
+                            //$('#location').empty();
+                            for (var j = 0; j < data.length; j++) {
+                                var aciklama = data[j].Aciklama;
+                                var taksittutari = data[j].TaksitTutari;
+                                var tc = data[j].TCKimlikNo;
+                                var ogrenciadi = data[j].OgrenciAdi;
+                                $('#giden').append('<tr><td>' + aciklama + '</td><td>' + taksittutari + '</td><td>' + ogrenciadi + '</td></tr>');
+                            }
+
+                        }
+                    });
 
 
 
-            });
-        }
-    });
+
+                });
+            }
+        });
+    } catch (e) {
+        alert(e);
+    }
   
-    $.ajax({
-        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=MsjIcinOkulListesi_mbllogin&sendrolID=4&cid=' + cid + '&languageID=' + lid + '',
-        type: 'GET',
-        dataType: 'json',
-        success: function (data) {
-            var j;
-            var dataSet = [];
-            var properties = [];
-            $('#alacak').empty();
-            for (var j = 0; j < data.length; j++) {
-                var text = data[j].aciklama;
-                var id = data[j].ID;
-
-                $('#alacak').append("<option value=" + id + ">" + text + "</option>");
-            }
-            $("#alacak").on('change', function () {
-                $.ajax({
-
-                    url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=MuhYapilacakTahsilatlarC_mbllogin&kurumID=A4EFFBCB-0291-4D2B-BCAC-E4BD8BFD6BE4&cid=1&languageID=' + lid + '',
-                    type: 'GET',
-                    dataType: 'json',
-                    success: function (data) {
-                        var j;
-                        var dataSet = [];
-                        var properties = [];
-                        //$('#location').empty();
-                        for (var j = 0; j < data.length; j++) {
-                            var aciklama = data[j].Aciklama;
-                            var taksittutari = data[j].TaksitTutari;
-                            var tc = data[j].TCKimlikNo;
-                            var ogrenciadi = data[j].OgrenciAdi;
-                            $('#giden').append('<tr><td>' + aciklama + '</td><td>' + taksittutari + '</td><td>' + ogrenciadi + '</td></tr>');
-                        }
-
-                    }
-                });
-
-
-
-
-            });
-        }
-    });
 
    
 

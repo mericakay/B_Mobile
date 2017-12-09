@@ -28,7 +28,7 @@ function user() {
 
 
     $.ajax({
-        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&cid=' + cid + '&languageID=' + lid +'',
+        url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&cid=' + cid + '&languageID=' + lid +'',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -60,33 +60,37 @@ function user() {
 
 
     //contenier başlangıç
+    try {
+        $.ajax({
+            url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciVeYakiniDersProgramiListesi_mbllogin&sinifID=F4201B97-B073-4DD7-8891-8091C3DC82CF&ogrenciID=' + kisiid + '&donemID=1&cid=' + cid + '&languageID=' + lid + '',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                var j;
+                var dataSet = [];
+                var properties = [];
+                for (var j = 0; j < data.length; j++) {
+                    var derssaati = data[j].DersSaati;
 
 
-    $.ajax({
-        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciVeYakiniDersProgramiListesi_mbllogin&sinifID=F4201B97-B073-4DD7-8891-8091C3DC82CF&ogrenciID=AEEFE2B7-6653-4776-9343-031155AF6181&donemID=1&cid=1&languageID=' + lid + '',
-        type: 'GET',
-        dataType: 'json',
-        success: function (data) {
-            var j;
-            var dataSet = [];
-            var properties = [];
-            for (var j = 0; j < data.length; j++) {
-                var derssaati = data[j].DersSaati;
-               
-               
-                var gun1 = data[j].Gun1_ders;
-                var gun2 = data[j].Gun2_ders;
-                var gun3 = data[j].Gun3_ders;
-                var gun4= data[j].Gun4_ders;            
-                var gun5 = data[j].Gun5_ders;
-               
+                    var gun1 = data[j].Gun1_ders;
+                    var gun2 = data[j].Gun2_ders;
+                    var gun3 = data[j].Gun3_ders;
+                    var gun4 = data[j].Gun4_ders;
+                    var gun5 = data[j].Gun5_ders;
 
-                $('#example').append('<tr><td>' + derssaati + '</td><td>' + gun1 + '</td><td>' + gun2 + '</td><td>' + gun3 + '</td><td>' + gun4 + '</td><td>' + gun5 + '</td></tr>');
 
+                    $('#example').append('<tr><td>' + derssaati + '</td><td>' + gun1 + '</td><td>' + gun2 + '</td><td>' + gun3 + '</td><td>' + gun4 + '</td><td>' + gun5 + '</td></tr>');
+
+                }
             }
-        }
 
-    });
+        });
+    } catch (e) {
+        alert(e);
+    }
+
+   
     //Contenier Son
 };
 

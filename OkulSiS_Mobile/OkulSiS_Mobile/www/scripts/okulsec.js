@@ -2,13 +2,13 @@
     var kid = localStorage.getItem("gelenid");
    
     var tc = localStorage.getItem("tc");
-   
+    var lid = localStorage.getItem("lid");
     var cid = "";
     var ip = "";
     var dersyiliid = "";
-
+   // alert(lid);
     $.ajax({
-        url: 'http://mobile.okulsis.net:8280/Slim_Proxy_okulsis/SlimProxyBoot.php?tc=' + tc + '&url=mobilfirstdata_mbllogin',
+        url: 'http://mobile.okulsis.net:8280/Slim_Proxy_okulsis/SlimProxyBoot.php?tc=' + tc + '&url=mobilfirstdata_mbllogin&languageID=' + lid + '',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -42,6 +42,7 @@
                 ip = proxylist.getAttribute("data-proxy");
                 cid = cidlist.getAttribute("data-cid");
                 dersyiliid = dersyiliidlist.getAttribute("data-dersyiliid");
+               
                 okulid = dersyiliidlist.getAttribute("data-okulid");
                 egitimyiliid = egitimyiliidlist.getAttribute("data-egitimyiliid");
                 //-----------------------------------------------------------

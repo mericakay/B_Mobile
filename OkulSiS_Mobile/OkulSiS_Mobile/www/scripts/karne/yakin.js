@@ -14,21 +14,18 @@ function user() {
 
     var okulid = localStorage.getItem("OkulID");
     var kisiid = localStorage.getItem("gelenid");
-    var dersyiliid = localStorage.getItem("dyiliid");
-    var cid = localStorage.getItem("cid");
-    var dbn = localStorage.getItem("dbn");
-    var did = localStorage.getItem("dyiliid");
+    var dersyiliid = localStorage.getItem("dersyiliid");
     var rolid = localStorage.getItem("RolID");
-    var ip = localStorage.getItem("proxy");
+    var ip = localStorage.getItem("ip");
     var kisiadi = localStorage.getItem("KullaniciAdi");
-
     var lid = localStorage.getItem("lid");
+    var cid = localStorage.getItem("cid");
 
     //menu başlangıç
 
 
     $.ajax({
-        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&cid=' + cid + '&languageID=' + lid +'',
+        url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&cid=' + cid + '&languageID=' + lid +'',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -60,50 +57,55 @@ function user() {
 
 
     //contenier başlangıç
-    $.ajax({
-        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=VeliOgrencileri_mbllogin&dersYiliID=0F17DCF7-EFCF-41D8-82A0-D4CCFF77E487&kisiId=5B153648-7B6B-4160-9274-B2EA69A1D717&cid=' + cid + '&languageID=' + lid +'',
-        type: 'GET',
-        dataType: 'json',
-        success: function (data) {
-            var j;
-            var dataSet = [];
-            var properties = [];
-            $('#sube').empty();
-            for (var j = 0; j < data.length; j++) {
-                var text = data[j].AdiSoyadi;
-                var sinifid = data[j].SinifID;
+    try {
+        $.ajax({
+            url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=VeliOgrencileri_mbllogin&dersYiliID=' + dersyiliid + '&kisiId=' + kisiid + '&cid=' + cid + '&languageID=' + lid + '',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                var j;
+                var dataSet = [];
+                var properties = [];
+                $('#sube').empty();
+                for (var j = 0; j < data.length; j++) {
+                    var text = data[j].AdiSoyadi;
+                    var ogrenciid = data[j].OgrenciID;
 
-                $('#sube').append("<option value=" + sinifid + ">" + text + "</option>");
-            }
-            $("#sube").on('change', function () {
-                $.ajax({
-                    url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciKarnesi_mbllogin&donemID=1&ogrenciID=AEEFE2B7-6653-4776-9343-031155AF6181&cid=1',
-                    type: 'GET',
-                    dataType: 'json',
-                    success: function (data) {
-                        var j;
-                        var dataSet = [];
-                        var properties = [];
-                        //$('#location').empty();
-                        for (var j = 0; j < data.length; j++) {
-                            var dersadi = data[j].DersAdi;
-                            var hs = data[j].HaftalikDersSaati;
-                            var ysp = data[j].YilSonuPuani;
-                            var y1 = data[j].Yazili1;
-                            var y2 = data[j].Yazili2;
-                            var y3 = data[j].Yazili3;
-                            var y4 = data[j].Yazili4;
-                            var y5 = data[j].Yazili5;
+                    $('#sube').append("<option value=" + ogrenciid + ">" + text + "</option>");
+                }
+                $("#sube").on('change', function () {
+                    $.ajax({
+                        url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciKarnesi_mbllogin&donemID=1&ogrenciID='+this.value+'&cid='+cid+'',
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function (data) {
+                            var j;
+                            var dataSet = [];
+                            var properties = [];
+                            //$('#location').empty();
+                            for (var j = 0; j < data.length; j++) {
+                                var dersadi = data[j].DersAdi;
+                                var hs = data[j].HaftalikDersSaati;
+                                var ysp = data[j].YilSonuPuani;
+                                var y1 = data[j].Yazili1;
+                                var y2 = data[j].Yazili2;
+                                var y3 = data[j].Yazili3;
+                                var y4 = data[j].Yazili4;
+                                var y5 = data[j].Yazili5;
 
-                            $('#example').append('<tr><td>' + dersadi + '</td><td>' + y1 + '</td><td>' + y2 + '</td><td>' + y3 + '</td><td>' + ysp + '</td></tr>');
+                                $('#example').append('<tr><td>' + dersadi + '</td><td>' + y1 + '</td><td>' + y2 + '</td><td>' + y3 + '</td><td>' + ysp + '</td></tr>');
+                            }
+
                         }
+                    });
 
-                    }
                 });
-
-            });
-        }
-    });
+            }
+        });
+    } catch (e) {
+        alert(e);
+    }
+   
 
    
     //Contenier Son

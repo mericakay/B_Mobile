@@ -14,21 +14,18 @@ function user() {
 
     var okulid = localStorage.getItem("OkulID");
     var kisiid = localStorage.getItem("gelenid");
-    var dersyiliid = localStorage.getItem("dyiliid");
-    var cid = localStorage.getItem("cid");
-    var dbn = localStorage.getItem("dbn");
-    var did = localStorage.getItem("dyiliid");
+    var dersyiliid = localStorage.getItem("dersyiliid");
     var rolid = localStorage.getItem("RolID");
-    var ip = localStorage.getItem("proxy");
+    var ip = localStorage.getItem("ip");
     var kisiadi = localStorage.getItem("KullaniciAdi");
     var lid = localStorage.getItem("lid");
-
+    var cid = localStorage.getItem("cid");
 
     //menu başlangıç
 
 
     $.ajax({
-        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&cid=' + cid + '&languageID=' + lid +'',
+        url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&cid=' + cid + '&languageID=' + lid +'',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -60,56 +57,60 @@ function user() {
 
 
     //contenier başlangıç
+    try {
+        $.ajax({
+            url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=VeliOgrencileri_mbllogin&dersYiliID=' + dersyiliid + '&kisiId=' + kisiid + '&cid=' + cid + '&languageID=' + lid + '',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                var j;
+                var dataSet = [];
+                var properties = [];
+                $('#selectNumber').empty();
+                for (var j = 0; j < data.length; j++) {
+                    var text = data[j].AdiSoyadi;
+                    var value = data[j].OgrenciID;
+                    var ogrenciseviyeid = data[j].OgrenciSeviyeID;
+                    var ogrenciid = data[j].OgrenciID;
 
-    $.ajax({
-        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=VeliOgrencileri_mbllogin&dersYiliID=9D7A115C-5E96-4F6E-B31D-E5710BDA1C97&kisiId=' + kisiid + '&cid=' + cid + '&languageID=' + lid +'',
-        type: 'GET',
-        dataType: 'json',
-        success: function (data) {
-            var j;
-            var dataSet = [];
-            var properties = [];
-            $('#selectNumber').empty();
-            for (var j = 0; j < data.length; j++) {
-                var text = data[j].AdiSoyadi;
-                var value = data[j].OgrenciID;
-                var ogrenciseviyeid = data[j].OgrenciSeviyeID;
-                var sinifid = data[j].SinifID;
-
-                $('#selectNumber').append("<option value=" + sinifid + ">" + text + "</option>");
-            }
-            $("#selectNumber").on('change', function () {
-                var ogrenciidselected = this.value;
-               // alert(ogrenciidselected);
-                $.ajax({
-                    url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciVeYakiniDersProgramiListesi_mbllogin&sinifID=F4201B97-B073-4DD7-8891-8091C3DC82CF&ogrenciID=AEEFE2B7-6653-4776-9343-031155AF6181&donemID=1&cid=1&languageID=' + lid + '',
-                    type: 'GET',
-                    dataType: 'json',
-                    success: function (data) {
-                        var j;
-                        var dataSet = [];
-                        var properties = [];
-                        for (var j = 0; j < data.length; j++) {
-                            var derssaati = data[j].DersSaati;
-
-
-                            var gun1 = data[j].Gun1_ders;
-                            var gun2 = data[j].Gun2_ders;
-                            var gun3 = data[j].Gun3_ders;
-                            var gun4 = data[j].Gun4_ders;
-                            var gun5 = data[j].Gun5_ders;
+                    $('#selectNumber').append("<option value=" + ogrenciid + ">" + text + "</option>");
+                }
+                $("#selectNumber").on('change', function () {
+                    var ogrenciidselected = this.value;
+                    // alert(ogrenciidselected);
+                    $.ajax({
+                        url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciVeYakiniDersProgramiListesi_mbllogin&sinifID=F4201B97-B073-4DD7-8891-8091C3DC82CF&ogrenciID=' + this.value + '&cid=' + cid + '&languageID=' + lid + '',
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function (data) {
+                            var j;
+                            var dataSet = [];
+                            var properties = [];
+                            for (var j = 0; j < data.length; j++) {
+                                var derssaati = data[j].DersSaati;
 
 
-                            $('#example').append('<tr><td>' + derssaati + '</td><td>' + gun1 + '</td><td>' + gun2 + '</td><td>' + gun3 + '</td><td>' + gun4 + '</td><td>' + gun5 + '</td></tr>');
+                                var gun1 = data[j].Gun1_ders;
+                                var gun2 = data[j].Gun2_ders;
+                                var gun3 = data[j].Gun3_ders;
+                                var gun4 = data[j].Gun4_ders;
+                                var gun5 = data[j].Gun5_ders;
 
+
+                                $('#example').append('<tr><td>' + derssaati + '</td><td>' + gun1 + '</td><td>' + gun2 + '</td><td>' + gun3 + '</td><td>' + gun4 + '</td><td>' + gun5 + '</td></tr>');
+
+                            }
                         }
-                    }
 
+                    });
                 });
-            });
-        }
+            }
 
-    });
+        });
+    } catch (e) {
+        alert(e);
+    }
+   
     //Contenier Son
 };
 

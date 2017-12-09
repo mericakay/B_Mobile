@@ -1,7 +1,6 @@
 ﻿
 $(document).ready(function () {
-    localStorage.clear();
- 
+   
     $('input[id^="button"]').click(function () {
       
         username = $("#name").val();
@@ -44,8 +43,10 @@ $(document).ready(function () {
 })
 
 function load() {
+  //  localStorage.clear();
+
     var lid = 647; 
- 
+ localStorage.setItem("lid", lid);
     try {
         $.ajax({
 

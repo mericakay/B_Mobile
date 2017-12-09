@@ -14,21 +14,19 @@ function user() {
 
     var okulid = localStorage.getItem("OkulID");
     var kisiid = localStorage.getItem("gelenid");
-    var dersyiliid = localStorage.getItem("dyiliid");
-    var cid = localStorage.getItem("cid");
-    var dbn = localStorage.getItem("dbn");
-    var did = localStorage.getItem("dyiliid");
+    var dersyiliid = localStorage.getItem("dersyiliid");
     var rolid = localStorage.getItem("RolID");
-    var ip = localStorage.getItem("proxy");
+    var ip = localStorage.getItem("ip");
     var kisiadi = localStorage.getItem("KullaniciAdi");
     var lid = localStorage.getItem("lid");
+    var cid = localStorage.getItem("cid");
 
 
     //menu başlangıç
 
 
     $.ajax({
-        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&cid=' + cid + '&languageID=' + lid + '',
+        url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&cid=' + cid + '&languageID=' + lid + '',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -61,26 +59,30 @@ function user() {
 
     //contenier başlangıç
 
+    try {
+        $.ajax({
+            url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciVeliIcinOgretmenListesi_mbllogin&kisiId=' + kisiid + '&cid=' + cid + '&languageID=' + lid + '',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
 
-    $.ajax({
-        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciVeliIcinOgretmenListesi_mbllogin&kisiId=85C6D8E3-C853-4FBA-B700-C2C36B9CBA1A&cid=1&languageID=' + lid + '',
-        type: 'GET',
-        dataType: 'json',
-        success: function (data) {
-
-            var j;
-            var dataSet = [];
-            var properties = [];
-            for (var j = 0; j < data.length; j++) {
-                var aciklama = data[j].aciklama;
-                var dersadi = data[j].DersAdi;
-                var tanim = data[j].Tanim;
-                var teslimtarihi = data[j].TeslimTarihi;
-                $('#example').append('<tr><td>' + aciklama + '</td><td>' + dersadi + '</td></tr>');
+                var j;
+                var dataSet = [];
+                var properties = [];
+                for (var j = 0; j < data.length; j++) {
+                    var aciklama = data[j].aciklama;
+                    var dersadi = data[j].DersAdi;
+                    var tanim = data[j].Tanim;
+                    var teslimtarihi = data[j].TeslimTarihi;
+                    $('#example').append('<tr><td>' + aciklama + '</td><td>' + dersadi + '</td></tr>');
+                }
             }
-        }
 
-    });
+        });
+    } catch (e) {
+        alert(e);
+    }
+  
     //Contenier Son
 };
 

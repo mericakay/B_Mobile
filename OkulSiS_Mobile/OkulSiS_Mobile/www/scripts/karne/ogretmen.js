@@ -14,21 +14,18 @@ function user() {
 
     var okulid = localStorage.getItem("OkulID");
     var kisiid = localStorage.getItem("gelenid");
-    var dersyiliid = localStorage.getItem("dyiliid");
-    var cid = localStorage.getItem("cid");
-    var dbn = localStorage.getItem("dbn");
-    var did = localStorage.getItem("dyiliid");
+    var dersyiliid = localStorage.getItem("dersyiliid");
     var rolid = localStorage.getItem("RolID");
-    var ip = localStorage.getItem("proxy");
+    var ip = localStorage.getItem("ip");
     var kisiadi = localStorage.getItem("KullaniciAdi");
-
     var lid = localStorage.getItem("lid");
+    var cid = localStorage.getItem("cid");
 
     //menu başlangıç
 
 
     $.ajax({
-        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&cid=' + cid + '&languageID=' + lid +'',
+        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&cid=' + cid + '&languageID=' + lid +'',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -62,73 +59,79 @@ function user() {
     //contenier başlangıç
 
 
+    try {
+        $.ajax({
+            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Ogretmensubelistesi_mbllogin&ogretmenID=' + kisiid + '&cid=' + cid + '&languageID=' + lid + '',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                var j;
+                var dataSet = [];
+                var properties = [];
+                $('#selectNumber').empty();
+                for (var j = 0; j < data.length; j++) {
+                    var text = data[j].Aciklama;
+                    var sinifid = data[j].SinifID;
+                    // alert(sinifid);
+                    $('#selectNumber').append("<option value=" + sinifid + ">" + text + "</option>");
+                }
+                $("#selectNumber").on('change', function () {
+                    $.ajax({
+                        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Kysubeogrencilistesi_mbllogin&sinifID='+this.value+'&cid=' + cid + '&languageID=' + lid + '',
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function (data) {
+                            var j;
+                            var dataSet = [];
+                            var properties = [];
+                            $('#sube').empty();
+                            for (var j = 0; j < data.length; j++) {
+                                var text = data[j].Aciklama;
+                                var seviyeid = data[j].SeviyeID;
+                                var dersid = data[j].DersID;
+                                var ogrenciID = data[j].OgrenciID;
 
+                                $('#sube').append("<option value=" + ogrenciID + " >" + text + "</option>");
+                            }
+                            $("#sube").on('change', function () {
 
-    $.ajax({
-        url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=ogretmenDersProgrami_mbllogin&kisiId=17A68CAA-1A13-460A-BEAA-FB483AC82F7B&OkulID=7E755C68-ABC1-492B-9D82-3B39B831A962&dersYiliID=9D7A115C-5E96-4F6E-B31D-E5710BDA1C97&dbn=Bilsanet1&cid=1&languageID=' + lid +'',
-        type: 'GET',
-        dataType: 'json',
-        success: function (data) {
-            var j;
-            var dataSet = [];
-            var properties = [];
-            $('#selectNumber').empty();
-            for (var j = 0; j < data.length; j++) {
-                var text = data[j].Aciklama;
-                var sinifid = data[j].SinifID;
-                // alert(sinifid);
-                $('#selectNumber').append("<option value=" + sinifid + ">" + text + "</option>");
-            }
-            $("#selectNumber").on('change', function () {
-                $.ajax({
-                    url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=ogretmenDersPrgDersSaatleriOgrencileri_mbllogin&sinifID=F4201B97-B073-4DD7-8891-8091C3DC82CF&tarih=2016-09-19+00%3A00%3A00&dersSirasi=1&dersYiliID=9D7A115C-5E96-4F6E-B31D-E5710BDA1C97&kisiId=1250E188-B635-4418-ABB4-98E8886C707D&dbn=Bilsanet1&cid=1&languageID=' + lid +'',
-                    type: 'GET',
-                    dataType: 'json',
-                    success: function (data) {
-                        var j;
-                        var dataSet = [];
-                        var properties = [];
-                        $('#sube').empty();
-                        for (var j = 0; j < data.length; j++) {
-                            var text = data[j].Adsoyad;
-                            var seviyeid = data[j].SeviyeID;
-                            var dersid = data[j].DersID;
+                                $.ajax({
+                                    url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciKarnesi_mbllogin&donemID=1&ogrenciID=' + ogrenciID + '&cid=' + cid + '&languageID=' + lid + '',
+                                    type: 'GET',
+                                    dataType: 'json',
+                                    success: function (data) {
+                                        var j;
+                                        var dataSet = [];
+                                        var properties = [];
+                                        //$('#location').empty();
+                                        for (var j = 0; j < data.length; j++) {
+                                            var dersadi = data[j].DersAdi;
+                                            var hs = data[j].HaftalikDersSaati;
+                                            var ysp = data[j].YilSonuPuani;
+                                            var y1 = data[j].Yazili1;
+                                            var y2 = data[j].Yazili2;
+                                            var y3 = data[j].Yazili3;
+                                            var y4 = data[j].Yazili4;
+                                            var y5 = data[j].Yazili5;
 
-                            $('#sube').append("<option value=" + seviyeid + " >" + text + "</option>");
-                        }
-                        $("#sube").on('change', function () {
+                                            $('#example').append('<tr><td>' + dersadi + '</td><td>' + y1 + '</td><td>' + y2 + '</td><td>' + y3 + '</td><td>' + ysp + '</td></tr>');
+                                        }
 
-                            $.ajax({
-                                url: 'http://' + ip + ':8080/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciKarnesi_mbllogin&donemID=1&ogrenciID=AEEFE2B7-6653-4776-9343-031155AF6181&cid=1&languageID=' + lid +'',
-                                type: 'GET',
-                                dataType: 'json',
-                                success: function (data) {
-                                    var j;
-                                    var dataSet = [];
-                                    var properties = [];
-                                    //$('#location').empty();
-                                    for (var j = 0; j < data.length; j++) {
-                                        var dersadi = data[j].DersAdi;
-                                        var hs = data[j].HaftalikDersSaati;
-                                        var ysp = data[j].YilSonuPuani;
-                                        var y1 = data[j].Yazili1;
-                                        var y2 = data[j].Yazili2;
-                                        var y3 = data[j].Yazili3;
-                                        var y4 = data[j].Yazili4;
-                                        var y5 = data[j].Yazili5;
-
-                                        $('#example').append('<tr><td>' + dersadi + '</td><td>' + y1 + '</td><td>' + y2 + '</td><td>' + y3 + '</td><td>' + ysp + '</td></tr>');
                                     }
-
-                                }
+                                });
                             });
-                        });
-                    }
-                });
+                        }
+                    });
 
-            });
-        }
-    });
+                });
+            }
+        });
+
+    } catch (e) {
+        alert(e);
+    }
+
+   
   
     //Contenier Son
 };
