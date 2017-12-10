@@ -14,19 +14,20 @@ function user() {
 
     var okulid = localStorage.getItem("okulid");
     var kisiid = localStorage.getItem("gelenid");
-    var dersyiliid = localStorage.getItem("dersyiliid");
+    var dersyiliid = localStorage.getItem("dyiliid");
+    var did = localStorage.getItem("did");
     var rolid = localStorage.getItem("RolID");
     var ip = localStorage.getItem("ip");
     var kisiadi = localStorage.getItem("KullaniciAdi");
     var lid = localStorage.getItem("lid");
+    var kurumid = localStorage.getItem("kurumid");
     var cid = localStorage.getItem("cid");
-
 
     //menu başlangıç
 
 
     $.ajax({
-        url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&cid=' + cid + '&languageID=' + lid +'',
+        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -62,7 +63,7 @@ function user() {
     try {
         $.ajax({
 
-            url: ' http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=Kurumyoneticisisubelistesi_mbllogin&dersYiliID=' + dersyiliid + '&cid=' + cid + '&languageID=' + lid + '',
+            url: ' http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Kurumyoneticisisubelistesi_mbllogin&dersYiliID=' + dersyiliid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
             type: 'GET',
             dataType: 'json',
             success: function (data) {
@@ -78,7 +79,7 @@ function user() {
                 $("#selectNumber").on('change', function () {
 
                     $.ajax({
-                        url: ' http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=Kysubeogrencilistesi_mbllogin&sinifID='+this.value+'&cid='+cid+'&languageID=' + lid + '',
+                        url: ' http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Kysubeogrencilistesi_mbllogin&sinifID=' + this.value + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
                         type: 'GET',
                         dataType: 'json',
                         success: function (data) {
@@ -96,7 +97,7 @@ function user() {
                             $("#sube").on('change', function () {
                                 $.ajax({
 
-                                    url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=KySubeOgrenciDersListesi_mbllogin&ogrenciSeviyeID='+this.value+'&cid='+cid+'&languageID=' + lid + '',
+                                    url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=KySubeOgrenciDersListesi_mbllogin&ogrenciSeviyeID=' + this.value + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
                                     type: 'GET',
                                     dataType: 'json',
                                     success: function (data) {

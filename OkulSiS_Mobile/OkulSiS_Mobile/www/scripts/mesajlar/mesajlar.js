@@ -21,11 +21,12 @@ function user() {
     var lid = localStorage.getItem("lid");
     var cid = localStorage.getItem("cid");
     var kurumid = localStorage.getItem("kurumid");
-    alert(okulid);
+    var did = localStorage.getItem("did");
+   // alert(okulid);
     //menu başlangıç
 
     $.ajax({
-        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&cid=' + cid + '&languageID=' + lid +'',
+        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did +'',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -50,7 +51,7 @@ function user() {
     //contenier başlangıç
     try {
         $.ajax({
-            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Msjcombo1_mbllogin&kisiId=' + kisiid + '&kurumID=' + kurumid + '&rolID=' + rolid + '&cid=' + cid + '&languageID=' + lid + '',
+            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Msjcombo1_mbllogin&kisiId=' + kisiid + '&kurumID=' + kurumid + '&rolID=' + rolid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did +'',
             type: 'GET',
             dataType: 'json',
             success: function (data) {
@@ -67,7 +68,7 @@ function user() {
                 $("#cmb1").on('change', function () {
 
                     $.ajax({
-                        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Msjcombo2_mbllogin&kisiId=' + kisiid + '&rolID=' + rolid + '&sendrolID=' + this.value + '&cid=' + cid + '&languageID=' + lid + '',
+                        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Msjcombo2_mbllogin&kisiId=' + kisiid + '&rolID=' + rolid + '&sendrolID=' + this.value + '&cid=' + cid + '&languageID=' + lid + '&did=' + did +'',
                         type: 'GET',
                         dataType: 'json',
                         success: function (data) {
@@ -85,7 +86,7 @@ function user() {
                             $("#cmb2").on('change', function () {
 
                                 $.ajax({
-                                    url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Msjcombo3_mbllogin&kisiId=' + kisiid + '&okulid=' + okulid + '&rolID=' + rolid + '&sendrolID=5&cid='+cid+'&languageID=' + lid + '',
+                                    url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Msjcombo3_mbllogin&kisiId=' + kisiid + '&okulid=' + okulid + '&rolID=' + rolid + '&sendrolID=5&cid=' + cid + '&languageID=' + lid + '&did=' + did +'',
                                     type: 'GET',
                                     dataType: 'json',
                                     success: function (data) {
@@ -112,7 +113,7 @@ function user() {
                                     //   alert(this.value);
                                     if (this.value == 1) {
                                         $.ajax({
-                                            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Msjcombo4_mbllogin&kisiId=' + kisiid + '&sinifID=' + show + '&rolID=' + rolid + '&sendrolID=9&cid=' + cid + '&languageID=' + lid + '',
+                                            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Msjcombo4_mbllogin&kisiId=' + kisiid + '&sinifID=' + show + '&rolID=' + rolid + '&sendrolID=9&cid=' + cid + '&languageID=' + lid + '&did=' + did +'',
                                             type: 'GET',
                                             dataType: 'json',
                                             success: function (data) {
@@ -148,7 +149,7 @@ function user() {
     // Mesaj Tipleri
     try {
         $.ajax({
-            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=MesajTipleri_mbllogin&cid='+cid+'&rolID=' + rolid + '&languageID=' + lid + '',
+            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=MesajTipleri_mbllogin&cid=' + cid + '&rolID=' + rolid + '&languageID=' + lid + '&did=' + did +'',
             type: 'GET',
             dataType: 'json',
             success: function (data) {
@@ -178,7 +179,7 @@ function user() {
     try {
         $.ajax({
 
-            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=GidenMesajListesi_mbllogin&kisiID=' + kisiid + '&cid=' + cid + '&languageID=' + lid + '',
+            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=GidenMesajListesi_mbllogin&kisiID=' + kisiid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did +'',
             type: 'GET',
             dataType: 'json',
             success: function (data) {
@@ -208,7 +209,7 @@ function user() {
     try {
         $.ajax({
 
-            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=GelenMesajListesi_mbllogin&kisiID=' + kisiid + '&cid=' + cid + '&languageID=' + lid + '',
+            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=GelenMesajListesi_mbllogin&kisiID=' + kisiid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did +'',
             type: 'GET',
             dataType: 'json',
             success: function (data) {
@@ -264,7 +265,7 @@ function user() {
         var kime = localStorage.getItem("show");
         var msgtip = localStorage.getItem("mesajtipid");
         $.ajax({
-            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=SendMesajDefault_mbllogin&konu=' + konu + '&mesaj=' + mesaj + '&kisiId=' + kisiid + '&receiveKisiID=' + kime + '&mesajTipID=' + msgtip + '&cid=' + cid + '&languageID=' + lid +'',
+            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=SendMesajDefault_mbllogin&konu=' + konu + '&mesaj=' + mesaj + '&kisiId=' + kisiid + '&receiveKisiID=' + kime + '&mesajTipID=' + msgtip + '&cid=' + cid + '&languageID=' + lid + '&did=' + did +'',
             data: {
                 konu: $("#lname").val(),
                 mesaj: $("#fmesaj").val(),

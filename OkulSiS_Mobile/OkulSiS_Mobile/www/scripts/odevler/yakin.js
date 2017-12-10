@@ -12,23 +12,24 @@ function user() {
         }
     });
 
+
     var okulid = localStorage.getItem("okulid");
     var kisiid = localStorage.getItem("gelenid");
     var dersyiliid = localStorage.getItem("dyiliid");
-    var cid = localStorage.getItem("cid");
-    var dbn = localStorage.getItem("dbn");
-    var did = localStorage.getItem("dyiliid");
+    var did = localStorage.getItem("did");
     var rolid = localStorage.getItem("RolID");
-    var ip = localStorage.getItem("proxy");
+    var ip = localStorage.getItem("ip");
     var kisiadi = localStorage.getItem("KullaniciAdi");
     var lid = localStorage.getItem("lid");
+    var kurumid = localStorage.getItem("kurumid");
+    var cid = localStorage.getItem("cid");
 
 
     //menu başlangıç
 
 
     $.ajax({
-        url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&cid=' + cid + '&languageID=' + lid +'',
+        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -60,49 +61,54 @@ function user() {
 
 
     //contenier başlangıç
+    try {
+        $.ajax({
+            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=VeliOgrencileri_mbllogin&dersYiliID=' + dersyiliid + '&kisiId=' + kisiid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                var j;
+                var dataSet = [];
+                var properties = [];
+                $('#selectNumber').empty();
+                for (var j = 0; j < data.length; j++) {
+                    var text = data[j].AdiSoyadi;
+                    var value = data[j].OgrenciID;
+                    $('#selectNumber').append("<option value=" + value + ">" + text + "</option>");
+                }
+                $("#selectNumber").on('change', function () {
+                    var ogrenciidselected = this.value;
 
-    $.ajax({
-        url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=VeliOgrencileri_mbllogin&dersYiliID=0F17DCF7-EFCF-41D8-82A0-D4CCFF77E487&kisiId=5B153648-7B6B-4160-9274-B2EA69A1D717&cid=1&languageID=' + lid +'',
-        type: 'GET',
-        dataType: 'json',
-        success: function (data) {
-            var j;
-            var dataSet = [];
-            var properties = [];
-            $('#selectNumber').empty();
-            for (var j = 0; j < data.length; j++) {
-                var text = data[j].AdiSoyadi;
-                var value = data[j].OgrenciID;
-                $('#selectNumber').append("<option value=" + value + ">" + text + "</option>");
-            }
-            $("#selectNumber").on('change', function () {
-                var ogrenciidselected = this.value;
-
-                $.ajax({
-                    url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=OdevListesiOgrenciveYakin_mbllogin&ogrenciID=AEEFE2B7-6653-4776-9343-031155AF6181&egitimYilID=2016&cid=1&languageID=' + lid +'',
-                    type: 'GET',
-                    dataType: 'json',
-                    success: function (data) {
+                    $.ajax({
+                        url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=OdevListesiOgrenciveYakin_mbllogin&ogrenciID=' + this.value + '&egitimYilID=2016&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function (data) {
 
 
 
-                        var j;
-                        var dataSet = [];
-                        var properties = [];
-                        for (var j = 0; j < data.length; j++) {
-                            var ogretmenadi = data[j].OgretmenAdi;
-                            var dersadi = data[j].DersAdi;
-                            var tanim = data[j].Tanim;
-                            var teslimtarihi = data[j].TeslimTarihi;
-                            $('#example').append('<tr><td>' + ogretmenadi + '</td><td>' + dersadi + '</td><td>' + tanim + '</td><td>' + teslimtarihi + '</td></tr>');
+                            var j;
+                            var dataSet = [];
+                            var properties = [];
+                            for (var j = 0; j < data.length; j++) {
+                                var ogretmenadi = data[j].OgretmenAdi;
+                                var dersadi = data[j].DersAdi;
+                                var tanim = data[j].Tanim;
+                                var teslimtarihi = data[j].TeslimTarihi;
+                                $('#example').append('<tr><td>' + ogretmenadi + '</td><td>' + dersadi + '</td><td>' + tanim + '</td><td>' + teslimtarihi + '</td></tr>');
+                            }
                         }
-                    }
 
+                    });
                 });
-            });
-        }
+            }
 
-    });
+        });
+
+    } catch (e) {
+        alert(e);
+    }
+   
     //Contenier Son
 };
 

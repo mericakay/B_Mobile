@@ -15,17 +15,17 @@ function user() {
     var okulid = localStorage.getItem("okulid");
     var kisiid = localStorage.getItem("gelenid");
     var dersyiliid = localStorage.getItem("dyiliid");
-    var cid = localStorage.getItem("cid");
-    var dbn = localStorage.getItem("dbn");
-    var did = localStorage.getItem("dyiliid");
+    var did = localStorage.getItem("did");
     var rolid = localStorage.getItem("RolID");
-    var ip = localStorage.getItem("proxy");
+    var ip = localStorage.getItem("ip");
     var kisiadi = localStorage.getItem("KullaniciAdi");
     var lid = localStorage.getItem("lid");
+    var kurumid = localStorage.getItem("kurumid");
+    var cid = localStorage.getItem("cid");
     //menu başlangıç
 
     $.ajax({
-        url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&cid=' + cid + '&languageID=' + lid +'',
+        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did +'',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -51,7 +51,7 @@ function user() {
     //contenier başlangıç
     try {
         $.ajax({
-            url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=MsjIcinOkulListesi_mbllogin&sendrolID=4&cid=' + cid + '&languageID=' + lid + '',
+            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=MsjIcinOkulListesi_mbllogin&sendrolID=4&cid=' + cid + '&languageID=' + lid + '&did=' + did +'',
             type: 'GET',
             dataType: 'json',
             success: function (data) {
@@ -67,7 +67,7 @@ function user() {
                 }
                 $("#tahsilat").on('change', function () {
                     $.ajax({
-                        url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=MuhYapilacakTahsilatlarA_mbllogin&kurumID=A4EFFBCB-0291-4D2B-BCAC-E4BD8BFD6BE4&cid=' + cid + '&languageID=' + lid + '',
+                        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=MuhYapilacakTahsilatlarA_mbllogin&kurumID=A4EFFBCB-0291-4D2B-BCAC-E4BD8BFD6BE4&cid=' + cid + '&languageID=' + lid + '&did=' + did +'',
                         type: 'GET',
                         dataType: 'json',
                         success: function (data) {
@@ -94,7 +94,7 @@ function user() {
         });
 
         $.ajax({
-            url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=MsjIcinOkulListesi_mbllogin&sendrolID=4&cid=' + cid + '&languageID=' + lid + '',
+            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=MsjIcinOkulListesi_mbllogin&sendrolID=4&cid=' + cid + '&languageID=' + lid + '&did=' + did +'',
             type: 'GET',
             dataType: 'json',
             success: function (data) {
@@ -110,7 +110,7 @@ function user() {
                 }
                 $("#ozet").on('change', function () {
                     $.ajax({
-                        url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=MuhYapilacakTahsilatlarB_mbllogin&kurumID=A4EFFBCB-0291-4D2B-BCAC-E4BD8BFD6BE4&cid=' + cid + '&languageID=' + lid + '',
+                        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=MuhYapilacakTahsilatlarB_mbllogin&kurumID=A4EFFBCB-0291-4D2B-BCAC-E4BD8BFD6BE4&cid=' + cid + '&languageID=' + lid + '&did=' + did +'',
                         type: 'GET',
                         dataType: 'json',
                         success: function (data) {
@@ -135,7 +135,7 @@ function user() {
         });
 
         $.ajax({
-            url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=MsjIcinOkulListesi_mbllogin&sendrolID=4&cid=' + cid + '&languageID=' + lid + '',
+            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=MsjIcinOkulListesi_mbllogin&sendrolID=4&cid=' + cid + '&languageID=' + lid + '&did=' + did +'',
             type: 'GET',
             dataType: 'json',
             success: function (data) {
@@ -152,7 +152,7 @@ function user() {
                 $("#alacak").on('change', function () {
                     $.ajax({
 
-                        url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=MuhYapilacakTahsilatlarC_mbllogin&kurumID=A4EFFBCB-0291-4D2B-BCAC-E4BD8BFD6BE4&cid=1&languageID=' + lid + '',
+                        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=MuhYapilacakTahsilatlarC_mbllogin&kurumID='+kurumid+'&cid='+cid+'&languageID=' + lid + '&did=' + did +'',
                         type: 'GET',
                         dataType: 'json',
                         success: function (data) {

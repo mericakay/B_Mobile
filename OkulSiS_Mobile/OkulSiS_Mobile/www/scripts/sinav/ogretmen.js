@@ -14,14 +14,14 @@ function user() {
    // $("#cevaplar").paging({ limit: 10 });
     var okulid = localStorage.getItem("okulid");
     var kisiid = localStorage.getItem("gelenid");
-    var dersyiliid = localStorage.getItem("dersyiliid");
+    var dersyiliid = localStorage.getItem("dyiliid");
+    var did = localStorage.getItem("did");
     var rolid = localStorage.getItem("RolID");
     var ip = localStorage.getItem("ip");
     var kisiadi = localStorage.getItem("KullaniciAdi");
     var lid = localStorage.getItem("lid");
+    var kurumid = localStorage.getItem("kurumid");
     var cid = localStorage.getItem("cid");
-    var did = localStorage.getItem("did");
-    var kisiadi = localStorage.getItem("KullaniciAdi");
 
     var ogrenciid = "";
     var SinavOgrenciSoruCevapID = "F700A96B-4628-41E5-A261-D7834983CF4D";
