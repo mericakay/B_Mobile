@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+
+    <script src="../../scripts/jquery.min.js"></script>
+    <script src="../../scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../scripts/sinav/ogretmen.js"></script>
+    <link href="../../css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="../../css/font-awesome.min.css" rel="stylesheet" />
+    <link href="../../css/bootstrap4_datatable.css" rel="stylesheet" />
+    <link href="../../css/menu.css" rel="stylesheet" />
+
+</head>
+<body onload="user()">
+    <nav id="menu" class="left">
+        <ul>
+            <li><a href="#" class="active"><i class="fa fa-home"></i>Home</a></li>
+        </ul>
+        <a href="#" id="showmenu"> <i class="fa fa-align-justify"></i> </a>
+    </nav>
+    <header></header>
+    <div class="container">
+        <h2>Sınavlar</h2>
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#home">Sınavlar</a></li>
+            <li><a href="#menu1">KSG</a></li>
+            <li><a href="#menu2">Sonuç</a></li>
+
+        </ul>
+
+        <div class="tab-content">
+            <div id="home" class="tab-pane fade in active">
+                <p>Sınavlar</p>
+                <br />
+                <table id="sinav" class="display" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Tarih</th>
+                            <th>Açıklama</th>
+                            <th> Tur Adı</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div id="menu1" class="tab-pane fade">
+                <p>Klasik Sınav Girişi</p>
+                <select id="sinavsec"> </select><br /><br />
+                <select id="subesec"> </select><br /><br />
+                <select id="ogrencisec"> </select><br /><br />
+                <select id="kitapciksec"> </select><br /><br />
+                <select id="sinavderssec"> </select><br /><br />
+
+
+                <!--  <table id="derslistesi" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Kategrori </th>
+                <th>Soru Sayısı</th>
+
+
+            </tr>
+        </thead>
+    </table><br />-->
+                <table id="cevaplar" class="display" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Sıra No </th>
+                            <th>Puan</th>
+                            <th>Soru Puanı</th>
+
+                        </tr>
+                    </thead>
+                </table>
+                <br /><br />
+                <input type="submit" id="kaydet" value="Kaydet">
+                <input type="submit" id="onay" value="Onay">
+            </div>
+            <div id="menu2" class="tab-pane fade">
+                <p>Sınav Sonuçları</p>
+                <select id="selectNumber"> </select><br /><br />
+                <table id="giden" class="display" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Açıklama</th>
+                            <th>Puan</th>
+
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+
+        </div>
+    </div>
+    <footer>Copyright &copy; OkulSIS </footer>
+    <script>
+        $(document).ready(function () {
+            $(".nav-tabs a").click(function () {
+                $(this).tab('show');
+            });
+        });
+    </script>
+
+</body>
+</html>

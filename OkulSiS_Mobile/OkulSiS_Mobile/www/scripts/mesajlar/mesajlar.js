@@ -24,6 +24,9 @@ function user() {
     var did = localStorage.getItem("did");
    // alert(okulid);
     //menu başlangıç
+    document.getElementById("cmb3").style.visibility = "hidden";
+    document.getElementById("cmb2").style.visibility = "hidden";
+    document.getElementById("cmb4").style.visibility = "hidden";
 
     $.ajax({
         url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did +'',
@@ -55,18 +58,21 @@ function user() {
             type: 'GET',
             dataType: 'json',
             success: function (data) {
+                
                 var j;
                 var dataSet = [];
                 var properties = [];
                 $('#cmb1').empty();
                 for (var j = 0; j < data.length; j++) {
                     var text = data[j].RolAdi;
-                    var cmbid = data[j].ID;
+                    var cmbid = data[j].sendRolID;
+                   // alert(cmbid);
 
                     $('#cmb1').append("<option value=" + cmbid + ">" + text + "</option>");
                 }
                 $("#cmb1").on('change', function () {
-
+                    document.getElementById("cmb2").style.visibility = "visible";
+                  //  alert(this.value);
                     $.ajax({
                         url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Msjcombo2_mbllogin&kisiId=' + kisiid + '&rolID=' + rolid + '&sendrolID=' + this.value + '&cid=' + cid + '&languageID=' + lid + '&did=' + did +'',
                         type: 'GET',
@@ -84,7 +90,7 @@ function user() {
                                 $('#cmb2').append("<option >" + aciklama + "</option>");
                             }
                             $("#cmb2").on('change', function () {
-
+                                document.getElementById("cmb3").style.visibility = "visible";
                                 $.ajax({
                                     url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Msjcombo3_mbllogin&kisiId=' + kisiid + '&okulid=' + okulid + '&rolID=' + rolid + '&sendrolID=5&cid=' + cid + '&languageID=' + lid + '&did=' + did +'',
                                     type: 'GET',

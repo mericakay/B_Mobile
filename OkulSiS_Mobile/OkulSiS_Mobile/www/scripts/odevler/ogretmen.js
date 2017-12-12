@@ -62,7 +62,7 @@ function user() {
                 var properties = [];
                 $('#sinifsec').empty();
                 for (var j = 0; j < data.length; j++) {
-                    var text = data[j].aciklama;
+                    var text = data[j].Aciklama;
                     var sinifid = data[j].SinifID;
                     // alert(sinifid);
                     $('#sinifsec').append("<option value=" + sinifid + ">" + text + "</option>");

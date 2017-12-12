@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+
+    <script src="../../scripts/jquery.min.js"></script>
+    <script src="../../scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../scripts/odevler/ogretmen.js"></script>
+    <link href="../../css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="../../css/font-awesome.min.css" rel="stylesheet" />
+    <link href="../../css/bootstrap4_datatable.css" rel="stylesheet" />
+    <link href="../../css/menu.css" rel="stylesheet" />
+
+</head>
+<body onload="user()">
+    <nav id="menu" class="left">
+        <ul>
+            <li><a href="#" class="active"><i class="fa fa-home"></i>Home</a></li>
+        </ul>
+        <a href="#" id="showmenu"> <i class="fa fa-align-justify"></i> </a>
+    </nav>
+    <header></header>
+    <div class="container">
+        <h2>Mesajlar</h2>
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#home">Yeni</a></li>
+            <li><a href="#menu1">Liste</a></li>
+            
+
+        </ul>
+
+        <div class="tab-content">
+            <div id="home" class="tab-pane fade in active">
+                <p>Yeni Ödev Atama</p>
+                <br />
+                <input type="date" id="myDate" value="Teslim Tarihi Seçiniz !" /><br /><br />
+                <select id="sinifsec"> </select><br /><br />
+                <select id="multi-select-demo" multiple="multiple"> </select><br /><br />
+                <select id="odevtipi"> </select><br /><br />
+                <form action="./" method="post">
+                    <input type="text" name="ltanim" placeholder="Ödev Tanımı"><br />
+                    <textarea name="fmesaj" placeholder="Açıklama"></textarea><br />
+                    <input class="testbutton" type="button" id="button1" value="Gönder"><br /><br />
+                </form>
+            </div>
+            <div id="menu1" class="tab-pane fade">
+                <p>Atanmış Ödevler</p>
+                <table id="liste" class="display" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Ders Bilgisi </th>
+                            <th>Tanım</th>
+                            <th>Kod</th>
+                            <th>Tarih</th>
+
+                        </tr>
+                    </thead>
+                </table><br /><br />
+            </div>
+          
+
+        </div>
+    </div>
+    <footer>Copyright &copy; OkulSIS </footer>
+    <script>
+        $(document).ready(function () {
+            $(".nav-tabs a").click(function () {
+                $(this).tab('show');
+            });
+        });
+    </script>
+
+</body>
+</html>

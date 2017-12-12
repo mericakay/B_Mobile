@@ -22,6 +22,7 @@ function user() {
     var lid = localStorage.getItem("lid");
   
     var cid = localStorage.getItem("cid");
+    document.getElementsByTagName("P")[0].innerHTML = kisiadi;
   //  alert(ip);
     //menu başlangıç
     try {

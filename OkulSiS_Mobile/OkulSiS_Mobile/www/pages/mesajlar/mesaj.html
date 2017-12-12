@@ -1,27 +1,21 @@
-﻿<!doctype html>
-<html>
+﻿<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="../../scripts/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="../../scripts/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../../scripts/mesajlar/mesajlar.js"></script>
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
 
-    
+    <script src="../../scripts/jquery.min.js"></script>
+    <script src="../../scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../scripts/mesajlar/mesajlar.js"></script>  
     <link href="../../css/bootstrap.min.css" rel="stylesheet" />
-    
     <link href="../../css/jquery.dataTables.min.css" rel="stylesheet" />
-    
     <link href="../../css/font-awesome.min.css" rel="stylesheet" />
-    <link href="../../css/menu.css" rel="stylesheet" />
     <link href="../../css/bootstrap4_datatable.css" rel="stylesheet" />
+    <link href="../../css/menu.css" rel="stylesheet" />
+
 </head>
 <body onload="user()">
-    <!-- menu vertical -->
     <nav id="menu" class="left">
         <ul>
             <li><a href="#" class="active"><i class="fa fa-home"></i>Home</a></li>
@@ -29,25 +23,17 @@
         <a href="#" id="showmenu"> <i class="fa fa-align-justify"></i> </a>
     </nav>
     <header></header>
+    <div class="container">
+        <h2>Mesajlar</h2>
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#home">Yeni</a></li>
+            <li><a href="#menu1">Gelen</a></li>
+            <li><a href="#menu2">Giden</a></li>
 
-    <!-- /menu vertical -->
-    <!-- contenido de pagina, realmente no importa -->
-    <div id="container">
-        <!--Pestaña 1 activa por defecto-->
-        <input id="tab-1" type="radio" name="tab-group" checked="checked" />
-        <label for="tab-1">Yeni</label>
-        <!--Pestaña 2 inactiva por defecto-->
-        <input id="tab-2" type="radio" name="tab-group" />
-        <label for="tab-2">Gelen</label>
-        <!--Pestaña 3 inactiva por defecto-->
-        <input id="tab-3" type="radio" name="tab-group" />
-        <label for="tab-3">Giden</label>
-        <!--Contenido a mostrar/ocultar-->
-        <div id="content">
-            <!--Contenido de la Pestaña 1-->
-            <div id="content-1">
-                <p>Yeni Mesaj Gönder</p>
-                <br />
+        </ul>
+
+        <div class="tab-content">
+            <div id="home" class="tab-pane fade in active">
                 <select id="cmb5"> </select><br /><br />
                 <select id="cmb1"> </select><br /><br />
                 <select id="cmb2"> </select><br /><br />
@@ -60,9 +46,9 @@
                     <input class="testbutton" type="button" id="button1" value="Gönder">
                 </form>
             </div>
-            <!--Contenido de la Pestaña 2-->
-            <div id="content-2">
-                <p>Gelen Mesajlar</p>
+            <div id="menu1" class="tab-pane fade">
+                <h3>Gelen Mesajlar</h3>
+
                 <table id="example" class="display" cellspacing="0" width="100%">
                     <thead>
                         <tr>
@@ -74,9 +60,8 @@
                     </thead>
                 </table>
             </div>
-            <!--Contenido de la Pestaña 3-->
-            <div id="content-3">
-                <p>Gönderilen Mesajlar</p>
+            <div id="menu2" class="tab-pane fade">
+                <h3>Gönderilen Mesajlar</h3>
                 <table id="giden" class="display" cellspacing="0" width="100%">
                     <thead>
                         <tr>
@@ -88,13 +73,17 @@
                     </thead>
                 </table>
             </div>
-        </div>
 
-        <div>
         </div>
     </div>
     <footer>Copyright &copy; OkulSIS </footer>
-    <!-- /contenido de pagina, realmente no importa -->
-  
+    <script>
+        $(document).ready(function () {
+            $(".nav-tabs a").click(function () {
+                $(this).tab('show');
+            });
+        });
+    </script>
+
 </body>
 </html>
