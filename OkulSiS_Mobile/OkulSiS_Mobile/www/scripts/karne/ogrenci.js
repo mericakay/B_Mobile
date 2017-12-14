@@ -21,6 +21,7 @@ function user() {
     var lid = localStorage.getItem("lid");
     var cid = localStorage.getItem("cid");
     var did = localStorage.getItem("did");
+    var egitimyiliid = localStorage.getItem("egitimyiliid");
   
     //menu başlangıç
 

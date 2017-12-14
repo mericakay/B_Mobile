@@ -23,6 +23,7 @@ function user() {
     var lid = localStorage.getItem("lid");
     var kurumid = localStorage.getItem("kurumid");
     var cid = localStorage.getItem("cid");
+    var egitimyiliid = localStorage.getItem("egitimyiliid");
    
 
     //menu başlangıç
@@ -80,7 +81,7 @@ function user() {
                     var ogrenciidselected = this.value;
 
                     $.ajax({
-                        url: 'http://' + ip + ' /Slim_Proxy_okulsis/SlimProxyBoot.php?url=OdevListesiOgrenciveYakin_mbllogin&ogrenciID=' + this.value + '&egitimYilID=2016&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
+                        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OdevListesiOgrenciveYakin_mbllogin&ogrenciID=' + this.value + '&egitimYilID=' + egitimyiliid + '&did=' + did + '&cid=' + cid + '&languageID=' + lid +'',
                         type: 'GET',
                         dataType: 'json',
                         success: function (data) {

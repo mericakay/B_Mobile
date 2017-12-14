@@ -22,6 +22,7 @@ function user() {
     var lid = localStorage.getItem("lid");
     var kurumid = localStorage.getItem("kurumid");
     var cid = localStorage.getItem("cid");
+    var egitimyiliid = localStorage.getItem("egitimyiliid");
   
 
 
@@ -91,7 +92,7 @@ function user() {
                             for (var j = 0; j < data.length; j++) {
                                 var sinavtarih = data[j].SinavTarihi;
                                 var aciklama = data[j].SinavAciklamasi;
-                                var sinavturadi = data[j].SinavTurAdi;
+                                var sinavturadi = data[j].sinavTurTanim;
                                 $('#example').append('<tr><td>' + sinavtarih + '</td><td>' + aciklama + '</td><td>' + sinavturadi + '</td></tr>');
                             }
 

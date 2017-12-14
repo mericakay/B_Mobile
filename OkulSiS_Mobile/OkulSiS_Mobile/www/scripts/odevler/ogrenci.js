@@ -13,15 +13,14 @@ function user() {
     });
     var okulid = localStorage.getItem("okulid");
     var kisiid = localStorage.getItem("kisiid");
-    var dersyiliid = localStorage.getItem("dyiliid");
-    var did = localStorage.getItem("did");
+    var dersyiliid = localStorage.getItem("dersyiliid");
     var rolid = localStorage.getItem("RolID");
     var ip = localStorage.getItem("ip");
     var kisiadi = localStorage.getItem("KullaniciAdi");
     var lid = localStorage.getItem("lid");
-    var kurumid = localStorage.getItem("kurumid");
     var cid = localStorage.getItem("cid");
-
+    var did = localStorage.getItem("did");
+    var egitimyiliid = localStorage.getItem("egitimyiliid");
 
     //menu başlangıç
 
@@ -100,7 +99,7 @@ function user() {
                         currentRow.onclick = createClickHandler(currentRow);
                     }
                     $.ajax({
-                        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciOdeviGordu_mbllogin&ogrenciOdevID=9ADC8A51-36C3-4924-8090-F1B081EC3824&cid='+cid+'&languageID=' + lid + '&did=' + did + '',
+                        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OdevListesiOgrenciveYakin_mbllogin&ogrenciID=' + kisiid + '&egitimYilID=' + egitimyiliid + '&did='+did+'&cid='+cid+'&languageID='+lid+'',
                         type: 'GET',
                         dataType: 'json',
                         success: function (data) {

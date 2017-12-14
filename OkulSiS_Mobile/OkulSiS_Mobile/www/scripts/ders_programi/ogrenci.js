@@ -11,7 +11,6 @@ function user() {
             $(this).children('i:last-child').toggleClass('fa-caret-down fa-caret-left');
         }
     });
-
     var okulid = localStorage.getItem("okulid");
     var kisiid = localStorage.getItem("kisiid");
     var dersyiliid = localStorage.getItem("dersyiliid");
@@ -21,6 +20,7 @@ function user() {
     var lid = localStorage.getItem("lid");
     var cid = localStorage.getItem("cid");
     var did = localStorage.getItem("did");
+    var egitimyiliid = localStorage.getItem("egitimyiliid");
 
 
     //menu başlangıç

@@ -14,7 +14,7 @@ function user() {
 
     var okulid = localStorage.getItem("okulid");
     var kisiid = localStorage.getItem("kisiid");
-    var dersyiliid = localStorage.getItem("dyiliid");
+    var dersyiliid = localStorage.getItem("dersyiliid");
     var did = localStorage.getItem("did");
     var rolid = localStorage.getItem("RolID");
     var ip = localStorage.getItem("ip");
@@ -22,6 +22,7 @@ function user() {
     var lid = localStorage.getItem("lid");
     var kurumid = localStorage.getItem("kurumid");
     var cid = localStorage.getItem("cid");
+    var egitimyiliid = localStorage.getItem("egitimyiliid");
 
 
     //menu başlangıç
@@ -58,32 +59,6 @@ function user() {
     });
     //menu Son
 
-    //dashboard başlangıç
-    $.ajax({
-        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=DashboardIconCounts_mbllogin&rolId=' + rolid + '&kisiId=' + kisiid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
-        type: 'GET',
-        dataType: 'json',
-        success: function (data) {
-
-            var j;
-            var dataSet = [];
-            var properties = [];
-            var url = "";
-            var value = "";
-            var iconclass = "";
-            for (var j = 0; j < data.length; j++) {
-                text = data[j].aciklama;
-                url = data[j].url;
-                value = data[j].adet;
-                iconclass = data[j].iconclass;
-
-                $('.dashboard').append('<img src="' + url + '" align="left"/><a style="color:white" href="#" id="mail_menu">' + text + '<br />' + value + '</a><br /><br />');
-            }
-        }
-    });
-
-
-    // Dashboard son
 
     //contenier başlangıç
     try {
@@ -98,13 +73,13 @@ function user() {
                 $('#sube').empty();
                 for (var j = 0; j < data.length; j++) {
                     var text = data[j].AdiSoyadi;
-                    var sinifid = data[j].SinifID;
+                    var yakinogrenciid = data[j].OgrenciID;
 
-                    $('#sube').append("<option value=" + sinifid + ">" + text + "</option>");
+                    $('#sube').append("<option value=" + yakinogrenciid + ">" + text + "</option>");
                 }
                 $("#sube").on('change', function () {
                     $.ajax({
-                        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciVeliIcinOgretmenListesi_mbllogin&kisiId=' + kisiid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
+                        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciVeliIcinOgretmenListesi_mbllogin&kisiId=' + this.value + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
                         type: 'GET',
                         dataType: 'json',
                         success: function (data) {
