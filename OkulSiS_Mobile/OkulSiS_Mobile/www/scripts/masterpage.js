@@ -2,7 +2,7 @@
     var did = localStorage.getItem("dyiliid");
     var rolid = localStorage.getItem("RolID");
     var okulid = localStorage.getItem("okulid");
-    var kisiid = localStorage.getItem("gelenid");
+    var kisiid = localStorage.getItem("kisiid");
     var dersyiliid = localStorage.getItem("dyiliid");
     var ip = localStorage.getItem("proxy");
     var kisiadi = localStorage.getItem("KullaniciAdi");

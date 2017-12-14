@@ -12,7 +12,7 @@ function user() {
         }
     });
     var okulid = localStorage.getItem("okulid");
-    var kisiid = localStorage.getItem("gelenid");
+    var kisiid = localStorage.getItem("kisiid");
     var dersyiliid = localStorage.getItem("dyiliid");
     var did = localStorage.getItem("did");
     var rolid = localStorage.getItem("RolID");

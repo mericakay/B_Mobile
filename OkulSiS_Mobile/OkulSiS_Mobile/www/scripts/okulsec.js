@@ -7,6 +7,7 @@
     var did = "";
     var ip = "";
     var dersyiliid = "";
+    var kisiid = "";
    // alert(lid);
     $.ajax({
         url: 'http://mobile.okulsis.net:8280/Slim_Proxy_okulsis/SlimProxyBoot.php?tc=' + tc + '&url=mobilfirstdata_mbllogin&languageID=' + lid + '',
@@ -25,6 +26,7 @@
                 var okulid = data[j].OkulID;
                 dersyiliid = data[j].DersYiliID;
                 var kurumID = data[j].KurumID;
+                 kisiid = data[j].KisiID;
                 cid = data[j].cid;
                 var proxy = data[j].proxy;     
                 var egitimyiliid = data[j].EgitimYilID;  
@@ -32,7 +34,7 @@
               //  alert(did);
                 rolid = data[j].RolID;
 
-                $('#selectNumber').append("<option  data-did=" + did + " data-egitimyiliid=" + egitimyiliid + " data-okulid=" + okulid + " data-dersyiliid=" + dersyiliid + " data-cid=" + cid + " data-proxy=" + proxy + " id=" + proxylist + " class=" + kurumID + "  value=" + rolid + ">" + text + "</option>");
+                $('#selectNumber').append("<option  data-did=" + did + " data-kisiid=" + kisiid + " data-egitimyiliid=" + egitimyiliid + " data-okulid=" + okulid + " data-dersyiliid=" + dersyiliid + " data-cid=" + cid + " data-proxy=" + proxy + " id=" + proxylist + " class=" + kurumID + "  value=" + rolid + ">" + text + "</option>");
           
             }
             $("#selectNumber").on('change', function () {
@@ -43,11 +45,12 @@
                 var okulidlist = document.getElementById("proxylist");
                 var egitimyiliidlist = document.getElementById("proxylist");
                 var didlist = document.getElementById("proxylist");
+                var kisilist = document.getElementById("proxylist");
                 did = didlist.getAttribute("data-did");
                 ip = proxylist.getAttribute("data-proxy");
                 cid = cidlist.getAttribute("data-cid");
                 dersyiliid = dersyiliidlist.getAttribute("data-dersyiliid");
-               
+                kisiid = kisilist.getAttribute("data-kisiid");
                 okulid = dersyiliidlist.getAttribute("data-okulid");
                 egitimyiliid = egitimyiliidlist.getAttribute("data-egitimyiliid");
               
@@ -60,6 +63,7 @@
                 localStorage.setItem("did", $(this).find('option:selected').attr('data-did'));
                 localStorage.setItem("ip", $(this).find('option:selected').attr('data-proxy'));
                 localStorage.setItem("dersyiliid", $(this).find('option:selected').attr('data-dersyiliid'));
+                localStorage.setItem("kisiid", $(this).find('option:selected').attr('data-kisiid'));
                 localStorage.setItem("okulid", $(this).find('option:selected').attr('data-okulid'));
                 localStorage.setItem("egitimyiliid", $(this).find('option:selected').attr('data-egitimyiliid'));
                

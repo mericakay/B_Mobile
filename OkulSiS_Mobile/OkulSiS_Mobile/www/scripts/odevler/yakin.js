@@ -14,8 +14,8 @@ function user() {
 
 
     var okulid = localStorage.getItem("okulid");
-    var kisiid = localStorage.getItem("gelenid");
-    var dersyiliid = localStorage.getItem("dyiliid");
+    var kisiid = localStorage.getItem("kisiid");
+    var dersyiliid = localStorage.getItem("dersyiliid");
     var did = localStorage.getItem("did");
     var rolid = localStorage.getItem("RolID");
     var ip = localStorage.getItem("ip");
@@ -23,7 +23,7 @@ function user() {
     var lid = localStorage.getItem("lid");
     var kurumid = localStorage.getItem("kurumid");
     var cid = localStorage.getItem("cid");
-
+   
 
     //menu başlangıç
 

@@ -13,7 +13,7 @@ function user() {
     });
 
     var okulid = localStorage.getItem("okulid");
-    var kisiid = localStorage.getItem("gelenid");
+    var kisiid = localStorage.getItem("kisiid");
     var dersyiliid = localStorage.getItem("dyiliid");
     var did = localStorage.getItem("did");
     var rolid = localStorage.getItem("RolID");
@@ -61,7 +61,7 @@ function user() {
     //contenier başlangıç
     try {
         $.ajax({
-            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Yakinisinavlistesi_mbllogin&ogretmenID=5F7F8763-F9BD-40E8-8F0E-532E136EB483&egitimYilID=2016&okulid=' + okulid + '&kisiID=' + kisiid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
+            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrencininSinavlistesi_mbllogin&okulID=' + okulid + '&kisiID=' + kisiid + '&cid='+cid+'&languageID='+lid+'&did='+did+'',
             type: 'GET',
             dataType: 'json',
             success: function (data) {

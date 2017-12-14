@@ -13,15 +13,14 @@ function user() {
     });
 
     var okulid = localStorage.getItem("okulid");
-    var kisiid = localStorage.getItem("gelenid");
-    var dersyiliid = localStorage.getItem("dyiliid");
-    var cid = localStorage.getItem("cid");
-    var dbn = localStorage.getItem("dbn");
-    var did = localStorage.getItem("dyiliid");
+    var kisiid = localStorage.getItem("kisiid");
+    var dersyiliid = localStorage.getItem("dersyiliid");
     var rolid = localStorage.getItem("RolID");
-    var ip = localStorage.getItem("proxy");
+    var ip = localStorage.getItem("ip");
     var kisiadi = localStorage.getItem("KullaniciAdi");
     var lid = localStorage.getItem("lid");
+    var cid = localStorage.getItem("cid");
+    var did = localStorage.getItem("did");
 
 
     //menu başlangıç
@@ -57,7 +56,7 @@ function user() {
         }
     });
     //menu Son
-
+    var gelendonem = 1;
 
     //contenier başlangıç
     try {
@@ -94,3 +93,20 @@ function user() {
     //Contenier Son
 };
 
+function secilenDonem() {
+    var secilendonem = document.getElementById("donem").value;
+    // alert(secilendonem);
+
+    if (secilendonem === "1.donem") {
+
+        gelendonem = 1;
+        alert(gelendonem);
+
+
+    }
+    else {
+        gelendonem = 2;
+
+
+    }
+};

@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+
+    <script src="../../scripts/jquery.min.js"></script>
+    <script src="../../scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../scripts/sinav/yakin.js"></script>
+    <link href="../../css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="../../css/font-awesome.min.css" rel="stylesheet" />
+    <link href="../../css/bootstrap4_datatable.css" rel="stylesheet" />
+    <link href="../../css/menu.css" rel="stylesheet" />
+
+</head>
+<body onload="user()">
+    <nav id="menu" class="left">
+        <ul>
+            <li><a href="#" class="active"><i class="fa fa-home"></i>Home</a></li>
+        </ul>
+        <a href="#" id="showmenu"> <i class="fa fa-align-justify"></i> </a>
+    </nav>
+    <header></header>
+    <div class="container">
+        <h2>Sınavlar</h2>
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#home">Sonuç</a></li>
+            <li><a href="#menu1">Liste</a></li>
+
+
+        </ul>
+
+        <div class="tab-content">
+            <div id="home" class="tab-pane fade in active">
+                <p>Sınav Sonuçları</p>
+                <select id="snc"> </select><br /><br />
+                <table id="sonuc" class="display" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+
+                            <th>Açıklama</th>
+                            <th>Puan</th>
+
+                        </tr>
+                    </thead>
+                </table><br /><br />
+            </div>
+            <div id="menu1" class="tab-pane fade">
+                <p>Sınavlar</p>
+                <br />
+                <select id="selectNumber"> </select><br /><br />
+                                                          <table id="example" class="display" cellspacing="0" width="100%">
+                                                              <thead>
+                                                                  <tr>
+                                                                      <th>Tarih</th>
+                                                                      <th>Açıklama</th>
+                                                                      <th> Tur Adı</th>
+                                                                  </tr>
+                                                              </thead>
+                                                          </table><br /><br />
+            </div>
+
+
+        </div>
+    </div>
+    <footer>Copyright &copy; OkulSIS </footer>
+    <script>
+        $(document).ready(function () {
+            $(".nav-tabs a").click(function () {
+                $(this).tab('show');
+            });
+        });
+    </script>
+
+</body>
+</html>

@@ -13,18 +13,18 @@ function user() {
     });
 
     var okulid = localStorage.getItem("okulid");
-    var kisiid = localStorage.getItem("gelenid");
+    var kisiid = localStorage.getItem("kisiid");
     var dersyiliid = localStorage.getItem("dersyiliid");
     var rolid = localStorage.getItem("RolID");
     var ip = localStorage.getItem("ip");
     var kisiadi = localStorage.getItem("KullaniciAdi");
     var lid = localStorage.getItem("lid");
-    var cid = localStorage.getItem("cid");,
+    var cid = localStorage.getItem("cid");
     var did = localStorage.getItem("did");
-
+  
     //menu başlangıç
 
-
+    var gelendonem = 1;
     $.ajax({
         url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did +'',
         type: 'GET',
@@ -44,7 +44,7 @@ function user() {
                 value = data[j].value;
                 iconclass = data[j].iconclass;
                 collapse = data[j].collapse;
-                // alert(collapse);
+                //alert(collapse);
 
 
                 $('.left').append('<ul><li><a href="../' + url + ' "><i class="fa ' + iconclass + '"></i>' + text + '</a></li></ul>');
@@ -55,12 +55,13 @@ function user() {
         }
     });
     //menu Son
-
+ 
 
     //contenier başlangıç
     try {
+       // alert(ip);
         $.ajax({
-            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciKarnesi_mbllogin&donemID=1&ogrenciID=' + kisiid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did +'',
+            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciKarnesi_mbllogin&donemID=' + gelendonem + '&ogrenciID=' + kisiid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
             type: 'GET',
             dataType: 'json',
             success: function (data) {
@@ -89,5 +90,25 @@ function user() {
 
   
     //Contenier Son
+
+
+
 };
 
+function secilenDonem() {
+    var secilendonem = document.getElementById("donem").value;
+    // alert(secilendonem);
+
+    if (secilendonem === "1.donem") {
+
+        gelendonem = 1;
+        alert(gelendonem);
+
+
+    }
+    else {
+        gelendonem = 2;
+
+
+    }
+};

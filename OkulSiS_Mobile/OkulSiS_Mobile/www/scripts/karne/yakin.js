@@ -13,7 +13,7 @@ function user() {
     });
 
     var okulid = localStorage.getItem("okulid");
-    var kisiid = localStorage.getItem("gelenid");
+    var kisiid = localStorage.getItem("kisiid");
     var dersyiliid = localStorage.getItem("dersyiliid");
     var rolid = localStorage.getItem("RolID");
     var ip = localStorage.getItem("ip");
@@ -22,7 +22,7 @@ function user() {
     var cid = localStorage.getItem("cid");
     var did = localStorage.getItem("did");
     //menu başlangıç
-
+    var gelendonem = 1;
 
     $.ajax({
         url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did +'',
@@ -57,6 +57,8 @@ function user() {
 
 
     //contenier başlangıç
+  
+
     try {
         $.ajax({
             url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=VeliOgrencileri_mbllogin&dersYiliID=' + dersyiliid + '&kisiId=' + kisiid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did +'',
@@ -75,7 +77,7 @@ function user() {
                 }
                 $("#sube").on('change', function () {
                     $.ajax({
-                        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciKarnesi_mbllogin&donemID=1&ogrenciID=' + this.value + '&cid=' + cid + '&did=' + did +'',
+                        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciKarnesi_mbllogin&donemID=' + gelendonem + '&ogrenciID=' + this.value + '&cid=' + cid + '&did=' + did + '',
                         type: 'GET',
                         dataType: 'json',
                         success: function (data) {
@@ -111,3 +113,13 @@ function user() {
     //Contenier Son
 };
 
+function secilenDonem() {
+
+    if (secilendonem === "1.donem") {
+
+        gelendonem = 1;
+    }
+    else {
+        gelendonem = 2;
+    }
+};

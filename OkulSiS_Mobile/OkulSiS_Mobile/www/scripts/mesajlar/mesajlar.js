@@ -13,7 +13,7 @@ function user() {
     });
 
     var okulid = localStorage.getItem("okulid");
-    var kisiid = localStorage.getItem("gelenid");
+    var kisiid = localStorage.getItem("kisiid");
     var dersyiliid = localStorage.getItem("dersyiliid");
     var rolid = localStorage.getItem("RolID");
     var ip = localStorage.getItem("ip");
@@ -106,6 +106,7 @@ function user() {
                                             var aciklama = data[j].aciklama;
                                             var kontrol = data[j].kontrol;
                                             var cmbid = data[j].ID;
+                                            
 
                                             $('#cmb3').append("<option  value=" + kontrol + "  data-user=" + cmbid + " id=" + msglist + "  >" + aciklama + "</option>");
                                         }
@@ -116,7 +117,7 @@ function user() {
                                     var msglist = document.getElementById("msglist");
                                     var show = msglist.getAttribute("data-user");
                                     localStorage.setItem("show", show);
-                                    //   alert(this.value);
+                                    alert(this.value);
                                     if (this.value == 1) {
                                         $.ajax({
                                             url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Msjcombo4_mbllogin&kisiId=' + kisiid + '&sinifID=' + show + '&rolID=' + rolid + '&sendrolID=9&cid=' + cid + '&languageID=' + lid + '&did=' + did +'',
