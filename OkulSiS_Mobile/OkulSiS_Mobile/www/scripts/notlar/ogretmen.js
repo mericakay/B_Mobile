@@ -14,7 +14,7 @@ function user() {
 
     var okulid = localStorage.getItem("okulid");
     var kisiid = localStorage.getItem("kisiid");
-    var dersyiliid = localStorage.getItem("dyiliid");
+    var dersyiliid = localStorage.getItem("dersyiliid");
     var did = localStorage.getItem("did");
     var rolid = localStorage.getItem("RolID");
     var ip = localStorage.getItem("ip");
@@ -22,6 +22,7 @@ function user() {
     var lid = localStorage.getItem("lid");
     var kurumid = localStorage.getItem("kurumid");
     var cid = localStorage.getItem("cid");
+    var egitimyiliid = localStorage.getItem("egitimyiliid");
 
     var dvmGec = 0;
     var dvmYok = 0;
@@ -59,7 +60,7 @@ function user() {
     //contenier başlangıç
     try {
         $.ajax({
-            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Kurumyoneticisisubelistesi_mbllogin&dersYiliID=' + did + '&cid=' + cid + '&languageID=' + lid + '&did=' + did +'',
+            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Kurumyoneticisisubelistesi_mbllogin&dersYiliID=' + dersyiliid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did +'',
             type: 'GET',
             dataType: 'json',
             success: function (data) {
@@ -85,7 +86,7 @@ function user() {
                             $('#sube').empty();
                             for (var j = 0; j < data.length; j++) {
                                 var text = data[j].Aciklama;
-                                var seviyeid = data[j].SeviyeID;
+                                var seviyeid = data[j].OgrenciSeviyeID;
                                 var dersid = data[j].DersID;
 
                                 $('#sube').append("<option value=" + seviyeid + " >" + text + "</option>");

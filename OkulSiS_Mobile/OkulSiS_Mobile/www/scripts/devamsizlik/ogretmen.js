@@ -12,15 +12,18 @@ function user() {
         }
     });
   
+
     var okulid = localStorage.getItem("okulid");
     var kisiid = localStorage.getItem("kisiid");
     var dersyiliid = localStorage.getItem("dersyiliid");
+    var did = localStorage.getItem("did");
     var rolid = localStorage.getItem("RolID");
     var ip = localStorage.getItem("ip");
     var kisiadi = localStorage.getItem("KullaniciAdi");
     var lid = localStorage.getItem("lid");
+    var kurumid = localStorage.getItem("kurumid");
     var cid = localStorage.getItem("cid");
-    var did = localStorage.getItem("did");
+    var egitimyiliid = localStorage.getItem("egitimyiliid");
     document.getElementById('myDate').valueAsDate = new Date();
 
     var dvmGec = 0;
@@ -61,7 +64,7 @@ function user() {
     //contenier başlangıç
     try {
         $.ajax({
-            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=ogretmenDersProgrami_mbllogin&kisiId=' + kisiid + '&okulid=' + okulid + '&dersYiliID=' + dersyiliid + '&&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
+            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgretmenProgramindakiDersler_mbllogin&kisiId=' + kisiid + '&okulID=' + okulid + '&dersYiliID=' + dersyiliid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
             type: 'GET',
             dataType: 'json',
             success: function (data) {

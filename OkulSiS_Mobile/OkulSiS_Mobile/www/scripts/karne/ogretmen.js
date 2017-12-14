@@ -15,12 +15,14 @@ function user() {
     var okulid = localStorage.getItem("okulid");
     var kisiid = localStorage.getItem("kisiid");
     var dersyiliid = localStorage.getItem("dersyiliid");
+    var did = localStorage.getItem("did");
     var rolid = localStorage.getItem("RolID");
     var ip = localStorage.getItem("ip");
     var kisiadi = localStorage.getItem("KullaniciAdi");
     var lid = localStorage.getItem("lid");
+    var kurumid = localStorage.getItem("kurumid");
     var cid = localStorage.getItem("cid");
-    var did = localStorage.getItem("did");
+    var egitimyiliid = localStorage.getItem("egitimyiliid");
     var gelendonem = 1;
     //menu başlangıç
 

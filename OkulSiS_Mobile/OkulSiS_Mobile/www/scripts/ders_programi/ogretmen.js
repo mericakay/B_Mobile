@@ -15,12 +15,14 @@ function user() {
     var okulid = localStorage.getItem("okulid");
     var kisiid = localStorage.getItem("kisiid");
     var dersyiliid = localStorage.getItem("dersyiliid");
+    var did = localStorage.getItem("did");
     var rolid = localStorage.getItem("RolID");
     var ip = localStorage.getItem("ip");
     var kisiadi = localStorage.getItem("KullaniciAdi");
     var lid = localStorage.getItem("lid");
+    var kurumid = localStorage.getItem("kurumid");
     var cid = localStorage.getItem("cid");
-    var did = localStorage.getItem("did");
+    var egitimyiliid = localStorage.getItem("egitimyiliid");
     var dvmGec = 0;
     var dvmYok = 0;
 
@@ -62,7 +64,7 @@ function user() {
     try {
         $.ajax({
 
-            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgretmenDersProgramiListesi_mbllogin&ogretmenID=' + kisiid + '&dersYiliID=' + dersyiliid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
+            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgretmenDersProgramiListesi_mbllogin&ogretmenID=' + kisiid + '&dersYiliID=' + dersyiliid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '&donemID=1',
             type: 'GET',
             dataType: 'json',
             success: function (data) {

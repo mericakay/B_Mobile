@@ -12,9 +12,10 @@ function user() {
         }
     });
    // $("#cevaplar").paging({ limit: 10 });
+
     var okulid = localStorage.getItem("okulid");
     var kisiid = localStorage.getItem("kisiid");
-    var dersyiliid = localStorage.getItem("dyiliid");
+    var dersyiliid = localStorage.getItem("dersyiliid");
     var did = localStorage.getItem("did");
     var rolid = localStorage.getItem("RolID");
     var ip = localStorage.getItem("ip");
@@ -22,6 +23,8 @@ function user() {
     var lid = localStorage.getItem("lid");
     var kurumid = localStorage.getItem("kurumid");
     var cid = localStorage.getItem("cid");
+    var egitimyiliid = localStorage.getItem("egitimyiliid");
+    
 
     var ogrenciid = "";
     var SinavOgrenciSoruCevapID = "F700A96B-4628-41E5-A261-D7834983CF4D";
@@ -67,7 +70,7 @@ function user() {
    
     try {
         $.ajax({
-            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Ogretmensinavlistesi_mbllogin&ogretmenID=' + kisiid + '&egitimYilID=2017&okulid=' + okulid + '&kisiID=' + kisiid + '&cid=' + cid + '&languageID=' + lid +'&did='+did+'',
+            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Ogretmensinavlistesi_mbllogin&ogretmenID=' + kisiid + '&egitimYilID=' + egitimyiliid + '&okulID=' + okulid + '&kisiID=' + kisiid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
             type: 'GET',
             dataType: 'json',
             success: function (data) {
@@ -85,7 +88,7 @@ function user() {
                 }
                 $("#sinavsec").on('change', function () {
                     $.ajax({
-                        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgretmenSinavaGirenSubeler_mbllogin&sinavID=' + this.value + '&okulid=' + okulid + '&ogretmenID=' + kisiid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did +'',
+                        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgretmenSinavaGirenSubeler_mbllogin&sinavID=' + this.value + '&okulID=' + okulid + '&ogretmenID=' + kisiid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did +'',
                         type: 'GET',
                         dataType: 'json',
                         success: function (data) {
@@ -123,7 +126,7 @@ function user() {
                                             sinavogrenciid = msglist.getAttribute("data-user");
                                             //  alert(show);
                                             $.ajax({
-                                                url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=TopluOgrenciCevap_mbllogin&sinavokulid=' + okulid + 'D&sinifKodu=5KAR1&cid=' + cid + '&languageID=' + lid + '&did=' + did +'',
+                                                url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=TopluOgrenciCevap_mbllogin&sinavokulid=' + okulid + '&sinifKodu=5KAR1&cid=' + cid + '&languageID=' + lid + '&did=' + did +'',
                                                 type: 'GET',
                                                 dataType: 'json',
                                                 success: function (data) {
@@ -231,7 +234,7 @@ function user() {
  
     try {
         $.ajax({
-            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Ogretmensinavlistesi_mbllogin&ogretmenID=' + ogrenciid + '&egitimYilID=2016&okulid=' + okulid + '&kisiID=' + kisiid + '&languageID=' + lid + '&cid=' + cid + '&did=' + did +'&grid=1',
+            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Ogretmensinavlistesi_mbllogin&ogretmenID=' + kisiid + '&egitimYilID=' + egitimyiliid + '&okulID=' + okulid + '&kisiID=' + kisiid + '&languageID=' + lid + '&cid=' + cid + '&did=' + did + '&grid=0',
             type: 'GET',
             dataType: 'json',
             success: function (data) {
@@ -285,7 +288,7 @@ function user() {
     try {
         $.ajax({
 
-            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Ogretmensinavlistesi_mbllogin&ogretmenID=' + kisiid + '&egitimYilID=2016&okulid=' + okulid + '&kisiID=' + kisiid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did +'',
+            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Ogretmensinavlistesi_mbllogin&ogretmenID=' + kisiid + '&egitimYilID=' + egitimyiliid + '&okulID=' + okulid + '&kisiID=' + kisiid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
             type: 'GET',
             dataType: 'json',
             success: function (data) {
