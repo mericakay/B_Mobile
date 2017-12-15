@@ -22,7 +22,7 @@ function user() {
     var lid = localStorage.getItem("lid");
     var egitimyiliid = localStorage.getItem("egitimyiliid");
     var cid = localStorage.getItem("cid");
-    
+
     //  alert(ip);
     //menu başlangıç
     try {
@@ -139,7 +139,7 @@ function user() {
         alert(e);
     }
 
-     //Klasik Puan Girişi
+    //Klasik Puan Girişi
     $.ajax({
         url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Ogretmensinavlistesi_mbllogin&ogretmenID=' + kisiid + '&egitimYilID=' + egitimyiliid + '&okulID=' + okulid + '&kisiID=' + kisiid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
         type: 'GET',
@@ -268,8 +268,8 @@ function user() {
 
                                                                             $('#cevaplar').append('<tr><td>' + sira + '</td><td><input  name="puan" type="text" placeholder="Puan"></td><td>' + sorupuani + '</td><td style="display:none;">' + soruid + '</td></tr>');
                                                                         }
-                                                                        $("#sinifsec").on('change', function () {
-                                                                            alert("asdqad");
+                                                                        $("#cevaplar").on('click', 'td', function () {
+                                                                            //  alert("asdqad");
 
                                                                         });
                                                                     }
