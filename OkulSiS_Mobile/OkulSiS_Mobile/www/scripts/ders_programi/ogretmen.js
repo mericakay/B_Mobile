@@ -73,13 +73,14 @@ function user() {
                 var properties = [];
                 //$('#location').empty();
                 for (var j = 0; j < data.length; j++) {
+                    var gun = data[j].aciklama;
                     var dersadi = data[j].DersAdi;
                     var sinifkodu = data[j].SinifKodu;
                     var dersbaslangicbitis = data[j].DersBaslangicBitisSaati;
                     var Tc = data[j].TCKimlikNo;
                     var selected = data[j].selected;
 
-                    $('#example').append('<tr><td>' + dersadi + '</td><td>' + sinifkodu + '</td><td>' + dersbaslangicbitis + '</td></tr>');
+                    $('#example').append('<tr><td>' + gun + '</td><td>' + dersadi + '</td><td>' + sinifkodu + '</td><td>' + dersbaslangicbitis + '</td></tr>');
 
                 }
 

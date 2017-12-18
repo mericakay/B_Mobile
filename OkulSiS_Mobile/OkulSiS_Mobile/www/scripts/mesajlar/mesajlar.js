@@ -117,7 +117,7 @@ function user() {
                                     var msglist = document.getElementById("msglist");
                                     var show = msglist.getAttribute("data-user");
                                     localStorage.setItem("show", show);
-                                    alert(this.value);
+                                   // alert(this.value);
                                     if (this.value == 1) {
                                         $.ajax({
                                             url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Msjcombo4_mbllogin&kisiId=' + kisiid + '&sinifID=' + show + '&rolID=' + rolid + '&sendrolID=9&cid=' + cid + '&languageID=' + lid + '&did=' + did +'',

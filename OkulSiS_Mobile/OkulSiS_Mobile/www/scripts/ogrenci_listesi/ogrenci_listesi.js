@@ -67,7 +67,7 @@ function user() {
     //contenier başlangıç
     try {
         $.ajax({
-            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=KurumPersoneliSinifListesi_mbllogin&dersYiliID=' + dersyiliid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
+            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Ogretmensubelistesi_mbllogin&ogretmenID=' + kisiid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
             type: 'GET',
             dataType: 'json',
             success: function (data) {
@@ -76,7 +76,7 @@ function user() {
                 var properties = [];
                 $('#sube').empty();
                 for (var j = 0; j < data.length; j++) {
-                    var text = data[j].SinifAdi;
+                    var text = data[j].Aciklama;
                     var value = data[j].SinifID;
                     $('#sube').append("<option value=" + value + ">" + text + "</option>");
                 }
