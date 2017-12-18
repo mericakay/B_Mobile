@@ -106,6 +106,7 @@ function user() {
                                     $('#sube').append("<option >" + text + "</option>");
                                 }
                                 $("#sube").on('change', function () {
+                                    $("#example tr").remove(); 
                                     $.ajax({
 
                                         url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=ogretmenDersPrgDersSaatleriOgrencileri_mbllogin&sinifID=' + sinifid + '&tarih=' + x + '&dersSirasi=1&dersYiliID=' + dersyiliid + '&kisiId=' + kisiid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',

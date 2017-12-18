@@ -92,7 +92,7 @@ function user() {
                                 $('#sube').append("<option value=" + seviyeid + " >" + text + "</option>");
                             }
                             $("#sube").on('change', function () {
-
+                                $("#example tr").remove(); 
                                 $.ajax({
                                     url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=KySubeOgrenciDersListesi_mbllogin&ogrenciSeviyeID=' + this.value + '&cid=' + cid + '&languageID=' + lid + '&did=' + did +'',
                                     type: 'GET',

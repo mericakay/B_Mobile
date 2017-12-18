@@ -22,7 +22,11 @@ function user() {
     var lid = localStorage.getItem("lid");
     var egitimyiliid = localStorage.getItem("egitimyiliid");
     var cid = localStorage.getItem("cid");
-
+    document.getElementById("subesec").style.visibility = "hidden";
+    document.getElementById("ogrencisec").style.visibility = "hidden";
+    document.getElementById("kitapciksec").style.visibility = "hidden";
+    document.getElementById("sinavderssec").style.visibility = "hidden";
+    
     //  alert(ip);
     //menu başlangıç
     try {
@@ -108,7 +112,7 @@ function user() {
                     $('#selectNumber').append("<option value=" + sinavid + ">" + text + "</option>");
                 }
                 $("#selectNumber").on('change', function () {
-
+                     document.getElementById("cmb2").style.visibility = "visible";
                     $.ajax({
                         url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrencilerinAldigiNotlarSinavBazli_mbllogin&sinavID=' + this.value + '&donemID=1&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
                         type: 'GET',
@@ -160,6 +164,7 @@ function user() {
                 $('#sinavsec').append("<option  data-sinvaid=" + sinavid + " id=" + sinaviddd + " >" + text + "</option>");
             }
             $("#sinavsec").on('change', function () {
+                document.getElementById("subesec").style.visibility = "visible";
                 var sinaviddd = document.getElementById("sinaviddd");
                 sinavidlist = $(this).find('option:selected').attr('data-sinvaid');
                 localStorage.setItem("sinavidlist", sinavidlist);
@@ -185,6 +190,7 @@ function user() {
                             $('#subesec').append("<option  value=" + sinavokulid + " id=" + sinavagirensubeler + " data-snifkodu=" + SinifKodu + " data-sinavokulid=" + sinavokulid + " >" + text + "</option>");
                         }
                         $("#subesec").on('change', function () {
+                            document.getElementById("ogrencisec").style.visibility = "visible";
                             var sinavagirensubeler = document.getElementById("sinavagirensubeler");
                             girensubler = $(this).find('option:selected').attr('data-snifkodu');
                             sinavokulidgelen = $(this).find('option:selected').attr('data-sinavokulid');
@@ -209,6 +215,7 @@ function user() {
                                         $('#ogrencisec').append("<option value=" + SinifKodu + " data-user=" + sinavogrenciid + " id=" + msglist + ">" + text + "</option>");
                                     }
                                     $("#ogrencisec").on('change', function () {
+                                        document.getElementById("kitapciksec").style.visibility = "visible";
                                         var girensublerr = localStorage.getItem("girensubler");
                                         var sinavokulidgelenler = localStorage.getItem("sinavokulidgelen");
                                         var msglist = document.getElementById("msglist");
@@ -230,6 +237,7 @@ function user() {
                                                     $('#kitapciksec').append("<option value=" + sinavkitapcikid + ">" + text + "</option>");
                                                 }
                                                 $("#kitapciksec").on('change', function () {
+                                                    document.getElementById("sinavderssec").style.visibility = "visible";
                                                     var sinavidlist = localStorage.getItem("sinavidlist");
                                                     $.ajax({
                                                         url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgretmenSinavDersleriListesi_mbllogin&sinavID=' + sinavidlist + '9&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
