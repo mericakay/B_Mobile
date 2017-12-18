@@ -90,7 +90,7 @@ function user() {
                             $('#sube').empty();
                             for (var j = 0; j < data.length; j++) {
                                 var text = data[j].Aciklama;
-                                var seviyeid = data[j].SeviyeID;
+                                var seviyeid = data[j].OgrenciSeviyeID;
                                 var dersid = data[j].DersID;
 
                                 $('#sube').append("<option value=" + seviyeid + " >" + text + "</option>");
