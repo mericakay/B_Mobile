@@ -22,7 +22,7 @@ body {
     padding: 0px;
     width: 100%;
     font-family: 'RobotoRegular', 'Droid Sans', 'Segoe UI', Segoe, 'San Francisco', 'Helvetica Neue', Helvetica, Arial, Geneva, sans-serif;
-    font-size: 12px;
+    font-size: 14px;
 }
 /* Removes the clear button from date inputs */
 input[type="date"]::-webkit-clear-button {
@@ -107,7 +107,7 @@ header, footer {
 
     #menu ul li a {
         color: inherit;
-        font-size: 12px;
+        font-size: 14px;
         display: block;
         padding: 8px 0 8px 7px;
         text-decoration: none;

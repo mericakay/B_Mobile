@@ -92,6 +92,7 @@ function user() {
                                     var cell = row.getElementsByTagName("td")[4];
 
                                     var id = cell.innerHTML;
+                                    alert(id);
 
                                 };
                             };

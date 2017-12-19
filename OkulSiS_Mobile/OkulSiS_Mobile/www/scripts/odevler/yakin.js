@@ -98,6 +98,38 @@ function user() {
                                 var teslimtarihi = data[j].TeslimTarihi;
                                 $('#example').append('<tr><td>' + ogretmenadi + '</td><td>' + dersadi + '</td><td>' + tanim + '</td><td>' + teslimtarihi + '</td></tr>');
                             }
+                            $("#example").on('click', function () {
+                                alert("1");
+                                var table = document.getElementById("example");
+                                var rows = table.getElementsByTagName("tr");
+                                for (i = 0; i < rows.length; i++) {
+                                    var currentRow = table.rows[i];
+                                    var createClickHandler =
+                                        function (row) {
+                                            return function () {
+                                                var rows = $("#location>tr");
+                                                // alert(JSON.stringify(rows, null, 4));
+                                                console.log(JSON.stringify(rows, null, 4));
+                                                var cell = row.getElementsByTagName("td")[4];
+
+                                                var id = cell.innerHTML;
+                                                alert(id);
+
+                                            };
+                                        };
+
+                                    currentRow.onclick = createClickHandler(currentRow);
+                                }
+                                $.ajax({
+                                    url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OdevListesiOgrenciveYakin_mbllogin&ogrenciID=' + kisiid + '&egitimYilID=' + egitimyiliid + '&did=' + did + '&cid=' + cid + '&languageID=' + lid + '',
+                                    type: 'GET',
+                                    dataType: 'json',
+                                    success: function (data) {
+
+                                        console.log("okundu");
+                                    }
+                                });
+                            });
                         }
 
                     });

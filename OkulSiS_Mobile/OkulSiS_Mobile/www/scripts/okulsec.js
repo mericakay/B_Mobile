@@ -15,26 +15,33 @@
         dataType: 'json',
         success: function (data) {
           //  alert("ss");
+            
             var j;
             var dataSet = [];
             var properties = [];
             var rolid;
             var proxylist = "proxylist";
+            var text = "";
+            var okulid = ""; 
+            var kurumid = "";
+            var proxy = "";
+            var egitimyiliid = "";
             $('#selectNumber').empty();
             for (var j = 0; j < data.length; j++) {
-                var text = data[j].OkulAdi;
-                var okulid = data[j].OkulID;
-                dersyiliid = data[j].DersYiliID;
-                var kurumID = data[j].KurumID;
+                 text = data[j].OkulAdi;
+                 okulid = data[j].OkulID;
+                 dersyiliid = data[j].DersYiliID;
+                 kurumid = data[j].KurumID;
                  kisiid = data[j].KisiID;
-                cid = data[j].cid;
-                var proxy = data[j].proxy;     
-                var egitimyiliid = data[j].EgitimYilID;  
-                 did = data[j].did;  
-              //  alert(did);
+                 cid = data[j].cid;
+                 proxy = data[j].proxy;     
+                 egitimyiliid = data[j].EgitimYilID;  
+                 did = data[j].did;
+              
+             
                 rolid = data[j].RolID;
 
-                $('#selectNumber').append("<option  data-did=" + did + " data-kisiid=" + kisiid + " data-egitimyiliid=" + egitimyiliid + " data-okulid=" + okulid + " data-dersyiliid=" + dersyiliid + " data-cid=" + cid + " data-proxy=" + proxy + " id=" + proxylist + " class=" + kurumID + "  value=" + rolid + ">" + text + "</option>");
+                $('#selectNumber').append("<option  data-did=" + did + " data-kisiid=" + kisiid + " data-egitimyiliid=" + egitimyiliid + " data-okulid=" + okulid + " data-dersyiliid=" + dersyiliid + " data-cid=" + cid + " data-proxy=" + proxy + " id=" + proxylist + " class=" + kurumid + "  value=" + rolid + ">" + text + "</option>");
           
             }
             $("#selectNumber").on('change', function () {
@@ -69,6 +76,22 @@
                
                window.location.href = "pages/main.html";
             });
+            if (data.length == 2) {
+              
+                localStorage.setItem("RolID", rolid);
+                localStorage.setItem("kurumid", kurumid);
+                localStorage.setItem("cid", cid);
+                localStorage.setItem("did", did);
+                localStorage.setItem("ip", proxy);
+                localStorage.setItem("dersyiliid", dersyiliid);
+                localStorage.setItem("kisiid", kisiid);
+                localStorage.setItem("okulid", okulid);
+                localStorage.setItem("egitimyiliid", egitimyiliid);
+                var kurumid = localStorage.getItem("kurumid");
+                
+                window.location.href = "pages/main.html";
+            }
+
         }
 
     });
