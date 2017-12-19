@@ -75,6 +75,34 @@ function user() {
 
                     $('#sube').append("<option value=" + ogrenciid + ">" + text + "</option>");
                 }
+                if (data.length == 2) {
+                    document.getElementById("sube").style.visibility = "hidden";
+                    document.getElementsByTagName("P")[0].innerHTML = text;
+                    $.ajax({
+                        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciKarnesi_mbllogin&donemID=' + gelendonem + '&ogrenciID=' + ogrenciid + '&cid=' + cid + '&did=' + did + '',
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function (data) {
+                            var j;
+                            var dataSet = [];
+                            var properties = [];
+                            //$('#location').empty();
+                            for (var j = 0; j < data.length; j++) {
+                                var dersadi = data[j].DersAdi;
+                                var hs = data[j].HaftalikDersSaati;
+                                var ysp = data[j].YilSonuPuani;
+                                var y1 = data[j].Yazili1;
+                                var y2 = data[j].Yazili2;
+                                var y3 = data[j].Yazili3;
+                                var y4 = data[j].Yazili4;
+                                var y5 = data[j].Yazili5;
+
+                                $('#example').append('<tr><td>' + dersadi + '</td><td>' + y1 + '</td><td>' + y2 + '</td><td>' + y3 + '</td><td>' + ysp + '</td></tr>');
+                            }
+
+                        }
+                    });
+                }
                 $("#sube").on('change', function () {
                     $.ajax({
                         url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciKarnesi_mbllogin&donemID=' + gelendonem + '&ogrenciID=' + this.value + '&cid=' + cid + '&did=' + did + '',

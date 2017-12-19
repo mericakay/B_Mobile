@@ -76,6 +76,29 @@ function user() {
                     var value = data[j].OgrenciID;
                     $('#selectNumber').append("<option value=" + value + ">" + text + "</option>");
                 }
+                if (data.length == 2) {
+                    document.getElementById("selectNumber").style.visibility = "hidden";
+                    document.getElementsByTagName("P")[0].innerHTML = text;
+                    var ogrenciidselected = this.value;
+                    // alert(ogrenciidselected);
+                    $.ajax({
+                        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciDevamsizlikListesi_mbllogin&dersYiliID=' + dersyiliid + '&kisiId=' + value + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function (data) {
+                            var j;
+                            var dataSet = [];
+                            var properties = [];
+                            for (var j = 0; j < data.length; j++) {
+                                var text = data[j].Tarih;
+                                var kod = data[j].DevamsizlikAdi;
+                                var value = data[j].GunKarsiligi;
+                                $('#example').append('<tr><td>' + text + '</td><td>' + value + '</td><td>' + kod + '</td></tr>');
+                            }
+                        }
+
+                    });
+                }
                 $("#selectNumber").on('change', function () {
                     var ogrenciidselected = this.value;
                     // alert(ogrenciidselected);

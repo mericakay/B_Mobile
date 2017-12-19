@@ -77,6 +77,30 @@ function user() {
 
                     $('#sube').append("<option value=" + yakinogrenciid + ">" + text + "</option>");
                 }
+                if (data.length == 2) {
+                    document.getElementById("selectNumber").style.visibility = "hidden";
+                    document.getElementsByTagName("P")[0].innerHTML = text;
+                    $("#example tr").remove();
+                    $.ajax({
+                        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciVeliIcinOgretmenListesi_mbllogin&kisiId=' + yakinogrenciid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function (data) {
+
+                            var j;
+                            var dataSet = [];
+                            var properties = [];
+                            for (var j = 0; j < data.length; j++) {
+                                var aciklama = data[j].aciklama;
+                                var dersadi = data[j].DersAdi;
+                                var tanim = data[j].Tanim;
+                                var teslimtarihi = data[j].TeslimTarihi;
+                                $('#example').append('<tr><td>' + aciklama + '</td><td>' + dersadi + '</td></tr>');
+                            }
+                        }
+
+                    });
+                }
                 $("#sube").on('change', function () {
                     $("#example tr").remove(); 
                     $.ajax({

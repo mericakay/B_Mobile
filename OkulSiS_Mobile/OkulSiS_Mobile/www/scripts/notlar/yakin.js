@@ -72,12 +72,39 @@ function user() {
                 var j;
                 var dataSet = [];
                 var properties = [];
+                var text = "";
+                var seviyeid = "";
                 $('#sube').empty();
                 for (var j = 0; j < data.length; j++) {
-                    var text = data[j].AdiSoyadi;
-                    var seviyeid = data[j].OgrenciSeviyeID;
+                     text = data[j].AdiSoyadi;
+                     seviyeid = data[j].OgrenciSeviyeID;
 
                     $('#sube').append("<option value=" + seviyeid + ">" + text + "</option>");
+                }
+                if (data.length == 2) {
+                    document.getElementById("sube").style.visibility = "hidden";
+                    document.getElementsByTagName("P")[0].innerHTML = text;
+                    $.ajax({
+                        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=KySubeOgrenciDersListesi_mbllogin&ogrenciSeviyeID=' + seviyeid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function (data) {
+                            var j;
+                            var dataSet = [];
+                            var properties = [];
+                            //$('#location').empty();
+                            for (var j = 0; j < data.length; j++) {
+                                var derssaati = data[j].HaftalikDersSaati;
+                                var Adi = data[j].DersAdi;
+                                var bir = data[j].Donem1_DonemNotu;
+                                var iki = data[j].Donem2_DonemNotu;
+                                var ys = data[j].YilSonuNotu;
+                                var selected = data[j].selected;
+                                $('#example').append('<tr><td>' + Adi + '</td><td>' + derssaati + '</td><td>' + bir + '</td><td>' + iki + '</td><td>' + ys + '</td></tr>');
+                            }
+
+                        }
+                    });
                 }
                 $("#sube").on('change', function () {
                     $.ajax({

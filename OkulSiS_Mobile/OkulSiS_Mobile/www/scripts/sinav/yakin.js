@@ -77,6 +77,30 @@ function user() {
                     var value = data[j].OgrenciID;
                     $('#selectNumber').append("<option value=" + value + ">" + text + "</option>");
                 }
+                if (data.length == 2) {
+                    document.getElementById("selectNumber").style.visibility = "hidden";
+                    document.getElementsByTagName("P")[0].innerHTML = text;
+                    var ogrenciidselected = this.value;
+                    // alert(ogrenciidselected);
+                    $.ajax({
+                        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrencininSinavlistesi_mbllogin&okulID=' + okulid + '&kisiID=' + value + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function (data) {
+                            var j;
+                            var dataSet = [];
+                            var properties = [];
+                            //$('#location').empty();
+                            for (var j = 0; j < data.length; j++) {
+                                var sinavtarih = data[j].SinavTarihi;
+                                var aciklama = data[j].SinavAciklamasi;
+                                var sinavturadi = data[j].sinavTurTanim;
+                                $('#example').append('<tr><td>' + sinavtarih + '</td><td>' + aciklama + '</td><td>' + sinavturadi + '</td></tr>');
+                            }
+
+                        }
+                    });
+                }
                 $("#selectNumber").on('change', function () {
                     var ogrenciidselected = this.value;
                     // alert(ogrenciidselected);
