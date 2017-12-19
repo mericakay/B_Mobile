@@ -85,12 +85,14 @@ function user() {
                             for (var j = 0; j < data.length; j++) {
                                 var aciklama = data[j].aciklama;
                                 var cmbid = data[j].ID;
+                                var kontrol = data[j].kontrol;
 
 
-                                $('#cmb2').append("<option >" + aciklama + "</option>");
+                                $('#cmb2').append("<option  value=" + kontrol + "  >" + aciklama + "</option>");
                             }
                             $("#cmb2").on('change', function () {
                                 document.getElementById("cmb3").style.visibility = "visible";
+                                if (this.value == 1) {
                                 $.ajax({
                                     url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Msjcombo3_mbllogin&kisiId=' + kisiid + '&okulid=' + okulid + '&rolID=' + rolid + '&sendrolID=5&cid=' + cid + '&languageID=' + lid + '&did=' + did +'',
                                     type: 'GET',
@@ -112,7 +114,10 @@ function user() {
                                         }
 
                                     }
-                                });
+                                    });
+                                } else {
+                                    document.getElementById("cmb3").style.visibility = "hidden";
+                                }
                                 $("#cmb3").on('change', function () {
                                     var msglist = document.getElementById("msglist");
                                     var show = msglist.getAttribute("data-user");
