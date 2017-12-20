@@ -24,8 +24,19 @@ function user() {
     var kurumid = localStorage.getItem("kurumid");
     var cid = localStorage.getItem("cid");
     var egitimyiliid = localStorage.getItem("egitimyiliid");
-    document.getElementById('myDate').valueAsDate = new Date();
-
+    var tarih = new Date();
+    var gg = tarih.toUTCString();
+    var yil = tarih.getFullYear();
+    var ay = tarih.getMonth();
+    var gun = tarih.getDay();
+    var saat = tarih.getHours();
+    var dakika = tarih.getMinutes();
+    var saniye = tarih.getSeconds();
+    var date = new Date(Date.UTC(yil, ay, gun, saat, dakika, saniye));
+   date =  date.toLocaleDateString();
+   // alert(date);
+    var dakka = tarih.toLocaleTimeString();
+    var gelentarih = date +" "+dakka;
     var dvmGec = 0;
     var dvmYok = 0;
 
@@ -79,18 +90,12 @@ function user() {
                     $('#selectNumber').append("<option value=" + sinifid + ">" + text + "</option>");
                 }
                 $("#selectNumber").on('change', function () {
-                    // alert($(this).val());
-                    var x = document.getElementById("myDate").value;
-                    // alert(x);
+                   
 
                     sinifid = this.value;
-                    if (x === "") {
-                        alert("Lütfen Tarih Seçiniz !!")
-
-                    }
-                    else {
+                 
                         $.ajax({
-                            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=ogretmenDersProgramiDersSaatleri_mbllogin&kisiId=' + kisiid + '&sinifID=' + this.value + '&tarih=' + x + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
+                            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=ogretmenDersProgramiDersSaatleri_mbllogin&kisiId=' + kisiid + '&sinifID=' + this.value + '&tarih=' + gelentarih + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
                             type: 'GET',
                             dataType: 'json',
                             success: function (data) {
@@ -98,15 +103,15 @@ function user() {
                                 var dataSet = [];
                                 var properties = [];
                                 $('#sube').empty();
-                                for (var j = 0; j < data.length; j++) {
+                                for (var j = 0; j < data.length; j++) {ogretmenDersProgramiDersSaatleri
                                     var text = data[j].Aciklama;
                                     var derssirasi = data[j].DersSirasi;
                                     var dersid = data[j].DersID;
 
-                                    $('#sube').append("<option >" + text + "</option>");
+                                 
                                 }
-                                $("#sube").on('change', function () {
-                                    $("#example tr").remove(); 
+                                if (data.length == 2) {
+                                    $("#example tr").remove();
                                     $.ajax({
 
                                         url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=ogretmenDersPrgDersSaatleriOgrencileri_mbllogin&sinifID=' + sinifid + '&tarih=' + x + '&dersSirasi=1&dersYiliID=' + dersyiliid + '&kisiId=' + kisiid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
@@ -152,10 +157,12 @@ function user() {
 
                                         }
                                     });
-                                });
+                                }
+                                   
+                               
                             }
                         });
-                    }
+                    
                 });
             }
         });

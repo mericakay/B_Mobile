@@ -156,23 +156,24 @@ function user() {
             var dataSet = [];
             var properties = [];
             $('#sinavsec').empty();
+            $('#cevaplar').empty();      
             for (var j = 0; j < data.length; j++) {
                 var text = data[j].SinavAciklamasi;
                 var sinavid = data[j].SinavID;
                 var sinavdersid = data[j].SinavDersID;
-              
-
-                // alert(sinifid);
                 $('#sinavsec').append("<option data-sinavdersid=" + sinavdersid + " data-sinvaid=" + sinavid + " id=" + sinaviddd + " >" + text + "</option>");
             }
             $("#sinavsec").on('change', function () {
                 document.getElementById("subesec").style.visibility = "visible";
                 var sinaviddd = document.getElementById("sinaviddd");
                 sinavidlist = $(this).find('option:selected').attr('data-sinvaid');
-                sinavdersidlist = $(this).find('option:selected').attr('data-sinavdersid');
-              
+                sinavdersidlist = $(this).find('option:selected').attr('data-sinavdersid');             
                 localStorage.setItem("sinavdersidlist", sinavdersidlist);
                 localStorage.setItem("sinavidlist", sinavidlist);
+                $('#subesec').empty();
+                $('#ogrencisec').empty();
+                $('#kitapciksec').empty();
+                $('#cevaplar').empty();
                 $.ajax({
                     url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgretmenSinavaGirenSubeler_mbllogin&sinavID=' + sinavidlist + '&okulID=' + okulid + '&ogretmenID=' + kisiid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
                     type: 'GET',
@@ -201,6 +202,7 @@ function user() {
                             sinavokulidgelen = $(this).find('option:selected').attr('data-sinavokulid');
                             localStorage.setItem("girensubler", girensubler);
                             localStorage.setItem("sinavokulidgelen", sinavokulidgelen);
+                            $('#cevaplar').empty();
                             $.ajax({
                                 url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=TopluOgrenciCevap_mbllogin&sinavOkulID=' + this.value + '&sinifKodu=' + girensubler + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
                                 type: 'GET',
@@ -220,6 +222,7 @@ function user() {
                                         $('#ogrencisec').append("<option value=" + SinifKodu + " data-user=" + sinavogrenciid + " id=" + msglist + ">" + text + "</option>");
                                     }
                                     $("#ogrencisec").on('change', function () {
+                                        $('#cevaplar').empty();
                                         document.getElementById("kitapciksec").style.visibility = "visible";
                                         var girensublerr = localStorage.getItem("girensubler");
                                         var sinavokulidgelenler = localStorage.getItem("sinavokulidgelen");
@@ -242,7 +245,7 @@ function user() {
                                                     $('#kitapciksec').append("<option value=" + sinavkitapcikid + ">" + text + "</option>");
                                                 }
                                                 $("#kitapciksec").on('change', function () {
-                                                    
+                                                    $('#cevaplar').empty();
                                                     var sinavidlist = localStorage.getItem("sinavidlist");
                                                     var sinavdersidlist = localStorage.getItem("sinavdersidlist");
                                                     $.ajax({
@@ -259,7 +262,7 @@ function user() {
                                                                 var sira = data[j].Sira;
                                                                 var sorupuani = data[j].SoruPuani;
                                                                 var soruid = data[j].SinavSoruID;
-                                                                $('#cevaplar').append('<tr><td>' + sira + '</td><td><input  name="puan" type="text" placeholder="Puan"></td><td>' + sorupuani + '</td><td style="display:none;">' + soruid + '</td></tr>');
+                                                                $('#cevaplar').append('<tr><td>' + sira + '</td><td><input  name="puan" type="number" placeholder="Puan"></td><td>' + sorupuani + '</td><td style="display:none;">' + soruid + '</td></tr>');
                                                             }
                                                             $("#cevaplar").on('click', 'td', function () {
                                                                 //  alert("asdqad");

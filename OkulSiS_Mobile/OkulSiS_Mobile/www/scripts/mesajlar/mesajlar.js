@@ -159,33 +159,7 @@ function user() {
     }
    
     // Mesaj Tipleri
-    try {
-        $.ajax({
-            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=MesajTipleri_mbllogin&cid=' + cid + '&rolID=' + rolid + '&languageID=' + lid + '&did=' + did +'',
-            type: 'GET',
-            dataType: 'json',
-            success: function (data) {
-                var j;
-                var dataSet = [];
-                var properties = [];
-                $('#cmb5').empty();
-                for (var j = 0; j < data.length; j++) {
-                    var aciklama = data[j].Aciklama;
-                    var MesajTipID = data[j].MesajTipID;
-
-                    $('#cmb5').append("<option value=" + MesajTipID + "  >" + aciklama + "</option>");
-                }
-                $("#cmb5").on('change', function () {
-                    var mesajtipid = $(this).find('option:selected').attr('value');
-                    localStorage.setItem("mesajtipid", mesajtipid);
-
-                });
-            }
-        });
-
-    } catch (e) {
-        alert(e);
-    }
+ 
    
     //giden mesajlar
     try {
@@ -277,7 +251,7 @@ function user() {
         var kime = localStorage.getItem("show");
         var msgtip = localStorage.getItem("mesajtipid");
         $.ajax({
-            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=SendMesajDefault_mbllogin&konu=' + konu + '&mesaj=' + mesaj + '&kisiId=' + kisiid + '&receiveKisiID=' + kime + '&mesajTipID=' + msgtip + '&cid=' + cid + '&languageID=' + lid + '&did=' + did +'',
+            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=SendMesajDefault_mbllogin&konu=' + konu + '&mesaj=' + mesaj + '&kisiId=' + kisiid + '&receiveKisiID=' + kime + '&mesajTipID=1&cid=' + cid + '&languageID=' + lid + '&did=' + did +'',
             data: {
                 konu: $("#lname").val(),
                 mesaj: $("#fmesaj").val(),

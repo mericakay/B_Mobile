@@ -7,22 +7,23 @@
 }
 
 body {
-    background-image: url(../images/mobile_bg_menu.jpg);
+    background-image: url(http://wallpapers-and-backgrounds.net/wp-content/uploads/2016/08/3d-abstract-mobile-phone-background_1.jpg);
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center center;
     background-attachment: fixed;
-    webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
     background-size: cover;
+    background-color: #50C9F2;
     -webkit-touch-callout: none;
     -webkit-text-size-adjust: none;
     -webkit-user-select: none;
+    height: 100%;
     margin: 0px;
     padding: 0px;
+    text-transform: uppercase;
     width: 100%;
     font-family: 'RobotoRegular', 'Droid Sans', 'Segoe UI', Segoe, 'San Francisco', 'Helvetica Neue', Helvetica, Arial, Geneva, sans-serif;
-    font-size: 14px;
+    font-size: 12px;
+    z-index: 2;
 }
 /* Removes the clear button from date inputs */
 input[type="date"]::-webkit-clear-button {
@@ -75,39 +76,39 @@ header, footer {
 }
 
 
-#menu {
+.left {
     position: fixed;
     background-color: #222;
     height: 100%;
-    z-index: 10;
+    z-index: 100;
     width: 280px;
-    min-height:300px;
-    color: #bbb;
+    min-height: 300px;
+    color: #fff;
     top: 0;
     -webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
     transition: all 0.3s ease;
     opacity: 1;
-    font-family: 'Source Sans Pro', sans-serif;
+    
 }
 
-    #menu ul {
+    .left ul {
         list-style: none;
         margin-top: 0;
         padding: 0
     }
 
-        #menu ul li {
+        .left ul li {
             border-bottom: 1px solid #2a2a2a;
         }
 
-    #menu > ul > li > a {
+    .left > ul > li > a {
         border-left: 4px solid #222;
     }
 
-    #menu ul li a {
+    .left ul li a {
         color: inherit;
-        font-size: 14px;
+        font-size: 17px;
         display: block;
         padding: 8px 0 8px 7px;
         text-decoration: none;
@@ -117,54 +118,60 @@ header, footer {
         font-weight: 600;
     }
 
-    #menu ul a i {
+    .left ul a i {
         margin-right: 10px;
-        font-size: 18px;
+        font-size: 20px;
         margin-top: 3px;
         width: 20px;
     }
 
-        #menu ul a i[class*='fa-caret'] {
+        .left ul a i[class*='fa-caret'] {
             float: right;
         }
 
-    #menu ul a:hover,
-    #menu ul a.active {
+    .left ul a:hover,
+    .left ul a.active {
         background-color: #111;
         border-left-color: #FFCC33;
         color: #FFCC33;
     }
 
-        #menu ul a:hover i:first-child {
+        .left ul a:hover i:first-child {
             color: #FFCC33;
         }
 
     /* Submenu */
 
-    #menu ul li a.active + ul {
+    .left ul li a.active + ul {
         display: block
     }
 
-    #menu ul li ul {
+    .left ul li ul {
         margin-top: 0;
         display: none;
     }
 
-        #menu ul li ul li {
+        .left ul li ul li {
             border-bottom: none;
         }
 
-            #menu ul li ul li a {
+            .left ul li ul li a {
                 padding-left: 30px;
             }
 
-                #menu ul li ul li a:hover {
+                .left ul li ul li a:hover {
                     background-color: #1A1A1A;
                 }
 
 /* /Submenu */
 .container{
     background-color:aliceblue;
+
+}
+#container {
+    background-color: aliceblue;
+    border: 2px solid #111;
+    border-radius: 10px;
 }
 /* Cuando este a la Izq, para esconderlo posicionarlo a la Izq a -width */
 .left {

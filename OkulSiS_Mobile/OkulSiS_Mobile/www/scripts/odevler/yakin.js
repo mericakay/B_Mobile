@@ -95,10 +95,11 @@ function user() {
                                 var dersadi = data[j].DersAdi;
                                 var tanim = data[j].Tanim;
                                 var teslimtarihi = data[j].TeslimTarihi;
-                                $('#example').append('<tr><td>' + ogretmenadi + '</td><td>' + dersadi + '</td><td>' + tanim + '</td><td>' + teslimtarihi + '</td></tr>');
+                                var aciklama = data[j].Aciklama;
+                                $('#example').append('<tr><td>' + ogretmenadi + '</td><td>' + dersadi + '</td><td>' + tanim + '</td><td>' + teslimtarihi + '</td><td style="display:none;">' + aciklama + '</td></tr>');
                             }
                             $("#example").on('click', function () {
-                                alert("1");
+                              //  alert("1");
                                 var table = document.getElementById("example");
                                 var rows = table.getElementsByTagName("tr");
                                 for (i = 0; i < rows.length; i++) {
