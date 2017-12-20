@@ -1,24 +1,21 @@
 * {
     -webkit-tap-highlight-color: rgba(0,0,0,0);
+ 
 }
 
 body {
-    background-image: url(http://wallpapers-and-backgrounds.net/wp-content/uploads/2016/08/3d-abstract-mobile-phone-background_1.jpg);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;
-    background-size: cover;
-    background-color: #50C9F2;
-    -webkit-touch-callout: none;
-    -webkit-text-size-adjust: none;
-    -webkit-user-select: none;
+    border: none;
+    background: #3a7999;
+    color: #f2f2f2;
+    padding: 10px;
+  
     height: 100%;
     margin: 0px;
     padding: 0px;
     text-transform: uppercase;
     width: 100%;
     font-family: 'RobotoRegular', 'Droid Sans', 'Segoe UI', Segoe, 'San Francisco', 'Helvetica Neue', Helvetica, Arial, Geneva, sans-serif;
-    font-size: 17px;
+    font-size: 100%;
     z-index: 2;
 }
 #radioo {
@@ -47,16 +44,7 @@ div.bilsalogo {
     margin: -115px 0px 0px -112px;
     
 }
-#selectLanguage {
-    color: azure;
-    background-color: #14396A;
-    font-size: 17px;
-    max-width: 60px;
-    max-height: 20px;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-}
+
 @media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
     .app {
         background-position: left center;
