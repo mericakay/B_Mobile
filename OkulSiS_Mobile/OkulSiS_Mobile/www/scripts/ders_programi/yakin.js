@@ -83,6 +83,7 @@ function user() {
                      ogrenciseviyeid = data[j].OgrenciSeviyeID;
                      ogrenciid = data[j].OgrenciID;
                      sinifid = data[j].sinifID;
+                    
 
                     $('#selectNumber').append("<option value=" + ogrenciid + ">" + text + "</option>");
                 }
@@ -90,7 +91,7 @@ function user() {
                     document.getElementById("selectNumber").style.visibility = "hidden";
                     document.getElementsByTagName("P")[0].innerHTML = text;
                     var ogrenciidselected = this.value;
-
+                    
                     $.ajax({
                         url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciVeYakiniDersProgramiListesi_mbllogin&sinifID=' + sinifid + '&ogrenciID=' + ogrenciid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
                         type: 'GET',

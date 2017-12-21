@@ -81,7 +81,7 @@ function user() {
                     $('#sube').append("<option value=" + value + ">" + text + "</option>");
                 }
                 $("#sube").on('change', function () {
-                    $("#example tr").remove(); 
+                    $("#example td").remove(); ; 
                     $.ajax({
                         url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Kysubeogrencilistesi_mbllogin&sinifID=' + this.value + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '&grid=1',
                         type: 'GET',

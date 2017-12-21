@@ -110,8 +110,8 @@ function user() {
 
                                  
                                 }
-                                if (data.length == 2) {
-                                    $("#example tr").remove();
+                                if (date.length == 2) {
+                                    $("#example td").remove(); ;
                                     $.ajax({
 
                                         url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=ogretmenDersPrgDersSaatleriOgrencileri_mbllogin&sinifID=' + sinifid + '&tarih=' + x + '&dersSirasi=1&dersYiliID=' + dersyiliid + '&kisiId=' + kisiid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',

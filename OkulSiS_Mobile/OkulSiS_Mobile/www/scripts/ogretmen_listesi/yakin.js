@@ -80,7 +80,7 @@ function user() {
                 if (data.length == 2) {
                     document.getElementById("selectNumber").style.visibility = "hidden";
                     document.getElementsByTagName("P")[0].innerHTML = text;
-                    $("#example tr").remove();
+                    $("#example td").remove(); ;
                     $.ajax({
                         url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciVeliIcinOgretmenListesi_mbllogin&kisiId=' + yakinogrenciid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
                         type: 'GET',
@@ -102,7 +102,7 @@ function user() {
                     });
                 }
                 $("#sube").on('change', function () {
-                    $("#example tr").remove(); 
+                    $("#example td").remove(); ; 
                     $.ajax({
                         url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciVeliIcinOgretmenListesi_mbllogin&kisiId=' + this.value + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
                         type: 'GET',

@@ -62,19 +62,21 @@ function user() {
                 var j;
                 var dataSet = [];
                 var properties = [];
+                var cmbid = "";
+                var gelensendrolid = "";
                 $('#cmb1').empty();
                 for (var j = 0; j < data.length; j++) {
                     var text = data[j].RolAdi;
-                    var cmbid = data[j].sendRolID;
+                     cmbid = data[j].sendRolID;
                    // alert(cmbid);
 
                     $('#cmb1').append("<option value=" + cmbid + ">" + text + "</option>");
                 }
                 $("#cmb1").on('change', function () {
                     document.getElementById("cmb2").style.visibility = "visible";
-                  //  alert(this.value);
+                    gelensendrolid = this.value;
                     $.ajax({
-                        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Msjcombo2_mbllogin&kisiId=' + kisiid + '&rolID=' + rolid + '&sendrolID=' + this.value + '&cid=' + cid + '&languageID=' + lid + '&did=' + did +'',
+                        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Msjcombo2_mbllogin&kisiId=' + kisiid + '&rolID=' + rolid + '&sendrolID=' + gelensendrolid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did +'',
                         type: 'GET',
                         dataType: 'json',
                         success: function (data) {
@@ -86,6 +88,7 @@ function user() {
                                 var aciklama = data[j].aciklama;
                                 var cmbid = data[j].ID;
                                 var kontrol = data[j].kontrol;
+                                
 
 
                                 $('#cmb2').append("<option  value=" + kontrol + "  >" + aciklama + "</option>");
@@ -94,7 +97,7 @@ function user() {
                                 document.getElementById("cmb3").style.visibility = "visible";
                                 if (this.value == 1) {
                                 $.ajax({
-                                    url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Msjcombo3_mbllogin&kisiId=' + kisiid + '&okulid=' + okulid + '&rolID=' + rolid + '&sendrolID=5&cid=' + cid + '&languageID=' + lid + '&did=' + did +'',
+                                    url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Msjcombo3_mbllogin&kisiId=' + kisiid + '&okulid=' + okulid + '&rolID=' + rolid + '&sendrolID=' + gelensendrolid+'&cid=' + cid + '&languageID=' + lid + '&did=' + did +'',
                                     type: 'GET',
                                     dataType: 'json',
                                     success: function (data) {
@@ -109,7 +112,6 @@ function user() {
                                             var kontrol = data[j].kontrol;
                                             var cmbid = data[j].ID;
                                             
-
                                             $('#cmb3').append("<option  value=" + kontrol + "  data-user=" + cmbid + " id=" + msglist + "  >" + aciklama + "</option>");
                                         }
 
@@ -119,16 +121,19 @@ function user() {
                                     document.getElementById("cmb3").style.visibility = "hidden";
                                 }
                                 $("#cmb3").on('change', function () {
+                                    document.getElementById("cmb4").style.visibility = "visible";
                                     var msglist = document.getElementById("msglist");
-                                    var show = msglist.getAttribute("data-user");
+                                    var show = $(this).find('option:selected').attr('data-user');
+                                   
                                     localStorage.setItem("show", show);
                                    // alert(this.value);
                                     if (this.value == 1) {
                                         $.ajax({
-                                            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Msjcombo4_mbllogin&kisiId=' + kisiid + '&sinifID=' + show + '&rolID=' + rolid + '&sendrolID=9&cid=' + cid + '&languageID=' + lid + '&did=' + did +'',
+                                            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Msjcombo4_mbllogin&kisiId=' + kisiid + '&sinifID=' + show + '&rolID=' + rolid + '&sendrolID=' + gelensendrolid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
                                             type: 'GET',
                                             dataType: 'json',
                                             success: function (data) {
+                                             
                                                 var j;
                                                 var dataSet = [];
                                                 var properties = [];
@@ -136,6 +141,7 @@ function user() {
                                                 for (var j = 0; j < data.length; j++) {
                                                     var aciklama = data[j].aciklama;
                                                     var cmbid = data[j].ID;
+                                                 
 
                                                     $('#cmb4').append("<option >" + aciklama + "</option>");
                                                 }

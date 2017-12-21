@@ -101,7 +101,7 @@ function user() {
                                 $('#sube').append("<option value=" + ogrenciID + " >" + text + "</option>");
                             }
                             $("#sube").on('change', function () {
-                                $("#example tr").remove(); 
+                                $("#example td").remove(); ; 
                                 $.ajax({
                                     url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciKarnesi_mbllogin&donemID=' + gelendonem + '&ogrenciID=' + ogrenciID + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
                                     type: 'GET',
